@@ -5,6 +5,7 @@ import android.app.Application;
 import com.squareup.leakcanary.LeakCanary;
 
 /**
+ * 新增LeakCanary
  * Created by Administrator on 2017/10/12 0012.
  */
 
