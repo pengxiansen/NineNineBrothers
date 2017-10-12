@@ -1,0 +1,61 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.3"
+    defaultConfig {
+        applicationId "com.messoft.gzmy.nineninebrothers"
+        minSdkVersion 15
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        release {
+            keyAlias 'gaoqin'
+            keyPassword '123456'
+            storeFile file('D:\\GitProject\\NineNineBrothers\\AndroidKey.jks')
+            storePassword '123456'
+        }
+        debug {
+            keyAlias 'gaoqin'
+            keyPassword '123456'
+            storeFile file('D:\\GitProject\\NineNineBrothers\\AndroidKey.jks')
+            storePassword '123456'
+        }
+    }
+
+    buildTypes {
+
+        debug {
+            signingConfig signingConfigs.debug
+        }
+
+        buildTypes {
+            release {
+                minifyEnabled true
+                //Zipalign优化
+                zipAlignEnabled true
+                // 移除无用的resource文件  // 移除无用的resource文件 Gradle2.0以上版本minifyEnabled字段为true时已经包含了shrinkResources
+                shrinkResources false
+                signingConfig signingConfigs.release
+                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            }
+        }
+    }
+}
+
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+}
