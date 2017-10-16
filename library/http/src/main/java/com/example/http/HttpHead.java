@@ -8,8 +8,11 @@ import android.telephony.TelephonyManager;
 import java.util.UUID;
 
 /**
- * Created by jingbin on 2017/2/14.
+ * @作者 Administrator
+ * httpHead
+ * @创建日期 2017/10/16 0016 13:36
  */
+
 
 public class HttpHead {
     private static final String CLIENT_TYPE = "4";
