@@ -30,5 +30,14 @@
             android:text="This is a fragment, too."
             android:textSize="22sp"/>
 
+        <TextView
+            android:id="@+id/tv_go"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="健康商城"
+            android:background="#ba4545"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"/>
+
     </LinearLayout>
 </layout>

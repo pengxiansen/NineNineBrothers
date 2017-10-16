@@ -3,10 +3,12 @@ package com.messoft.gzmy.nineninebrothers.ui.home;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.view.View;
 
 import com.messoft.gzmy.nineninebrothers.R;
 import com.messoft.gzmy.nineninebrothers.base.BaseFragment;
 import com.messoft.gzmy.nineninebrothers.databinding.FragmentHomeBinding;
+import com.messoft.gzmy.nineninebrothers.listener.PerfectClickListener;
 
 /**
  * Created by Administrator on 2017/10/13 0013.
@@ -28,5 +30,12 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> {
                 showContentView();
             }
         }, 3000);
+
+        bindingView.tvGo.setOnClickListener(new PerfectClickListener() {
+            @Override
+            protected void onNoDoubleClick(View v) {
+                
+            }
+        });
     }
 }
