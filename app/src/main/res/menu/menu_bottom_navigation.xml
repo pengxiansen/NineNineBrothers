@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/item_news"
+        android:icon="@drawable/ic_news_gray"
+        android:title="首页" />
+    <item
+        android:id="@+id/item_lib"
+        android:icon="@drawable/ic_library_gray"
+        android:title="新闻" />
+
+    <item
+        android:id="@+id/item_find"
+        android:icon="@drawable/ic_discovery_gray"
+        android:title="我的" />
+
+    <!--<item-->
+        <!--android:id="@+id/item_more"-->
+        <!--android:icon="@drawable/ic_more_gray"-->
+        <!--android:title="更多" />-->
+
+</menu>

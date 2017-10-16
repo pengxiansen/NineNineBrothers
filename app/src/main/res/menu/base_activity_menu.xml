@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/actionBar_home"
+        android:icon="@drawable/actionbar_home"
+        android:orderInCategory="100"
+        android:title="首页"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/actionBar_shopcat"
+        android:icon="@drawable/actionbar_shopcat"
+        android:orderInCategory="100"
+        android:title="购物车"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/actionBar_message"
+        android:icon="@drawable/actionbar_message"
+        android:orderInCategory="100"
+        android:title="消息"
+        app:showAsAction="never"/>
+</menu>

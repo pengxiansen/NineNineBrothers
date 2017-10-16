@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#FF8340</color>
+    <color name="colorPrimaryDark">#FF8340</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="navigationBarColor">@android:color/black</color>
+    <color name="windowBackground">@android:color/white</color>
+
+    <!--白色-->
+    <color name="white">#FFFFFFFF</color>
+
+    <!--首页底部切换-->
+    <color name="tab_checked">#FF8340</color>
+    <color name="tab_unchecked">#757575</color>
+
+    <!--正在加载的字体颜色-->
+    <color name="colorTabText">#585858</color>
+
+    <!--页面背景的颜色-->
+    <color name="colorPageBg">#f2f4f5</color>
 </resources>
