@@ -75,4 +75,8 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+    compile 'com.just.agentweb:agentweb:2.0.1'
+    compile 'com.lcodecorex:tkrefreshlayout:1.0.7'
+    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
+    compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.3'
 }

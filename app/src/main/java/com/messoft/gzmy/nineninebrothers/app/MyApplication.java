@@ -7,6 +7,7 @@ import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 
+import com.messoft.gzmy.nineninebrothers.http.HttpUtils;
 import com.messoft.gzmy.nineninebrothers.utils.DebugUtil;
 import com.squareup.leakcanary.LeakCanary;
 
@@ -42,6 +43,9 @@ public class MyApplication extends Application {
             return;
         }
         LeakCanary.install(this);
+
+        //初始化网络请求
+        HttpUtils.getInstance().init(this, DebugUtil.DEBUG);
 
         // 必须在 Application 的 onCreate 方法中执行 BGASwipeBackManager.getInstance().init(this) 来初始化滑动返回
         BGASwipeBackManager.getInstance().init(this);

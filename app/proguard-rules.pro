@@ -74,6 +74,13 @@
 -keep class com.google.gson.examples.android.model.** { *; }
 -keep class com.google.gson.** { *;}
 
+#AgentWeb
+-keep class com.just.library.** {
+    *;
+}
+-dontwarn com.just.library.**
+-keepclassmembers class com.just.library.agentweb.AndroidInterface{ *; }
+
 #-------------------------------------------------------------------------
 
 #---------------------------------3.与js互相调用的类------------------------
