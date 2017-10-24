@@ -6,7 +6,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,12 +20,11 @@ import android.widget.TextView;
 import com.messoft.gzmy.nineninebrothers.R;
 import com.messoft.gzmy.nineninebrothers.databinding.ActivityBaseBinding;
 import com.messoft.gzmy.nineninebrothers.listener.PerfectClickListener;
-import com.messoft.gzmy.nineninebrothers.utils.LoadingDialog;
 import com.messoft.gzmy.nineninebrothers.utils.StatusBarUtil;
+import com.messoft.gzmy.nineninebrothers.utils.dialog.LoadingDialog;
+import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper;
-import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
 
 /**
  * @作者 Administrator
@@ -34,7 +32,7 @@ import io.reactivex.disposables.Disposable;
  * @创建日期 2017/10/12 0012 17:41
  */
 
-public abstract class BaseActivity<SV extends ViewDataBinding> extends AppCompatActivity implements BGASwipeBackHelper.Delegate {
+public abstract class BaseActivity<SV extends ViewDataBinding> extends RxAppCompatActivity implements BGASwipeBackHelper.Delegate {
 
     //布局view
     protected SV bindingView;
@@ -46,7 +44,7 @@ public abstract class BaseActivity<SV extends ViewDataBinding> extends AppCompat
     private LinearInterpolator interpolator;
     //rxjava2.0 CompositeSubscription修改为CompositeDisposable
     //CompositeSubscription.unsubscribe修改为 CompositeDisposable.dispose();
-    private CompositeDisposable mCompositeDisposable;
+//    private CompositeDisposable mCompositeDisposable;
 
     protected BGASwipeBackHelper mSwipeBackHelper;
     private ImageView mImg;
@@ -62,8 +60,8 @@ public abstract class BaseActivity<SV extends ViewDataBinding> extends AppCompat
         // 在 super.onCreate(savedInstanceState) 之前调用该方法
         initSwipeBackFinish();
         super.onCreate(savedInstanceState);
-
     }
+
 
     @Override
     public void setContentView(int layoutResID) {
@@ -352,24 +350,24 @@ public abstract class BaseActivity<SV extends ViewDataBinding> extends AppCompat
         LoadingDialog.cancelDialogForLoading();
     }
 
-    public void addDisposable(Disposable s) {
-        if (this.mCompositeDisposable == null) {
-            this.mCompositeDisposable = new CompositeDisposable();
-        }
-        this.mCompositeDisposable.add(s);
-    }
-
-    public void removeDisposable() {
-        if (this.mCompositeDisposable != null) {
-            this.mCompositeDisposable.dispose();
-        }
-    }
+//    public void addDisposable(Disposable s) {
+//        if (this.mCompositeDisposable == null) {
+//            this.mCompositeDisposable = new CompositeDisposable();
+//        }
+//        this.mCompositeDisposable.add(s);
+//    }
+//
+//    public void removeDisposable() {
+//        if (this.mCompositeDisposable != null) {
+//            this.mCompositeDisposable.dispose();
+//        }
+//    }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (this.mCompositeDisposable != null) {
-            this.mCompositeDisposable.dispose();
-        }
+//        if (this.mCompositeDisposable != null) {
+//            this.mCompositeDisposable.dispose();
+//        }
     }
 }

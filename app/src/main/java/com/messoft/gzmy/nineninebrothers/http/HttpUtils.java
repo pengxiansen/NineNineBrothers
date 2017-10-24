@@ -12,7 +12,7 @@ import com.google.gson.FieldNamingStrategy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import com.messoft.gzmy.nineninebrothers.app.Constants;
+import com.messoft.gzmy.nineninebrothers.app.ConstantsUrl;
 import com.messoft.gzmy.nineninebrothers.utils.DebugUtil;
 
 import java.io.IOException;
@@ -76,7 +76,7 @@ public class HttpUtils {
         if (ohHttps == null) {
             synchronized (HttpUtils.class) {
                 if (ohHttps == null) {
-                    ohHttps = getBuilder(Constants.NINE_NINE_BROTHERS).build().create(a);
+                    ohHttps = getBuilder(ConstantsUrl.MASTER_URL).build().create(a);
                 }
             }
         }

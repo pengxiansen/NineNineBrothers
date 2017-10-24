@@ -1,7 +1,6 @@
 package com.messoft.gzmy.nineninebrothers.ui.my;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 
 import com.messoft.gzmy.nineninebrothers.R;
@@ -22,12 +21,7 @@ public class MyFragment extends BaseFragment<FragmentMyBinding> {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                showContentView();
-            }
-        }, 3000);
+        showContentView();
 
     }
 }

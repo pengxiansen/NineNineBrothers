@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <View
+            android:visibility="gone"
             android:id="@+id/fake_status_bar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/statusbar_view_height"
@@ -15,29 +16,19 @@
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="@dimen/default_toolbar_height"
             android:background="@color/colorPrimary"
             android:gravity="center"
             android:text="首页"
             android:textColor="@color/white"
-            android:textSize="24sp"/>
+            android:textSize="@dimen/text_18sp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="56dp"
-            android:text="This is a fragment, too."
-            android:textSize="22sp"/>
+        <com.jcodecraeer.xrecyclerview.XRecyclerView
+            android:layout_marginTop="@dimen/default_toolbar_height"
+            android:id="@+id/xrc_home"
+            android:background="@color/colorPageBg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
-        <TextView
-            android:id="@+id/tv_go"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:text="健康商城"
-            android:background="#ba4545"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center"/>
-
-    </LinearLayout>
+    </FrameLayout>
 </layout>

@@ -1,5 +1,15 @@
 package com.messoft.gzmy.nineninebrothers.http;
 
+import com.messoft.gzmy.nineninebrothers.base.BaseBean;
+import com.messoft.gzmy.nineninebrothers.bean.NewsList;
+import com.messoft.gzmy.nineninebrothers.bean.HomeBanner;
+
+import java.util.List;
+
+import io.reactivex.Observable;
+import retrofit2.http.POST;
+import retrofit2.http.Url;
+
 /**
  * Created by Administrator on 2017/6/20 0020.
  * 网络请求类，一个接口对应一个方法
@@ -8,7 +18,7 @@ package com.messoft.gzmy.nineninebrothers.http;
 public interface HttpClient {
 
     class Builder {
-        public static HttpClient getOHServer() {
+        public static HttpClient getNineServer() {
             return HttpUtils.getInstance().getNineServer(HttpClient.class);
         }
 
@@ -29,5 +39,17 @@ public interface HttpClient {
 //    @FormUrlEncoded
 //    @POST("apigetallgoods")
 //    Observable<BaseBeans<AllGoodsBean>> getAllGoods(@FieldMap Map<String, String> params);
+
+    /**
+     * 首页资讯
+     */
+    @POST
+    Observable<BaseBean<List<NewsList>>> getNewsList(@Url String url);
+
+    /**
+     * 首页轮播图
+     */
+    @POST
+    Observable<BaseBean<List<HomeBanner>>> getHomeBanner(@Url String url);
 
 }

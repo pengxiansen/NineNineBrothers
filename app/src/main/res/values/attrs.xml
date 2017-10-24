@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--带删除 可见图标等输入框-->
+    <declare-styleable name="XEditText">
+        <attr name="x_separator" format="string"/>
+        <attr name="x_disableClear" format="boolean"/>
+        <attr name="x_clearDrawable" format="reference"/>
+        <attr name="x_showPwdDrawable" format="reference"/>
+        <attr name="x_hidePwdDrawable" format="reference"/>
+        <attr name="x_disableEmoji" format="boolean"/>
+    </declare-styleable>
+</resources>

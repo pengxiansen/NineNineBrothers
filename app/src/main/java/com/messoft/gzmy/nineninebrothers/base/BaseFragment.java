@@ -4,7 +4,6 @@ import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,11 +16,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.messoft.gzmy.nineninebrothers.R;
+import com.messoft.gzmy.nineninebrothers.app.MyApplication;
 import com.messoft.gzmy.nineninebrothers.listener.PerfectClickListener;
-import com.messoft.gzmy.nineninebrothers.utils.LoadingDialog;
-
-import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
+import com.messoft.gzmy.nineninebrothers.utils.dialog.LoadingDialog;
+import com.squareup.leakcanary.RefWatcher;
+import com.trello.rxlifecycle2.components.support.RxFragment;
 
 /**
  * @作者 Administrator
@@ -30,7 +29,7 @@ import io.reactivex.disposables.Disposable;
  */
 
 
-public abstract class BaseFragment<SV extends ViewDataBinding> extends Fragment {
+public abstract class BaseFragment<SV extends ViewDataBinding> extends RxFragment {
     //布局view
     protected SV bindingView;
     //fragment是否显示了
@@ -46,7 +45,7 @@ public abstract class BaseFragment<SV extends ViewDataBinding> extends Fragment 
     protected RelativeLayout mContainer;
     private Animation mRotate;
     private LinearInterpolator interpolator;
-    private CompositeDisposable mCompositeDisposable;
+//    private CompositeDisposable mCompositeDisposable;
 
     @Nullable
     @Override
@@ -238,24 +237,31 @@ public abstract class BaseFragment<SV extends ViewDataBinding> extends Fragment 
         LoadingDialog.cancelDialogForLoading();
     }
 
-    public void addDisposable(Disposable s) {
-        if (this.mCompositeDisposable == null) {
-            this.mCompositeDisposable = new CompositeDisposable();
-        }
-        this.mCompositeDisposable.add(s);
-    }
-
-    public void removeDisposable() {
-        if (this.mCompositeDisposable != null) {
-            this.mCompositeDisposable.dispose();
-        }
-    }
+//    public void addDisposable(Disposable s) {
+//        if (this.mCompositeDisposable == null) {
+//            this.mCompositeDisposable = new CompositeDisposable();
+//        }
+//        this.mCompositeDisposable.add(s);
+//    }
+//
+//    public void removeDisposable() {
+//        if (this.mCompositeDisposable != null) {
+//            this.mCompositeDisposable.dispose();
+//        }
+//    }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (this.mCompositeDisposable != null) {
-            this.mCompositeDisposable.dispose();
+//        if (this.mCompositeDisposable != null) {
+//            this.mCompositeDisposable.dispose();
+//        }
+
+        if (getActivity() != null) {
+            RefWatcher refWatcher = MyApplication.getRefWatcher(getActivity());
+            if (refWatcher != null) {
+                refWatcher.watch(this);
+            }
         }
     }
 }

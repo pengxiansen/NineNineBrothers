@@ -2,7 +2,10 @@ package com.messoft.gzmy.nineninebrothers.utils;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
+
+import com.messoft.gzmy.nineninebrothers.app.MyApplication;
 
 import cn.bingoogolapple.swipebacklayout.BGAKeyboardUtil;
 
@@ -46,4 +49,11 @@ public class SysUtils {
 //        activity.overridePendingTransition(R.anim.activity_in_right, R.anim.activity_out);
     }
 
+    public static float getDimens(int resId) {
+        return getResoure().getDimension(resId);
+    }
+
+    public static Resources getResoure() {
+        return MyApplication.getInstance().getResources();
+    }
 }

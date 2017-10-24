@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+            <!--手机号-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/default_button_height"
+                android:layout_marginTop="20dp">
+
+                <ImageView
+                    android:id="@+id/iv_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/phone" />
+
+                <com.messoft.gzmy.nineninebrothers.view.XEditText
+                    android:id="@+id/et_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_toRightOf="@+id/iv_phone"
+                    android:background="@null"
+                    android:hint="手机号"
+                    android:textSize="@dimen/text_15sp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.3dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="#E0E0E0" />
+
+            <!--验证码-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/default_button_height">
+
+                <ImageView
+                    android:id="@+id/iv_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/code" />
+
+                <TextView
+                    android:id="@+id/tv_get_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/shape_get_code"
+                    android:padding="10dp"
+                    android:text="获取验证码"
+                    android:textColor="@color/colorPrimary" />
+
+                <com.messoft.gzmy.nineninebrothers.view.XEditText
+                    android:id="@+id/et_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toLeftOf="@+id/tv_get_code"
+                    android:layout_marginRight="10dp"
+                    android:layout_toRightOf="@+id/iv_code"
+                    android:background="@null"
+                    android:hint="验证码"
+                    android:textSize="@dimen/text_15sp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.3dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="#E0E0E0" />
+
+            <!--注册-->
+            <TextView
+                android:id="@+id/tv_login"
+                android:layout_marginLeft="@dimen/dp10"
+                android:layout_marginRight="@dimen/dp10"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp34"
+                android:layout_marginTop="@dimen/dp20"
+                android:background="@drawable/shape_login"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:text="@string/next_step"
+                android:textSize="@dimen/text_16sp"/>
+
+        </LinearLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
+</layout>

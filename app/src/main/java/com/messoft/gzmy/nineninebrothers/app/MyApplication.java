@@ -2,6 +2,7 @@ package com.messoft.gzmy.nineninebrothers.app;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
@@ -10,6 +11,8 @@ import android.os.Bundle;
 import com.messoft.gzmy.nineninebrothers.http.HttpUtils;
 import com.messoft.gzmy.nineninebrothers.utils.DebugUtil;
 import com.squareup.leakcanary.LeakCanary;
+import com.squareup.leakcanary.RefWatcher;
+import com.tencent.bugly.crashreport.CrashReport;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -33,6 +36,8 @@ public class MyApplication extends Application {
         return myApplication;
     }
 
+    public RefWatcher refWatcher;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -55,6 +60,23 @@ public class MyApplication extends Application {
 
         //注册管理activity
         registerActivityListener();
+
+        //初始化Bugly 等开发完再开启
+        CrashReport.initCrashReport(getApplicationContext(), "d1cc8cc580", false);
+
+        //测试Bugly
+//        CrashReport.testJavaCrash();
+    }
+
+    /**
+     * 获取RefWatcher
+     *
+     * @param context
+     * @return
+     */
+    public static RefWatcher getRefWatcher(Context context) {
+        MyApplication application = (MyApplication) context.getApplicationContext();
+        return application.refWatcher;
     }
 
     /**

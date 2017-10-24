@@ -16,6 +16,7 @@ import com.messoft.gzmy.nineninebrothers.databinding.ActivityMainBinding;
 import com.messoft.gzmy.nineninebrothers.ui.home.HomeFragment;
 import com.messoft.gzmy.nineninebrothers.ui.my.MyFragment;
 import com.messoft.gzmy.nineninebrothers.ui.news.NewsFragment;
+import com.messoft.gzmy.nineninebrothers.utils.StatusBarUtil;
 import com.messoft.gzmy.nineninebrothers.view.BottomNavigationViewHelper;
 
 import java.util.ArrayList;
@@ -36,11 +37,13 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         showContentView();
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         //默认 >3 的选中效果会影响ViewPager的滑动切换时的效果，故利用反射去掉
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
+
         bottomNavigationView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
@@ -75,6 +78,18 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
                 }
                 menuItem = bottomNavigationView.getMenu().getItem(position);
                 menuItem.setChecked(true);
+
+                switch (position) {
+                    case 0:
+                    case 1:
+                        break;
+                    case 2:
+
+                        break;
+                    default:
+
+                        break;
+                }
             }
 
             @Override
@@ -91,6 +106,14 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
 //        });
 
         setupViewPager(viewPager);
+
+    }
+
+
+    @Override
+    protected void setStatusBar() {
+//        StatusBarUtil.setTranslucent(UseInFragmentActivity.this, 0);
+        StatusBarUtil.setTranslucentForImageViewInFragment(MainActivity.this,10, null);
     }
 
     @Override

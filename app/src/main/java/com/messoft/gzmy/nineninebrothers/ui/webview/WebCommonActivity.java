@@ -71,8 +71,9 @@ public class WebCommonActivity extends AppCompatActivity {
                 break;
             /*Js*/
             case 4:
-//                ft.add(R.id.container_framelayout, mAgentWebFragment = JsAgentWebFragment.getInstance(mBundle = new Bundle()), JsAgentWebFragment.class.getName());
+                ft.add(R.id.container_framelayout, mAgentWebFragment = JsAgentWebFragment.getInstance(mBundle = new Bundle()), JsAgentWebFragment.class.getName());
 //                mBundle.putString(AgentWebFragment.URL_KEY, "file:///android_asset/js_interaction/hello.html");
+                mBundle.putString(AgentWebFragment.URL_KEY, "http://192.168.0.27:8080/RemoveDebt/user/userdata");
                 break;
 
             /*优酷*/
@@ -110,14 +111,21 @@ public class WebCommonActivity extends AppCompatActivity {
 
             /*JsBridge 演示*/
             case 11:
-//                ft.add(R.id.container_framelayout, mAgentWebFragment = JsbridgeWebFragment.getInstance(mBundle = new Bundle()), JsbridgeWebFragment.class.getName());
-//                mBundle.putString(AgentWebFragment.URL_KEY, "file:///android_asset/jsbridge/demo.html");
+                ft.add(R.id.container_framelayout, mAgentWebFragment = JsbridgeWebFragment.getInstance(mBundle = new Bundle()), JsbridgeWebFragment.class.getName());
+                mBundle.putString(AgentWebFragment.URL_KEY, "file:///android_asset/jsbridge/demo.html");
                 break;
 
-            /*SmartRefresh 下拉刷新*/
+            /*SmartRefresh 下拉刷新  --健康商城*/
             case 12:
                 ft.add(R.id.container_framelayout, mAgentWebFragment = SmartRefreshWebFragment.getInstance(mBundle = new Bundle()), SmartRefreshWebFragment.class.getName());
                 mBundle.putString(AgentWebFragment.URL_KEY, "https://wxapi.jk698.com/tmall/mall/index.html");
+//                mBundle.putString(AgentWebFragment.URL_KEY, "http://192.168.0.27:8080/RemoveDebt/user");
+                break;
+
+            //测试
+            case 13:
+                ft.add(R.id.container_framelayout, mAgentWebFragment = SmartRefreshWebFragment.getInstance(mBundle = new Bundle()), SmartRefreshWebFragment.class.getName());
+                mBundle.putString(AgentWebFragment.URL_KEY, "<h2>\\n\\t<img src=\\\"http://www.jq.com/js/kindeditor-4.1.10/plugins/emoticons/images/36.gif\\\" border=\\\"0\\\" alt=\\\"\\\" />信息新信息看了解深度六块腹肌莱克斯顿解放路家里的事45455454\\n</h2>");
                 break;
 
         }

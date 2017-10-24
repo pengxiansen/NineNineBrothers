@@ -27,7 +27,8 @@ public class XRecyclerView extends RecyclerView {
     private ArrayList<View> mHeaderViews = new ArrayList<>();
     private WrapAdapter mWrapAdapter;
     private float mLastY = -1;
-    private static final float DRAG_RATE = 3;
+    //手指滑动距离的1/3，作为RefreshHeader显示的高度，这里改为1.75拉的更舒服
+    private static final float DRAG_RATE = 1.75f;
     private LoadingListener mLoadingListener;
     private ArrowRefreshHeader mRefreshHeader;
     private boolean pullRefreshEnabled = true;

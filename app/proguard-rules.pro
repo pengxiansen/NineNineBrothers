@@ -81,6 +81,26 @@
 -dontwarn com.just.library.**
 -keepclassmembers class com.just.library.agentweb.AndroidInterface{ *; }
 
+#Bugly
+-dontwarn com.tencent.bugly.**
+-keep public class com.tencent.bugly.**{*;}
+
+#nineoldandroids
+-dontwarn com.nineoldandroids.**
+-keep class com.nineoldandroids.** { *; }
+
+# banner 的混淆代码
+-keep class com.youth.banner.** {
+    *;
+ }
+
+ # glide 的混淆代码
+ -keep public class * implements com.bumptech.glide.module.GlideModule
+ -keep public enum com.bumptech.glide.load.resource.bitmap.ImageHeaderParser$** {
+   **[] $VALUES;
+   public *;
+ }
+
 #-------------------------------------------------------------------------
 
 #---------------------------------3.与js互相调用的类------------------------

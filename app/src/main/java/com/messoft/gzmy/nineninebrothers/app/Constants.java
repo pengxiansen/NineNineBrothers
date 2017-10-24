@@ -6,6 +6,6 @@ package com.messoft.gzmy.nineninebrothers.app;
 
 public class Constants {
 
-    //玖玖兄弟主域
-    public static final String NINE_NINE_BROTHERS = "http://qz.jq.com/asset/asset.do";
+    //会员id
+    public static String ACCOUNT_ID = "";
 }

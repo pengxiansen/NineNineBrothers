@@ -1,4 +1,4 @@
-package com.messoft.gzmy.nineninebrothers.utils;
+package com.messoft.gzmy.nineninebrothers.utils.dialog;
 
 import android.app.Activity;
 import android.app.Dialog;
