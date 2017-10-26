@@ -21,8 +21,8 @@ public class StringUtils {
      * @return
      */
     public static boolean isNoEmpty(String s) {
-        if ("".equals(s) || "null".equals(s) || "NULL".equals(s)
-                || "[]".equals(s) || "<null>".equals(s) || "<NULL>".equals(s) || null == s) {
+        if (null == s || "".equals(s) || "null".equals(s) || "NULL".equals(s)
+                || "[]".equals(s) || "<null>".equals(s) || "<NULL>".equals(s)) {
             return false;
         }
         return true;
@@ -67,7 +67,7 @@ public class StringUtils {
     /**
      * 取某个范围的随机数
      */
-    public static int getRandom(int min, int max){
+    public static int getRandom(int min, int max) {
         Random random = new Random();
         int s = random.nextInt(max) % (max - min + 1) + min;
         return s;
@@ -76,18 +76,19 @@ public class StringUtils {
 
     /**
      * 提供精确的小数位四舍五入处理。
-     * @param v 需要四舍五入的数字
+     *
+     * @param v     需要四舍五入的数字
      * @param scale 小数点后保留几位
      * @return 四舍五入后的结果
      */
-    public static double round(double v,int scale){
-        if(scale<0){
+    public static double round(double v, int scale) {
+        if (scale < 0) {
             throw new IllegalArgumentException(
                     "The scale must be a positive integer or zero");
         }
         BigDecimal b = new BigDecimal(Double.toString(v));
         BigDecimal one = new BigDecimal("1");
-        return b.divide(one,scale,BigDecimal.ROUND_HALF_UP).doubleValue();
+        return b.divide(one, scale, BigDecimal.ROUND_HALF_UP).doubleValue();
     }
 
     /**
@@ -101,12 +102,10 @@ public class StringUtils {
 
             // 取出每一个字符
             char c = string.charAt(i);
-            if(c < 256)//ASC11表中的字符码值不够4位,补00
+            if (c < 256)//ASC11表中的字符码值不够4位,补00
             {
                 unicode.append("\\u00");
-            }
-            else
-            {
+            } else {
                 unicode.append("\\u");
             }
             // 转换为unicode

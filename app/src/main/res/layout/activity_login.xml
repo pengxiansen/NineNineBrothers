@@ -12,55 +12,61 @@
            android:layout_height="match_parent">
            <ImageView
                android:layout_width="match_parent"
-               android:layout_height="@dimen/dp120"
+               android:layout_height="@dimen/x450"
                android:scaleType="centerCrop"
                android:src="@drawable/bg_monkey_king"/>
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Welcome to login"
+               android:textColor="@color/white"
+               android:textSize="@dimen/text_30sp"
+               android:layout_centerHorizontal="true"
+               android:layout_marginTop="@dimen/x160"/>
 
            <android.support.v7.widget.CardView
                android:layout_width="match_parent"
                android:layout_height="match_parent"
-               android:layout_marginBottom="@dimen/dp13"
-               android:layout_marginLeft="@dimen/dp10"
-               android:layout_marginRight="@dimen/dp10"
-               android:layout_marginTop="@dimen/dp90"
-               app:cardElevation="@dimen/dp4">
+               android:layout_marginBottom="@dimen/x34"
+               android:layout_marginLeft="@dimen/x30"
+               android:layout_marginRight="@dimen/x30"
+               android:layout_marginTop="@dimen/x400"
+               app:cardElevation="@dimen/x12">
 
                <LinearLayout
                    android:layout_width="match_parent"
                    android:layout_height="match_parent"
                    android:orientation="vertical"
-                   android:paddingLeft="@dimen/dp5"
-                   android:paddingRight="@dimen/dp5">
+                   android:paddingLeft="@dimen/x40"
+                   android:paddingRight="@dimen/x40">
 
                    <!--手机号-->
                    <RelativeLayout
                        android:layout_width="match_parent"
-                       android:layout_height="@dimen/dp40"
-                       android:layout_marginTop="@dimen/dp20">
+                       android:layout_height="@dimen/x116"
+                       android:layout_marginTop="@dimen/x90">
 
                        <ImageView
                            android:id="@+id/iv_phone"
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
                            android:layout_centerVertical="true"
-                           android:layout_marginLeft="@dimen/dp10"
+                           android:layout_marginLeft="@dimen/x20"
                            android:src="@drawable/phone"/>
 
                        <com.messoft.gzmy.nineninebrothers.view.XEditText
                            android:id="@+id/et_account"
                            android:layout_width="match_parent"
                            android:layout_height="match_parent"
-                           android:layout_marginLeft="@dimen/dp5"
-                           android:layout_marginRight="@dimen/dp5"
+                           android:layout_marginLeft="@dimen/x15"
+                           android:layout_marginRight="@dimen/x15"
                            android:layout_toRightOf="@+id/iv_phone"
                            android:background="@null"
                            android:hint="@string/phone_number"
-                           android:textSize="@dimen/text_16sp"
-                           app:x_clearDrawable="@drawable/x_et_svg_ic_clear_white_24dp"/>
+                           android:textSize="@dimen/text_16sp"/>
 
                        <View
-                           android:layout_marginLeft="@dimen/dp10"
-                           android:layout_marginRight="@dimen/dp10"
                            android:layout_width="match_parent"
                            android:layout_height="0.3dp"
                            android:layout_alignParentBottom="true"
@@ -70,31 +76,29 @@
                    <!--密码-->
                    <RelativeLayout
                        android:layout_width="match_parent"
-                       android:layout_height="@dimen/dp40">
+                       android:layout_height="@dimen/x116">
 
                        <ImageView
                            android:id="@+id/iv_psw"
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
                            android:layout_centerVertical="true"
-                           android:layout_marginLeft="@dimen/dp10"
-                           android:src="@drawable/phone"/>
+                           android:layout_marginLeft="@dimen/x20"
+                           android:src="@drawable/password"/>
 
                        <com.messoft.gzmy.nineninebrothers.view.XEditText
                            android:id="@+id/et_psw"
                            android:layout_width="match_parent"
                            android:layout_height="match_parent"
-                           android:layout_marginLeft="@dimen/dp10"
-                           android:layout_marginRight="@dimen/dp10"
+                           android:layout_marginLeft="@dimen/x15"
+                           android:layout_marginRight="@dimen/x15"
                            android:layout_toRightOf="@+id/iv_psw"
                            android:background="@null"
                            android:hint="@string/psw"
-                           android:textSize="@dimen/text_16sp"
-                           app:x_clearDrawable="@drawable/x_et_svg_ic_clear_white_24dp"/>
+                           android:inputType="textPassword"
+                           android:textSize="@dimen/text_16sp"/>
 
                        <View
-                           android:layout_marginLeft="@dimen/dp10"
-                           android:layout_marginRight="@dimen/dp10"
                            android:layout_width="match_parent"
                            android:layout_height="0.3dp"
                            android:layout_alignParentBottom="true"
@@ -104,27 +108,29 @@
                    <!--登录-->
                    <TextView
                        android:id="@+id/tv_login"
-                       android:layout_marginLeft="@dimen/dp10"
-                       android:layout_marginRight="@dimen/dp10"
                        android:layout_width="match_parent"
-                       android:layout_height="@dimen/dp34"
-                       android:layout_marginTop="@dimen/dp20"
+                       android:layout_height="@dimen/x90"
+                       android:layout_marginTop="@dimen/x40"
                        android:background="@drawable/shape_login"
                        android:gravity="center"
+                       android:textColor="@color/white"
                        android:text="@string/login"
                        android:textSize="@dimen/text_16sp"/>
 
                    <!--忘记密码跟注册-->
                    <RelativeLayout
+                       android:layout_marginTop="@dimen/x10"
+                       android:paddingLeft="@dimen/x20"
+                       android:paddingRight="@dimen/x20"
                        android:layout_width="match_parent"
-                       android:layout_height="@dimen/dp30">
+                       android:layout_height="@dimen/x60">
 
                        <TextView
                            android:background="@drawable/ripple_one_item_bg"
                            android:id="@+id/tv_forget_psw"
-                           android:layout_width="@dimen/dp80"
+                           android:layout_width="@dimen/x240"
                            android:layout_height="match_parent"
-                           android:gravity="center"
+                           android:gravity="left|center"
                            android:layout_centerVertical="true"
                            android:text="@string/forget_psw"
                            android:textColor="@color/colorPrimary"/>
@@ -132,9 +138,9 @@
                        <TextView
                            android:background="@drawable/ripple_one_item_bg"
                            android:id="@+id/tv_register"
-                           android:layout_width="@dimen/dp80"
+                           android:layout_width="@dimen/x240"
                            android:layout_height="match_parent"
-                           android:gravity="center"
+                           android:gravity="right|center"
                            android:layout_alignParentRight="true"
                            android:text="@string/register"
                            android:textColor="@color/colorPrimary"/>
@@ -145,9 +151,9 @@
                        android:id="@+id/rl_line"
                        android:layout_width="match_parent"
                        android:layout_height="wrap_content"
-                       android:layout_marginTop="@dimen/dp10"
-                       android:paddingLeft="@dimen/dp30"
-                       android:paddingRight="@dimen/dp30">
+                       android:layout_marginTop="@dimen/x30"
+                       android:paddingLeft="@dimen/x30"
+                       android:paddingRight="@dimen/x30">
 
                        <TextView
                            android:id="@+id/tv_three_login"
@@ -161,7 +167,7 @@
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
                            android:layout_centerVertical="true"
-                           android:layout_marginRight="@dimen/dp6"
+                           android:layout_marginRight="@dimen/x18"
                            android:layout_toLeftOf="@+id/tv_three_login"
                            android:src="@drawable/spilt_left"/>
 
@@ -170,7 +176,7 @@
                            android:layout_height="wrap_content"
                            android:layout_alignParentRight="true"
                            android:layout_centerVertical="true"
-                           android:layout_marginLeft="@dimen/dp6"
+                           android:layout_marginLeft="@dimen/x18"
                            android:layout_toRightOf="@+id/tv_three_login"
                            android:src="@drawable/spilt_right"/>
 
@@ -182,7 +188,7 @@
                        android:layout_height="wrap_content"
                        android:src="@drawable/weixin"
                        android:layout_gravity="center_horizontal"
-                       android:layout_marginTop="@dimen/dp10"/>
+                       android:layout_marginTop="@dimen/x20"/>
 
                </LinearLayout>
            </android.support.v7.widget.CardView>
@@ -190,10 +196,10 @@
        </RelativeLayout>
 
         <ImageView
-            android:layout_width="@dimen/dp66"
-            android:layout_height="@dimen/dp66"
+            android:layout_width="@dimen/x180"
+            android:layout_height="@dimen/x180"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/dp50"
+            android:layout_marginTop="@dimen/x310"
             android:src="@drawable/default_header"/>
 
     </FrameLayout>

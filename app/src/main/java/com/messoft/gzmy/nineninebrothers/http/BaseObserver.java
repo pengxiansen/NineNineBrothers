@@ -7,7 +7,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
-import com.messoft.gzmy.nineninebrothers.base.BaseBean;
+import com.messoft.gzmy.nineninebrothers.bean.BaseBean;
 import com.messoft.gzmy.nineninebrothers.utils.BusinessUtils;
 import com.messoft.gzmy.nineninebrothers.utils.DebugUtil;
 

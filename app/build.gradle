@@ -37,6 +37,11 @@ android {
 
         debug {
             signingConfig signingConfigs.debug
+//            //启用代码混淆
+//            minifyEnabled true
+//            //混淆规则配置文件
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            //
         }
 
         buildTypes {
@@ -71,6 +76,7 @@ dependencies {
     compile project(':library:xrecyclerview')
     compile project(':library:swipeBackLayout')
     compile project(':library:http')
+    compile project(':library:nicedialog')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })

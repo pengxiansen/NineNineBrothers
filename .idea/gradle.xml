@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/library" />
             <option value="$PROJECT_DIR$/library/http" />
+            <option value="$PROJECT_DIR$/library/nicedialog" />
             <option value="$PROJECT_DIR$/library/swipeBackLayout" />
             <option value="$PROJECT_DIR$/library/xrecyclerview" />
           </set>

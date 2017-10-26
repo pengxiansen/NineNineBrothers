@@ -1,8 +1,10 @@
 package com.messoft.gzmy.nineninebrothers.http;
 
-import com.messoft.gzmy.nineninebrothers.base.BaseBean;
+import com.messoft.gzmy.nineninebrothers.bean.BaseBean;
+import com.messoft.gzmy.nineninebrothers.bean.Login;
 import com.messoft.gzmy.nineninebrothers.bean.NewsList;
 import com.messoft.gzmy.nineninebrothers.bean.HomeBanner;
+import com.messoft.gzmy.nineninebrothers.bean.Street;
 
 import java.util.List;
 
@@ -52,4 +54,27 @@ public interface HttpClient {
     @POST
     Observable<BaseBean<List<HomeBanner>>> getHomeBanner(@Url String url);
 
+    /**
+     * 登录
+     */
+    @POST
+    Observable<BaseBean<Login>> login(@Url String url);
+
+    /**
+     * 注册 (结果同登录一样)
+     */
+    @POST
+    Observable<BaseBean<Login>> register(@Url String url);
+
+    /**
+     * 获取验证码
+     */
+    @POST
+    Observable<BaseBean<Object>> getCode(@Url String url);
+
+    /**
+     * 根据区请求街道
+     */
+    @POST
+    Observable<BaseBean<List<Street>>> searchStreetById(@Url String url);
 }

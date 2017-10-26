@@ -1,4 +1,4 @@
-package com.messoft.gzmy.nineninebrothers.base;
+package com.messoft.gzmy.nineninebrothers.bean;
 
 /**
  * Created by Administrator on 2017/9/22 0022.

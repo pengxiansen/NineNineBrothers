@@ -11,4 +11,16 @@
     <string name="forget_psw">忘记密码</string>
     <string name="register">用户注册</string>
     <string name="next_step">下一步</string>
+    <string name="sure_change">确认修改</string>
+    <string name="input_new_psw">请输入新密码</string>
+    <string name="sure_new_psw">确认新密码</string>
+    <string name="get_msg_code">获取验证码</string>
+    <string name="msg_code">验证码</string>
+    <string name="input_phone_email">请输入手机号或邮箱</string>
+    <string name="register_now">立即注册</string>
+    <string name="commend_code">推荐码</string>
+    <string name="register_agree">注册代表同意</string>
+    <string name="agreement">《玖玖兄弟用户协议》</string>
+    <string name="belong_address">所属地区</string>
+    <string name="street">街道</string>
 </resources>

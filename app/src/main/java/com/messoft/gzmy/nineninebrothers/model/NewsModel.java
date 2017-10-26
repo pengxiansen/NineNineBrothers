@@ -3,7 +3,7 @@ package com.messoft.gzmy.nineninebrothers.model;
 import android.content.Context;
 
 import com.messoft.gzmy.nineninebrothers.app.ConstantsUrl;
-import com.messoft.gzmy.nineninebrothers.base.BaseBean;
+import com.messoft.gzmy.nineninebrothers.bean.BaseBean;
 import com.messoft.gzmy.nineninebrothers.bean.HomeBanner;
 import com.messoft.gzmy.nineninebrothers.bean.NewsList;
 import com.messoft.gzmy.nineninebrothers.http.BaseObserver;
