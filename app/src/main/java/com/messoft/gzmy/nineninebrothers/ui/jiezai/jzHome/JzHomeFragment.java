@@ -1,5 +1,6 @@
-package com.messoft.gzmy.nineninebrothers.ui.jiezai;
+package com.messoft.gzmy.nineninebrothers.ui.jiezai.jzHome;
 
+import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import com.messoft.gzmy.nineninebrothers.Main2Activity;
 import com.messoft.gzmy.nineninebrothers.R;
 import com.messoft.gzmy.nineninebrothers.adapter.HomeHeadTypeAdapter;
 import com.messoft.gzmy.nineninebrothers.adapter.HomeNewsAdapter;
+import com.messoft.gzmy.nineninebrothers.base.BaseActivity;
 import com.messoft.gzmy.nineninebrothers.base.BaseFragment;
 import com.messoft.gzmy.nineninebrothers.base.baseadapter.OnItemClickListener;
 import com.messoft.gzmy.nineninebrothers.bean.HomeBanner;
@@ -41,9 +43,10 @@ import static com.messoft.gzmy.nineninebrothers.ui.webview.WebCommonActivity.TYP
  * Created by Administrator on 2017/10/13 0013.
  */
 
-public class JieZhaiHomeFragment extends BaseFragment<FragmentJiezhaiHomeBinding> {
+public class JzHomeFragment extends BaseFragment<FragmentJiezhaiHomeBinding> {
 
     private static final String TAG = "HomeFragment";
+    private BaseActivity activity;
 
     // 初始化完成后加载数据
     private boolean mIsPrepared = false;
@@ -78,7 +81,7 @@ public class JieZhaiHomeFragment extends BaseFragment<FragmentJiezhaiHomeBinding
 //        showContentView();
         mNewsModel = new NewsModel();
         mHomeNewsAdapter = new HomeNewsAdapter(getActivity());
-        mHomeHeadTypeAdapter = new HomeHeadTypeAdapter(getActivity(),0);
+        mHomeHeadTypeAdapter = new HomeHeadTypeAdapter(activity,1);
 
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -204,6 +207,12 @@ public class JieZhaiHomeFragment extends BaseFragment<FragmentJiezhaiHomeBinding
         if (mHeadBinding != null && mHeadBinding.banner != null) {
             mHeadBinding.banner.stopAutoPlay();
         }
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        activity = (BaseActivity) context;
     }
 
     /**

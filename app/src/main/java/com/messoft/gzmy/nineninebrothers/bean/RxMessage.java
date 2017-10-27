@@ -1,4 +1,4 @@
-package com.messoft.gzmy.nineninebrothers.http.rx;
+package com.messoft.gzmy.nineninebrothers.bean;
 
 /**
  * Created by Administrator on 2017/10/16 0016.

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <android.support.constraint.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.messoft.gzmy.nineninebrothers.ui.jiezai.jzHome.JzServeActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/x20">
+
+            <!--债事人备案-->
+            <RelativeLayout
+                android:visibility="gone"
+                android:id="@+id/rl_zhaishi_beian"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x300"
+                android:background="@color/green"
+                android:padding="@dimen/x20">
+
+                <LinearLayout
+                    android:background="@drawable/jie_zhai_item_white_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_24sp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/zhai_shi_ren_bei_an"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_22sp"
+                        android:text="@string/debtor_for_the_record"/>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <!--解债备案-->
+            <RelativeLayout
+                android:visibility="gone"
+                android:id="@+id/rl_jiezhai_beian"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x300"
+                android:layout_marginTop="@dimen/x20"
+                android:background="@color/blue"
+                android:padding="@dimen/x20">
+
+                <LinearLayout
+                    android:background="@drawable/jie_zhai_item_white_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_24sp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/jie_zhai_bei_an"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_22sp"
+                        android:text="@string/debt_for_the_record"/>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <!--解债库-->
+            <RelativeLayout
+                android:visibility="gone"
+                android:id="@+id/rl_jiezhai_ku"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x300"
+                android:layout_marginTop="@dimen/x20"
+                android:background="@color/blue"
+                android:padding="@dimen/x20">
+
+                <LinearLayout
+                    android:background="@drawable/jie_zhai_item_white_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_24sp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/jie_zhai_ku"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_22sp"
+                        android:text="@string/debt_relief_library"/>
+                </LinearLayout>
+            </RelativeLayout>
+
+        </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
+</layout>

@@ -2,6 +2,9 @@ package com.messoft.gzmy.nineninebrothers.utils;
 
 import android.text.TextUtils;
 
+import com.messoft.gzmy.nineninebrothers.bean.Login;
+import com.messoft.gzmy.nineninebrothers.bean.LoginPersonInfo;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -15,6 +18,28 @@ import java.util.Map;
  */
 
 public class BusinessUtils {
+
+    public static String getToken() {
+        Object object = SPUtils.getObject("loginObject");
+        if (object != null) {
+            Login login = (Login) object;
+            if (login != null) {
+                return login.getAccessToken();
+            }
+        }
+        return "";
+    }
+
+    public static LoginPersonInfo getLoginPersonInfo() {
+        Object object = SPUtils.getObject("loginPersonInfo");
+        if (object != null && object instanceof LoginPersonInfo) {
+            LoginPersonInfo login = (LoginPersonInfo) object;
+            if (login != null) {
+                return login;
+            }
+        }
+        return null;
+    }
 
     /**
      * 带分页

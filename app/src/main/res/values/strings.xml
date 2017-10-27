@@ -23,4 +23,12 @@
     <string name="agreement">《玖玖兄弟用户协议》</string>
     <string name="belong_address">所属地区</string>
     <string name="street">街道</string>
+    <string name="jump">跳过</string>
+    <string name="exit_login">退出登录</string>
+    <string name="zhai_shi_ren_bei_an">债事人备案</string>
+    <string name="debtor_for_the_record">Debtor for the record</string>
+    <string name="jie_zhai_bei_an">解债备案</string>
+    <string name="debt_for_the_record">Debt for the record</string>
+    <string name="jie_zhai_ku">解债库</string>
+    <string name="debt_relief_library">Debt relief library</string>
 </resources>

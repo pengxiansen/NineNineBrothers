@@ -91,7 +91,7 @@ public class CitySelectPopWindow extends PopupWindow implements OnWheelChangedLi
         setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
         setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
         //点击空白消失
-        setFocusable(true);
+        setFocusable(false);
         //设置进出动画
         setAnimationStyle(R.style.DefaultAnimation);
 

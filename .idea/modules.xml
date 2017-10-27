@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/NineNineBrothers.iml" filepath="$PROJECT_DIR$/NineNineBrothers.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library/byeBurger/byeBurger.iml" filepath="$PROJECT_DIR$/library/byeBurger/byeBurger.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/http/http.iml" filepath="$PROJECT_DIR$/library/http/http.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/nicedialog/nicedialog.iml" filepath="$PROJECT_DIR$/library/nicedialog/nicedialog.iml" />

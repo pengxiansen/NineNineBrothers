@@ -75,5 +75,13 @@
         <item name="android:backgroundDimEnabled">false</item>
     </style>
 
+    <!--查看大图页面，全屏显示-->
+    <style name="ViewBigPicTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorTheme</item>
+        <item name="colorPrimaryDark">@color/colorTheme</item>
+        <item name="colorAccent">@color/colorTheme</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
 
 </resources>

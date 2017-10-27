@@ -27,8 +27,17 @@ public class ConstantsUrl {
     //注册
     public static final String REGISTER = "/account/account.do?action=reg&data=";
 
+    //查询登录人信息
+    public static final String CHECK_LOGIN_PERSON_INFO = "/member/member.do?action=getLoginMemberInfo&token=";
+
     //获取验证码
     public static final String GET_CODE = "/verificationCode/verificationCode.do?action=getVerificationCode&data=";
+
+    //获取验证码
+    public static final String CHECK_CODE = "/verificationCode/verificationCode.do?action=validateVerificationCode&data=";
+
+    //修改密码
+    public static final String CHANGE_PSW = "/account/account.do?action=modifyPassword&data=";
 
     //根据区请求街道
     public static final String SEARCH_STREET_BY_ID = "/area/area.do?action=getAreaList&data=";

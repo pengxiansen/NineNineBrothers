@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/ll_pop_contain"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@drawable/white_round_corner_bg"
+              android:gravity="center_horizontal"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/share"
+        android:background="@drawable/ripple_one_item_bg"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="普通会员"
+            android:textColor="@color/title1"
+            android:gravity="center"
+            android:drawablePadding="60dp"
+            android:layout_centerInParent="true"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"
+            android:background="#E0E0E0"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/delete"
+        android:background="@drawable/ripple_one_item_bg"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="高级合伙人"
+            android:gravity="center"
+            android:drawablePadding="60dp"
+            android:textColor="@color/title1"
+            android:layout_centerInParent="true"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"
+            android:background="#E0E0E0"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/cancel"
+        android:background="@drawable/ripple_one_item_bg"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="取消"
+            android:gravity="center"
+            android:drawablePadding="60dp"
+            android:textColor="@color/title1"
+            android:layout_centerInParent="true"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"
+            android:background="#E0E0E0"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+
+</LinearLayout>

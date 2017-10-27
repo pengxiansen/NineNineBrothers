@@ -11,9 +11,18 @@ import android.view.MenuItem;
 import com.messoft.gzmy.nineninebrothers.R;
 import com.messoft.gzmy.nineninebrothers.adapter.MyFragmentPagerAdapter;
 import com.messoft.gzmy.nineninebrothers.base.BaseActivity;
+import com.messoft.gzmy.nineninebrothers.bean.LoginPersonInfo;
 import com.messoft.gzmy.nineninebrothers.databinding.ActivityJieZhaiBinding;
-import com.messoft.gzmy.nineninebrothers.ui.my.MyFragment;
-import com.messoft.gzmy.nineninebrothers.ui.news.NewsFragment;
+import com.messoft.gzmy.nineninebrothers.http.RequestImpl;
+import com.messoft.gzmy.nineninebrothers.model.LoginModel;
+import com.messoft.gzmy.nineninebrothers.ui.jiezai.JzPropertyManage.JzPropertyFragment;
+import com.messoft.gzmy.nineninebrothers.ui.jiezai.jzHome.JzHomeFragment;
+import com.messoft.gzmy.nineninebrothers.ui.jiezai.jzManage.JzManageFragment;
+import com.messoft.gzmy.nineninebrothers.ui.jiezai.jzMy.JzMyFragment;
+import com.messoft.gzmy.nineninebrothers.utils.BusinessUtils;
+import com.messoft.gzmy.nineninebrothers.utils.SPUtils;
+import com.messoft.gzmy.nineninebrothers.utils.StringUtils;
+import com.messoft.gzmy.nineninebrothers.utils.ToastUtil;
 import com.messoft.gzmy.nineninebrothers.view.BottomNavigationViewHelper;
 
 import java.util.ArrayList;
@@ -24,11 +33,13 @@ import java.util.ArrayList;
  * @创建日期 2017/10/23 0023 17:40
  */
 
-public class JieZhaiActivity extends BaseActivity<ActivityJieZhaiBinding> {
+public class JzActivity extends BaseActivity<ActivityJieZhaiBinding> {
 
     private ViewPager viewPager;
     private MenuItem menuItem;
     private BottomNavigationView bottomNavigationView;
+    private String mToken;
+    private LoginModel mLoginModel;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,6 +47,7 @@ public class JieZhaiActivity extends BaseActivity<ActivityJieZhaiBinding> {
         setContentView(R.layout.activity_jie_zhai);
         setTitle("资产解债");
         showContentView();
+        mLoginModel = new LoginModel();
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         //默认 >3 的选中效果会影响ViewPager的滑动切换时的效果，故利用反射去掉
@@ -94,14 +106,54 @@ public class JieZhaiActivity extends BaseActivity<ActivityJieZhaiBinding> {
 //        });
 
         setupViewPager(viewPager);
+
+        //查询登录人信息
+        checkLoginPersonInfo();
     }
+
+    /**
+     * 查询登录人信息
+     */
+    private void checkLoginPersonInfo() {
+        mToken = BusinessUtils.getToken();
+        if (!StringUtils.isNoEmpty(mToken)) {
+            ToastUtil.showToast("查看登录人信息失败，请重试");
+            finish();
+            return;
+        }
+        mLoginModel.checkLoginPersonInfo(JzActivity.this, mToken, new RequestImpl() {
+            @Override
+            public void loadSuccess(Object object) {
+                LoginPersonInfo data = (LoginPersonInfo) object;
+                if (data != null) {
+                    SPUtils.putObject("loginPersonInfo", data);
+                }
+            }
+
+            @Override
+            public void loadFailed(int errorCode, String errorMessage) {
+                //保存返回码，2--代码需要完善用户信息，解债服务就不能点了，资产处置可以
+                SPUtils.putString("loginPersonInfoCode", errorMessage);
+//                switch (errorCode) {
+//                    case 2:
+//                        //弹出选择框
+//                        showPopSelectPersonType();
+//                        break;
+//                    default:
+//
+//                        break;
+//                }
+            }
+        });
+    }
+
 
     private void setupViewPager(ViewPager viewPager) {
         ArrayList<Fragment> mFragmentList = new ArrayList<>();
-        mFragmentList.add(new JieZhaiHomeFragment());
-        mFragmentList.add(new NewsFragment());
-        mFragmentList.add(new MyFragment());
-        mFragmentList.add(new MyFragment());
+        mFragmentList.add(new JzHomeFragment());
+        mFragmentList.add(new JzManageFragment());
+        mFragmentList.add(new JzPropertyFragment());
+        mFragmentList.add(new JzMyFragment());
         MyFragmentPagerAdapter adapter = new MyFragmentPagerAdapter(getSupportFragmentManager(), mFragmentList);
         viewPager.setAdapter(adapter);
         //设置ViewPage最大缓存的页面个数（cpu消耗少）

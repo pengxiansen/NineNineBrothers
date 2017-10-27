@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <RelativeLayout
+    <android.support.design.widget.CoordinatorLayout
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/activity_main"
         android:layout_width="match_parent"
@@ -11,23 +11,37 @@
         <android.support.v4.view.ViewPager
             android:id="@+id/viewpager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/bottom_navigation"/>
+            android:layout_height="match_parent"/>
 
         <android.support.design.widget.BottomNavigationView
+            app:layout_behavior="@string/bye_burger_bottom_behavior"
             android:id="@+id/bottom_navigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:background="@color/colorPageBg"
             app:itemIconTint="@drawable/bottom_navigation_selector"
             app:itemTextColor="@drawable/bottom_navigation_selector"
             app:menu="@menu/menu_bottom_navigation"/>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="5dp"
-            android:layout_above="@id/bottom_navigation"
-            android:background="@drawable/bottom_shadow"/>
+        <!--<View-->
+            <!--android:visibility="gone"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="5dp"-->
+            <!--android:layout_gravity="bottom"-->
+            <!--android:layout_above="@id/bottom_navigation"-->
+            <!--android:background="@drawable/bottom_shadow"/>-->
 
-    </RelativeLayout>
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/floatButton"
+            app:layout_behavior="@string/bye_burger_float_behavior"
+            android:layout_gravity="bottom|right"
+            app:backgroundTint="@color/colorPrimary"
+            android:layout_marginBottom="60dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/setting"/>
+
+    </android.support.design.widget.CoordinatorLayout>
 </layout>

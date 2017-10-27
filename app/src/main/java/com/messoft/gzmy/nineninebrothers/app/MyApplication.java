@@ -12,7 +12,6 @@ import com.messoft.gzmy.nineninebrothers.http.HttpUtils;
 import com.messoft.gzmy.nineninebrothers.utils.DebugUtil;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
-import com.tencent.bugly.crashreport.CrashReport;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -62,7 +61,7 @@ public class MyApplication extends Application {
         registerActivityListener();
 
         //初始化Bugly 等开发完再开启
-        CrashReport.initCrashReport(getApplicationContext(), "d1cc8cc580", false);
+//        CrashReport.initCrashReport(getApplicationContext(), "d1cc8cc580", false);
 
         //测试Bugly
 //        CrashReport.testJavaCrash();

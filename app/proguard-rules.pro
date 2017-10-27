@@ -28,7 +28,7 @@
 #---------------------------------1.实体类---------------------------------
 #这句非常重要，主要是滤掉 com.demo.demo.bean包下的所有.class文件不进行混淆编译,com.demo.demo是你的包名
 -keep class com.messoft.gzmy.nineninebrothers.bean.** {*;}
-
+-keep class com.messoft.gzmy.nineninebrothers.utils.** {*;}
 
 #-------------------------------------------------------------------------
 

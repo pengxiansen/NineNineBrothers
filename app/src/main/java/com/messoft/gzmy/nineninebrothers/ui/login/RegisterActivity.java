@@ -9,15 +9,17 @@ import android.view.Gravity;
 import android.view.View;
 
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
-import com.messoft.gzmy.nineninebrothers.MainActivity;
 import com.messoft.gzmy.nineninebrothers.R;
 import com.messoft.gzmy.nineninebrothers.adapter.SelectStreetAdapter;
 import com.messoft.gzmy.nineninebrothers.base.BaseActivity;
 import com.messoft.gzmy.nineninebrothers.base.baseadapter.OnItemClickListener;
 import com.messoft.gzmy.nineninebrothers.bean.Login;
+import com.messoft.gzmy.nineninebrothers.bean.PersonInfo;
+import com.messoft.gzmy.nineninebrothers.bean.RxBusMessage;
 import com.messoft.gzmy.nineninebrothers.bean.Street;
 import com.messoft.gzmy.nineninebrothers.databinding.ActivityRegisterBinding;
 import com.messoft.gzmy.nineninebrothers.http.RequestImpl;
+import com.messoft.gzmy.nineninebrothers.http.rx.RxBus;
 import com.messoft.gzmy.nineninebrothers.interfae.TimeListener;
 import com.messoft.gzmy.nineninebrothers.listener.PerfectClickListener;
 import com.messoft.gzmy.nineninebrothers.model.LoginModel;
@@ -25,13 +27,13 @@ import com.messoft.gzmy.nineninebrothers.utils.DebugUtil;
 import com.messoft.gzmy.nineninebrothers.utils.RegexUtil;
 import com.messoft.gzmy.nineninebrothers.utils.SPUtils;
 import com.messoft.gzmy.nineninebrothers.utils.StringUtils;
-import com.messoft.gzmy.nineninebrothers.utils.SysUtils;
 import com.messoft.gzmy.nineninebrothers.utils.TimeCount;
 import com.messoft.gzmy.nineninebrothers.utils.ToastUtil;
 import com.messoft.gzmy.nineninebrothers.view.cityselectpop.CitySelectPopWindow;
 import com.othershe.nicedialog.BaseNiceDialog;
 import com.othershe.nicedialog.NiceDialog;
 import com.othershe.nicedialog.ViewConvertListener;
+import com.othershe.nicedialog.ViewHolder;
 
 import java.util.List;
 
@@ -53,6 +55,7 @@ public class RegisterActivity extends BaseActivity<ActivityRegisterBinding> {
     private String mStreetName;
 
     private TimeCount mTimeCount;
+    private BaseNiceDialog mStreetDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -166,6 +169,10 @@ public class RegisterActivity extends BaseActivity<ActivityRegisterBinding> {
                 if (street != null) {
                     mStreetId = street.getId();
                     mStreetName = street.getTitle();
+                    bindingView.tvStreet.setText(mStreetName);
+                    if (mStreetDialog != null) {
+                        mStreetDialog.dismiss();
+                    }
                 }
             }
         });
@@ -235,12 +242,14 @@ public class RegisterActivity extends BaseActivity<ActivityRegisterBinding> {
             ToastUtil.showToast("暂无街道可以选择");
             return;
         }
-        ToastUtil.showToast(streetList.size()+"");
-        NiceDialog.init()
+//        ToastUtil.showToast(streetList.size()+"");
+        // 需加，不然滑动不流畅
+//                .setDimAmount(0.3f)
+        mStreetDialog = NiceDialog.init()
                 .setLayoutId(R.layout.dialog_select_street)
                 .setConvertListener(new ViewConvertListener() {
                     @Override
-                    public void convertView(com.othershe.nicedialog.ViewHolder holder, BaseNiceDialog dialog) {
+                    public void convertView(ViewHolder holder, BaseNiceDialog dialog) {
                         mXrcStreet = (XRecyclerView) holder.getConvertView().findViewById(R.id.xrc_street);
                         if (selectStreetFlag == 0) {
                             mXrcStreet.setLoadingMoreEnabled(false);
@@ -262,14 +271,14 @@ public class RegisterActivity extends BaseActivity<ActivityRegisterBinding> {
                 })
 //                .setDimAmount(0.3f)
                 .setShowBottom(true)
-                .setOutCancel(true)
-                .show(getSupportFragmentManager());
+                .setOutCancel(true);
+        mStreetDialog.show(getSupportFragmentManager());
     }
 
     private void clickRegister() {
-        String etPhone = bindingView.etPhone.getText().toString().trim();
+        final String etPhone = bindingView.etPhone.getText().toString().trim();
         String etCode = bindingView.etCode.getText().toString().trim();
-        String etPsw = bindingView.etPsw.getText().toString().trim();
+        final String etPsw = bindingView.etPsw.getText().toString().trim();
         String etFatherReferralCode = bindingView.etRecommendCode.getText().toString().trim();
 
         if (!StringUtils.isNoEmpty(etPhone)) {
@@ -286,6 +295,10 @@ public class RegisterActivity extends BaseActivity<ActivityRegisterBinding> {
         }
         if (!StringUtils.isNoEmpty(etPsw)) {
             ToastUtil.showToast("请输入密码");
+            return;
+        }
+        if (!RegexUtil.isPassword(etPsw)) {
+            ToastUtil.showToast("请设置规范的密码（6-18位包含字母和数字）");
             return;
         }
         if (!StringUtils.isNoEmpty(mCurrentProviceID) || !StringUtils.isNoEmpty(mCurrentProviceName)
@@ -311,9 +324,12 @@ public class RegisterActivity extends BaseActivity<ActivityRegisterBinding> {
                     public void loadSuccess(Object object) {
                         ToastUtil.showToast("注册成功");
                         if (object != null) {
-                            Login login = (Login) object;
-                            saveUserData(login);
-                            SysUtils.startActivity(RegisterActivity.this, MainActivity.class);
+//                            Login login = (Login) object;
+//                            saveUserData(login);
+//                            SysUtils.startActivity(RegisterActivity.this, MainActivity.class);
+                            PersonInfo personInfo = new PersonInfo(etPhone, etPsw);
+                            RxBus.getInstanceBus().post(new RxBusMessage<PersonInfo>(personInfo));
+                            finish();
                         }
                     }
 

@@ -2,6 +2,7 @@ package com.messoft.gzmy.nineninebrothers.http;
 
 import com.messoft.gzmy.nineninebrothers.bean.BaseBean;
 import com.messoft.gzmy.nineninebrothers.bean.Login;
+import com.messoft.gzmy.nineninebrothers.bean.LoginPersonInfo;
 import com.messoft.gzmy.nineninebrothers.bean.NewsList;
 import com.messoft.gzmy.nineninebrothers.bean.HomeBanner;
 import com.messoft.gzmy.nineninebrothers.bean.Street;
@@ -61,6 +62,12 @@ public interface HttpClient {
     Observable<BaseBean<Login>> login(@Url String url);
 
     /**
+     * 查询登录人信息
+     */
+    @POST
+    Observable<BaseBean<LoginPersonInfo>> checkLoginPersonInfo(@Url String url);
+
+    /**
      * 注册 (结果同登录一样)
      */
     @POST
@@ -71,6 +78,18 @@ public interface HttpClient {
      */
     @POST
     Observable<BaseBean<Object>> getCode(@Url String url);
+
+    /**
+     * 验证验证码
+     */
+    @POST
+    Observable<BaseBean<Object>> checkCode(@Url String url);
+
+    /**
+     * 修改密码
+     */
+    @POST
+    Observable<BaseBean<Object>> changePsw(@Url String url);
 
     /**
      * 根据区请求街道

@@ -159,14 +159,30 @@
             android:layout_height="@dimen/statusbar_view_height"
             android:background="@color/colorPrimary"/>
 
-        <TextView
-            android:id="@+id/tv_title"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/default_toolbar_height"
-            android:background="@color/colorPrimary"
-            android:gravity="center"
-            android:text="个人中心"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_18sp"/>
+            android:layout_height="@dimen/default_toolbar_height">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimary"
+                android:gravity="center"
+                android:text="个人中心"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_18sp"/>
+
+            <ImageView
+                android:id="@+id/iv_setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/setting"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="16dp"/>
+        </RelativeLayout>
+
+
     </RelativeLayout>
 </layout>

@@ -7,8 +7,11 @@ import com.messoft.gzmy.nineninebrothers.MainActivity;
 import com.messoft.gzmy.nineninebrothers.R;
 import com.messoft.gzmy.nineninebrothers.base.BaseActivity;
 import com.messoft.gzmy.nineninebrothers.bean.Login;
+import com.messoft.gzmy.nineninebrothers.bean.PersonInfo;
+import com.messoft.gzmy.nineninebrothers.bean.RxBusMessage;
 import com.messoft.gzmy.nineninebrothers.databinding.ActivityLoginBinding;
 import com.messoft.gzmy.nineninebrothers.http.RequestImpl;
+import com.messoft.gzmy.nineninebrothers.http.rx.RxBus;
 import com.messoft.gzmy.nineninebrothers.listener.PerfectClickListener;
 import com.messoft.gzmy.nineninebrothers.model.LoginModel;
 import com.messoft.gzmy.nineninebrothers.utils.SPUtils;
@@ -16,9 +19,13 @@ import com.messoft.gzmy.nineninebrothers.utils.StatusBarUtil;
 import com.messoft.gzmy.nineninebrothers.utils.SysUtils;
 import com.messoft.gzmy.nineninebrothers.utils.ToastUtil;
 
+import io.reactivex.annotations.NonNull;
+import io.reactivex.functions.Consumer;
+
 public class LoginActivity extends BaseActivity<ActivityLoginBinding> {
 
     private LoginModel mLoginModel;
+    private RxBus mRxBus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +40,7 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> {
 
     private void initSetting() {
         mLoginModel = new LoginModel();
+        initRxBus();
     }
 
     private void initListener() {
@@ -40,7 +48,9 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> {
         bindingView.tvForgetPsw.setOnClickListener(new PerfectClickListener() {
             @Override
             protected void onNoDoubleClick(View v) {
-                SysUtils.startActivity(LoginActivity.this, ForgetPswActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("type", "login");
+                SysUtils.startActivity(LoginActivity.this, ForgetPswActivity.class, bundle);
             }
         });
 
@@ -58,12 +68,12 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> {
             protected void onNoDoubleClick(View v) {
                 String account = bindingView.etAccount.getText().toString().trim();
                 String password = bindingView.etPsw.getText().toString().trim();
-                clickLogin("18926568749", "123456");
+                clickLogin(account, password);
             }
         });
     }
 
-    private void clickLogin(String account, String password) {
+    private void clickLogin(final String account, final String password) {
 //        if (!StringUtils.isNoEmpty(account)) {
 //            ToastUtil.showToast("请输入账号");
 //            return;
@@ -78,15 +88,15 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> {
                 ToastUtil.showToast("登录成功");
                 if (object != null) {
                     Login login = (Login) object;
-                    saveUserData(login);
+                    saveUserData(account,password,login);
                     SysUtils.startActivity(LoginActivity.this, MainActivity.class);
+                    finish();
                 }
             }
 
             @Override
             public void loadFailed(int errorCode, String errorMessage) {
                 ToastUtil.showToast(errorMessage);
-                SysUtils.startActivity(LoginActivity.this, MainActivity.class);
             }
         });
     }
@@ -94,10 +104,18 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> {
     /**
      * 保存用户信息
      *
+     * @param account
+     * @param password
      * @param login
      */
-    private void saveUserData(Login login) {
+    private void saveUserData(String account, String password, Login login) {
         SPUtils.putObject("loginObject", login);
+        //将是否登录置为true
+        SPUtils.putBoolean("isLogin", true);
+        //保存用户名和密码
+//        PasswordHelp.savePassword(LoginActivity.this,account,password,true);
+        SPUtils.putString("account",account);
+        SPUtils.putString("password",password);
     }
 
     @Override
@@ -108,5 +126,32 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> {
     @Override
     protected boolean hasToolBar() {
         return false;
+    }
+
+    /**
+     * 注册RxBus
+     */
+    private void initRxBus() {
+        mRxBus = RxBus.getInstanceBus();
+        mRxBus.registerRxBus(mRxBus, RxBusMessage.class, new Consumer<RxBusMessage>() {
+            @Override
+            public void accept(@NonNull RxBusMessage rxBusMessage) throws Exception {
+                //根据事件类型进行处理
+                if (null != rxBusMessage && null != rxBusMessage.getData() && rxBusMessage.getData() instanceof PersonInfo) {
+                    //收到登录信息
+//                    ToastUtil.showToast("收到登录信息");
+                    PersonInfo data = (PersonInfo) rxBusMessage.getData();
+                    clickLogin(data.getAccount(), data.getPassword());
+                }
+            }
+        });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mRxBus != null) {
+            mRxBus.unSubscribe(this);
+        }
     }
 }

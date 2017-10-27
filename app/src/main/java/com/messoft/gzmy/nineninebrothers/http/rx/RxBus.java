@@ -1,10 +1,13 @@
 package com.messoft.gzmy.nineninebrothers.http.rx;
 
+import android.util.Log;
+
 import java.util.HashMap;
 
 import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
@@ -22,7 +25,7 @@ public class RxBus {
     private static volatile RxBus mRxBus;
     private final Subject<Object> mSubject;
     //单列模式
-    public static RxBus getIntanceBus(){
+    public static RxBus getInstanceBus(){
         if (mRxBus==null){
             synchronized (RxBus.class){
                 if(mRxBus==null){
@@ -91,6 +94,16 @@ public class RxBus {
             disposables.add(disposable);
             mSubscriptionMap.put(key, disposables);
         }
+    }
+
+    public <T> void registerRxBus(RxBus mRxBus,Class<T> eventType, Consumer<T> action) {
+        Disposable disposable = mRxBus.doSubscribe(eventType, action, new Consumer<Throwable>() {
+            @Override
+            public void accept(@NonNull Throwable throwable) throws Exception {
+                Log.e("NewsMainPresenter", throwable.toString());
+            }
+        });
+        mRxBus.addSubscription(this,disposable);
     }
 
     /**

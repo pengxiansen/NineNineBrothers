@@ -5,6 +5,7 @@ import android.content.Context;
 import com.messoft.gzmy.nineninebrothers.app.ConstantsUrl;
 import com.messoft.gzmy.nineninebrothers.bean.BaseBean;
 import com.messoft.gzmy.nineninebrothers.bean.Login;
+import com.messoft.gzmy.nineninebrothers.bean.LoginPersonInfo;
 import com.messoft.gzmy.nineninebrothers.bean.Street;
 import com.messoft.gzmy.nineninebrothers.http.BaseObserver;
 import com.messoft.gzmy.nineninebrothers.http.HttpClient;
@@ -40,7 +41,7 @@ public class LoginModel {
         DebugUtil.debug("okhttp:", "登录地址：" + url);
         HttpClient.Builder.getNineServer().login(url)
                 .compose(RxSchedulers.<BaseBean<Login>>compose())
-                .subscribe(new BaseObserver<Login>(context, false) {
+                .subscribe(new BaseObserver<Login>(context, true) {
                     @Override
                     protected void onSuccess(Login login) {
                         if (login != null) {
@@ -142,9 +143,9 @@ public class LoginModel {
     /**
      * 获取验证码 0.注册、1.修改密码2.微信授权登录验证
      */
-    public void getCode(Context context, String account, String type,final RequestImpl listener) {
+    public void getCode(Context context, String account, String type, final RequestImpl listener) {
         Map<String, String> map = new HashMap<String, String>();
-        map.put("account", account);
+        map.put("mobile", account);
         map.put("type", type);
         String url = BusinessUtils.getUrlNoPage(ConstantsUrl.MASTER_URL_MEMBER + ConstantsUrl.GET_CODE,
                 map);
@@ -158,6 +159,93 @@ public class LoginModel {
                     @Override
                     protected void onSuccess(Object login) {
                         listener.loadSuccess(login);
+                    }
+
+                    @Override
+                    protected void onFailure(int errorCode, String msg) {
+                        listener.loadFailed(errorCode, msg);
+                    }
+                });
+    }
+
+    /**
+     * 验证验证码 0.注册、1.修改密码2.微信授权登录验证
+     */
+    public void checkCode(Context context, String account, String type, String code, final RequestImpl listener) {
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("mobile", account);
+        map.put("type", type);
+        map.put("code", code);
+        String url = BusinessUtils.getUrlNoPage(ConstantsUrl.MASTER_URL_MEMBER + ConstantsUrl.CHECK_CODE,
+                map);
+        if (!StringUtils.isNoEmpty(url)) {
+            return;
+        }
+//        DebugUtil.debug("okhttp:", "获取验证码地址：" + url);
+        HttpClient.Builder.getNineServer().checkCode(url)
+                .compose(RxSchedulers.<BaseBean<Object>>compose())
+                .subscribe(new BaseObserver<Object>(context, true) {
+                    @Override
+                    protected void onSuccess(Object login) {
+                        listener.loadSuccess(login);
+                    }
+
+                    @Override
+                    protected void onFailure(int errorCode, String msg) {
+                        listener.loadFailed(errorCode, msg);
+                    }
+                });
+    }
+
+    /**
+     * 修改密码
+     */
+    public void changePsw(Context context, String account, String code,String password,String rePassword, final RequestImpl listener) {
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("mobile", account);
+        map.put("code", code);
+        map.put("password", password);
+        map.put("rePassword", rePassword);
+        String url = BusinessUtils.getUrlNoPage(ConstantsUrl.MASTER_URL_MEMBER + ConstantsUrl.CHANGE_PSW,
+                map);
+        if (!StringUtils.isNoEmpty(url)) {
+            return;
+        }
+//        DebugUtil.debug("okhttp:", "获取验证码地址：" + url);
+        HttpClient.Builder.getNineServer().changePsw(url)
+                .compose(RxSchedulers.<BaseBean<Object>>compose())
+                .subscribe(new BaseObserver<Object>(context, true) {
+                    @Override
+                    protected void onSuccess(Object login) {
+                        listener.loadSuccess(login);
+                    }
+
+                    @Override
+                    protected void onFailure(int errorCode, String msg) {
+                        listener.loadFailed(errorCode, msg);
+                    }
+                });
+    }
+
+    /**
+     * 查看登录人信息
+     */
+    public void checkLoginPersonInfo(Context context, String token, final RequestImpl listener) {
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("token", token);
+        String url = ConstantsUrl.MASTER_URL + ConstantsUrl.CHECK_LOGIN_PERSON_INFO+token;
+        if (!StringUtils.isNoEmpty(url)) {
+            return;
+        }
+        DebugUtil.debug("okhttp:", "查看登录人信息地址：" + url);
+        HttpClient.Builder.getNineServer().checkLoginPersonInfo(url)
+                .compose(RxSchedulers.<BaseBean<LoginPersonInfo>>compose())
+                .subscribe(new BaseObserver<LoginPersonInfo>(context, true) {
+                    @Override
+                    protected void onSuccess(LoginPersonInfo login) {
+                        if (login != null) {
+                            listener.loadSuccess(login);
+                        }
                     }
 
                     @Override
