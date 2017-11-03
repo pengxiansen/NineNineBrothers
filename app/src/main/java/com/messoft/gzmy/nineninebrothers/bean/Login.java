@@ -106,6 +106,17 @@ public class Login implements Serializable{
         private String fatherReferralCode;
         private String mobile;
 
+        @Override
+        public String toString() {
+            return "UserExpandMapBean{" +
+                    "idCard='" + idCard + '\'' +
+                    ", email='" + email + '\'' +
+                    ", referralCode='" + referralCode + '\'' +
+                    ", fatherReferralCode='" + fatherReferralCode + '\'' +
+                    ", mobile='" + mobile + '\'' +
+                    '}';
+        }
+
         public String getIdCard() {
             return idCard;
         }
@@ -145,5 +156,19 @@ public class Login implements Serializable{
         public void setMobile(String mobile) {
             this.mobile = mobile;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Login{" +
+                "accessToken='" + accessToken + '\'' +
+                ", expiresIn='" + expiresIn + '\'' +
+                ", id='" + id + '\'' +
+                ", userExpandMap=" + userExpandMap +
+                ", name='" + name + '\'' +
+                ", secret='" + secret + '\'' +
+                ", account='" + account + '\'' +
+                ", apiRole='" + apiRole + '\'' +
+                '}';
     }
 }

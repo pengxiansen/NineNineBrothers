@@ -51,21 +51,21 @@ public class JzServeActivity extends BaseActivity<ActivityJieZhaiServeBinding> {
         bindingView.rlZhaishiBeian.setOnClickListener(new PerfectClickListener() {
             @Override
             protected void onNoDoubleClick(View v) {
-                SysUtils.startActivity(JzServeActivity.this,JzPersonBeiAnActivity.class);
+                SysUtils.startActivity(JzServeActivity.this, JzPersonBeiAnActivity.class);
             }
         });
         //解债备案
         bindingView.rlJiezhaiBeian.setOnClickListener(new PerfectClickListener() {
             @Override
             protected void onNoDoubleClick(View v) {
-                SysUtils.startActivity(JzServeActivity.this,JzBeianActivity.class);
+                SysUtils.startActivity(JzServeActivity.this, JzBeianActivity.class);
             }
         });
         //解债库
         bindingView.rlJiezhaiKu.setOnClickListener(new PerfectClickListener() {
             @Override
             protected void onNoDoubleClick(View v) {
-                
+              SysUtils.startActivity(JzServeActivity.this,JzKuActivity.class);
             }
         });
     }

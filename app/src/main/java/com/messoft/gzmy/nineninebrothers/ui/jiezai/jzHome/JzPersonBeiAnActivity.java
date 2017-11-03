@@ -32,7 +32,7 @@ public class JzPersonBeiAnActivity extends BaseActivity<ActivityJzPersonBeiAnBin
     }
 
     private void initSetting() {
-        setTitle("摘事人备案");
+        setTitle("债事人备案");
         showContentView();
         initFragmentList();
         MyFragmentPagerAdapter myAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager(), mFragments, mTitleList);

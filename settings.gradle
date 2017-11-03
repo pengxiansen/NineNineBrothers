@@ -1,1 +1,1 @@
-include ':app', 'library:xrecyclerview', 'library:swipeBackLayout', 'library:http', 'library:nicedialog', 'library:byeBurger'
+include ':app', 'library:xrecyclerview', 'library:swipeBackLayout', 'library:http', 'library:nicedialog', 'library:byeBurger', 'library:searchbox'

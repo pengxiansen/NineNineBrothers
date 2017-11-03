@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/library/http/http.iml" filepath="$PROJECT_DIR$/library/http/http.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/nicedialog/nicedialog.iml" filepath="$PROJECT_DIR$/library/nicedialog/nicedialog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library/searchbox/searchbox.iml" filepath="$PROJECT_DIR$/library/searchbox/searchbox.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/swipeBackLayout/swipeBackLayout.iml" filepath="$PROJECT_DIR$/library/swipeBackLayout/swipeBackLayout.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/xrecyclerview/xrecyclerview.iml" filepath="$PROJECT_DIR$/library/xrecyclerview/xrecyclerview.iml" />
     </modules>

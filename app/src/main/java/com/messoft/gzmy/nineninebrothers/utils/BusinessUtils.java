@@ -2,7 +2,6 @@ package com.messoft.gzmy.nineninebrothers.utils;
 
 import android.text.TextUtils;
 
-import com.messoft.gzmy.nineninebrothers.bean.Login;
 import com.messoft.gzmy.nineninebrothers.bean.LoginPersonInfo;
 
 import org.json.JSONException;
@@ -20,14 +19,12 @@ import java.util.Map;
 public class BusinessUtils {
 
     public static String getToken() {
-        Object object = SPUtils.getObject("loginObject");
-        if (object != null) {
-            Login login = (Login) object;
-            if (login != null) {
-                return login.getAccessToken();
-            }
-        }
-        return "";
+        return SPUtils.getString("accessToken", "");
+    }
+
+    public static String getSecret() {
+
+        return SPUtils.getString("secret", "");
     }
 
     public static LoginPersonInfo getLoginPersonInfo() {
@@ -93,6 +90,82 @@ public class BusinessUtils {
             e.printStackTrace();
         }
         return null;
+    }
+
+    /**
+     * 资产类型
+     */
+    public static String assetType(String assetType) {
+        if (!StringUtils.isNoEmpty(assetType)) {
+            return "";
+        }
+        String str = "";
+        if (assetType.equals("0")) {
+            str = "房产";
+        } else if (assetType.equals("1")) {
+            str = "专利";
+        }
+        if (assetType.equals("2")) {
+            str = "股权";
+        }
+        if (assetType.equals("4")) {
+            str = "货物";
+        }
+        return str;
+    }
+
+    /**
+     * 债务性质(0:个人,1:企业)
+     *
+     * @param debtorType
+     * @return
+     */
+    public static String debtProperty(String debtorType) {
+        if (!StringUtils.isNoEmpty(debtorType)) {
+            return "";
+        }
+        if (debtorType.equals("0")) {
+            return "个人";
+        } else if (debtorType.equals("1")) {
+            return "企业";
+        }
+        return "";
+    }
+
+    /**
+     * 债务类型(0:货币,1:非货币)
+     *
+     * @param debtorType
+     * @return
+     */
+    public static String debtorType(String debtorType) {
+        if (!StringUtils.isNoEmpty(debtorType)) {
+            return "";
+        }
+        if (debtorType.equals("0")) {
+            return "货币";
+        } else if (debtorType.equals("1")) {
+            return "非货币";
+        }
+        return "";
+    }
+
+    /**
+     * lawsuitState：诉讼状态(0:非诉讼,1:已诉讼)
+     *
+     * @param debtorType
+     * @return
+     */
+    public static String lawsuitState(String debtorType) {
+        if (!StringUtils.isNoEmpty(debtorType)) {
+            return "";
+        }
+        if (debtorType.equals("0")) {
+            return "非诉讼";
+        } else if (debtorType.equals("1")) {
+            return "已诉讼";
+        }
+        return "";
     }
 
     /**

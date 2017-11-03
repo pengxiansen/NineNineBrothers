@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <FrameLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:srlEnableLoadmore="true"
+            app:srlEnablePureScrollMode="true">
+
+            <ScrollView
+                android:id="@+id/scrollView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ripple_one_item_bg"
+                        android:orientation="vertical"
+                        android:paddingLeft="@dimen/x20"
+                        android:paddingRight="@dimen/x20"
+                        android:paddingTop="@dimen/x32"
+                        android:paddingBottom="@dimen/x32">
+                        <!--编号-->
+                        <TextView
+                            android:id="@+id/tv_bianhao"
+                            style="@style/title_h1"
+                            android:text="编号: "
+                            android:textIsSelectable="true"
+                            android:textStyle="bold"/>
+
+                        <!--债劝人-->
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/x20"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_zq"
+                                style="@style/title_h2"
+                                android:layout_centerVertical="true"
+                                android:text="债权人："/>
+
+                            <TextView
+                                android:id="@+id/tv_geren"
+                                style="@style/title_h2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:text="个人"/>
+
+                            <TextView
+                                android:visibility="gone"
+                                android:id="@+id/tv_zq_info"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:background="@drawable/ripple_one_item_bg"
+                                android:padding="6dp"
+                                android:text="详情"
+                                android:textColor="@color/blue"/>
+                        </RelativeLayout>
+                        <!--债务人-->
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/x10"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_zw"
+                                style="@style/title_h2"
+                                android:layout_centerVertical="true"
+                                android:text="债务人："/>
+
+                            <TextView
+                                android:id="@+id/tv_qiye"
+                                style="@style/title_h2"
+                                android:layout_centerInParent="true"
+                                android:text="企业"/>
+
+                            <TextView
+                                android:visibility="gone"
+                                android:id="@+id/tv_zw_info"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:background="@drawable/ripple_one_item_bg"
+                                android:padding="6dp"
+                                android:text="详情"
+                                android:textColor="@color/blue"/>
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <!--债事资料-->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorPageBg"
+                        android:drawableLeft="@drawable/line_shu"
+                        android:drawablePadding="@dimen/x_10"
+                        android:paddingBottom="@dimen/x12"
+                        android:paddingLeft="@dimen/x10"
+                        android:paddingTop="@dimen/x12"
+                        android:text="债事资料"/>
+
+                    <RelativeLayout
+                        android:id="@+id/ll_zs_data"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ripple_one_item_bg"
+                        android:orientation="vertical"
+                        android:paddingLeft="@dimen/x20"
+                        android:paddingRight="@dimen/x20"
+                        android:paddingTop="@dimen/x32"
+                        android:paddingBottom="@dimen/x32">
+                        <!--发生时间-->
+                        <TextView
+                            android:id="@+id/tv_time"
+                            style="@style/title_h2"
+                            android:text="发生时间: "/>
+
+                        <!--债事-->
+                        <LinearLayout
+                            android:id="@+id/ll_zs"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tv_time"
+                            android:layout_marginTop="@dimen/x20"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_zs_type"
+                                style="@style/title_h2"
+                                android:layout_width="0dp"
+                                android:layout_centerVertical="true"
+                                android:layout_weight="2"
+                                android:text="债事类型："/>
+
+                            <TextView
+                                android:id="@+id/tv_zs_property"
+                                style="@style/title_h2"
+                                android:layout_width="0dp"
+                                android:layout_centerInParent="true"
+                                android:layout_weight="3"
+                                android:text="债事性质："/>
+
+                        </LinearLayout>
+
+                        <!--债事-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/ll_zs"
+                            android:layout_marginTop="@dimen/x20"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_zs_money"
+                                style="@style/title_h2"
+                                android:layout_width="0dp"
+                                android:layout_centerVertical="true"
+                                android:layout_weight="2"
+                                android:text="债事金额："/>
+
+                            <TextView
+                                android:id="@+id/tv_susong"
+                                style="@style/title_h2"
+                                android:layout_width="0dp"
+                                android:layout_centerInParent="true"
+                                android:layout_weight="3"
+                                android:text="诉讼情况："/>
+
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/arrow"/>
+
+                    </RelativeLayout>
+
+                    <!--债务人资产-->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorPageBg"
+                        android:drawableLeft="@drawable/line_shu"
+                        android:drawablePadding="@dimen/x_10"
+                        android:paddingBottom="@dimen/x12"
+                        android:paddingLeft="@dimen/x10"
+                        android:paddingTop="@dimen/x12"
+                        android:text="债务人资产"/>
+
+                    <RelativeLayout
+                        android:id="@+id/rl_zw_asset"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ripple_one_item_bg"
+                        android:paddingLeft="@dimen/x20"
+                        android:paddingRight="@dimen/x20"
+                        android:paddingTop="@dimen/x32"
+                        android:paddingBottom="@dimen/x32">
+
+                        <!--债务人资产-->
+                        <LinearLayout
+                            android:id="@+id/rl_type"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentTop="true"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_zc_type"
+                                style="@style/title_h2"
+                                android:layout_width="0dp"
+                                android:layout_centerVertical="true"
+                                android:layout_weight="2"
+                                android:text="资产类型："/>
+
+                            <TextView
+                                android:id="@+id/tv_zc_address"
+                                style="@style/title_h2"
+                                android:layout_width="0dp"
+                                android:layout_centerInParent="true"
+                                android:layout_weight="3"
+                                android:maxLines="2"
+                                android:maxEms="9"
+                                android:ellipsize="end"
+                                android:text="资产地址："/>
+
+
+                        </LinearLayout>
+
+                        <!--债事-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/rl_type"
+                            android:layout_marginTop="@dimen/x20"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_assess_price"
+                                style="@style/title_h2"
+                                android:layout_width="0dp"
+                                android:layout_centerVertical="true"
+                                android:layout_weight="2"
+                                android:text="评估价格："/>
+
+                            <TextView
+                                android:id="@+id/tv_expect_price"
+                                style="@style/title_h2"
+                                android:layout_width="0dp"
+                                android:layout_centerInParent="true"
+                                android:layout_weight="3"
+                                android:text="期望价格："/>
+
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/arrow"/>
+
+                    </RelativeLayout>
+
+                    <!--债务人需求-->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorPageBg"
+                        android:drawableLeft="@drawable/line_shu"
+                        android:drawablePadding="@dimen/x_10"
+                        android:paddingBottom="@dimen/x12"
+                        android:paddingLeft="@dimen/x10"
+                        android:paddingTop="@dimen/x12"
+                        android:text="债务人需求"/>
+
+                    <TextView
+                        android:id="@+id/tv_zw_need"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/x20"
+                        android:background="@color/colorPageBg"
+                        android:padding="@dimen/x20"
+                        android:text=""/>
+
+                    <TextView
+                        android:visibility="gone"
+                        android:id="@+id/tv_next"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/x90"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/shape_login"
+                        android:gravity="center"
+                        android:text="接单"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_16sp"/>
+                </LinearLayout>
+            </ScrollView>
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+    </FrameLayout>
+</layout>

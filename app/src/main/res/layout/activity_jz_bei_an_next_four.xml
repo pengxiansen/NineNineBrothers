@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:zhy="http://schemas.android.com/tools">
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srlEnableLoadmore="true"
+        app:srlEnablePureScrollMode="true">
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/x40"
+                android:orientation="vertical">
+
+                <!--资产类型-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/x20"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/x20">
+
+                    <RelativeLayout
+                        android:layout_width="@dimen/x180"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toLeftOf="@+id/tv_type"
+                            android:text="*"
+                            android:textColor="@color/red"
+                            android:visibility="invisible"/>
+
+                        <TextView
+                            android:id="@+id/tv_type"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginLeft="@dimen/x10"
+                            android:layout_marginRight="@dimen/x10"
+                            android:gravity="right"
+                            android:text="资产类型: "/>
+                    </RelativeLayout>
+
+                    <Spinner
+                        android:id="@+id/spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/x76"
+                        android:background="@drawable/input_gray_bg"
+                        android:paddingLeft="@dimen/x12"/>
+                </LinearLayout>
+
+                <!--补充说明-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/x20">
+
+                    <RelativeLayout
+                        android:layout_width="@dimen/x180"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toLeftOf="@+id/tv_desc"
+                            android:text="*"
+                            android:textColor="@color/red"
+                            android:visibility="invisible"/>
+
+                        <TextView
+                            android:id="@+id/tv_desc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginLeft="@dimen/x10"
+                            android:layout_marginRight="@dimen/x10"
+                            android:gravity="right"
+                            android:text="补充说明: "/>
+                    </RelativeLayout>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/x200"
+                        android:background="@drawable/input_gray_bg"
+                        android:gravity="start"
+                        android:hint="填你需要补充的内容"
+                        android:padding="@dimen/x10"
+                        android:paddingLeft="@dimen/x12"
+                        android:textSize="@dimen/text_14sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/x32"
+                    android:paddingTop="@dimen/x20">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="添加图片"
+                        android:textColor="@color/colorContent"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="支持JPG,PEG 支持最大文件为10M"/>
+                </LinearLayout>
+
+                <cn.bingoogolapple.photopicker.widget.BGASortableNinePhotoLayout
+                    android:id="@+id/bag_photo"
+                    style="@style/WrapWrap"
+                    android:layout_margin="10dp"
+                    app:bga_snpl_deleteDrawable="@mipmap/bga_pp_ic_delete"
+                    app:bga_snpl_deleteDrawableOverlapQuarter="false"
+                    app:bga_snpl_editable="true"
+                    app:bga_snpl_itemCornerRadius="0dp"
+                    app:bga_snpl_itemSpanCount="3"
+                    app:bga_snpl_itemWhiteSpacing="4dp"
+                    app:bga_snpl_itemWidth="0dp"
+                    app:bga_snpl_maxItemCount="9"
+                    app:bga_snpl_otherWhiteSpacing="100dp"
+                    app:bga_snpl_placeholderDrawable="@mipmap/bga_pp_ic_holder_dark"
+                    app:bga_snpl_plusDrawable="@mipmap/bga_pp_ic_plus"
+                    app:bga_snpl_plusEnable="true"
+                    app:bga_snpl_sortable="true"/>
+
+                <!--下一步-->
+                <TextView
+                    android:id="@+id/tv_next"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/x90"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/shape_login"
+                    android:gravity="center"
+                    android:text="@string/next_step"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_16sp"/>
+            </LinearLayout>
+        </ScrollView>
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+</layout>

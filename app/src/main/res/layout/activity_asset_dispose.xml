@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <android.support.constraint.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.messoft.gzmy.nineninebrothers.ui.jiezai.jzHome.JzServeActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/x20">
+
+            <!--资产备案-->
+            <RelativeLayout
+                android:id="@+id/rl_asses_beian"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x300"
+                android:background="@color/blue"
+                android:padding="@dimen/x20"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/jie_zhai_item_white_bg"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="资产备案"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_24sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Asset Filling"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_22sp"/>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <!--资产库-->
+            <RelativeLayout
+                android:id="@+id/rl_asset_ku"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x300"
+                android:layout_marginTop="@dimen/x20"
+                android:background="@color/blue"
+                android:padding="@dimen/x20"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/jie_zhai_item_white_bg"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="资产库"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_24sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Asset Library"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_22sp"/>
+                </LinearLayout>
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
+</layout>

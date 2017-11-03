@@ -1,11 +1,21 @@
 package com.messoft.gzmy.nineninebrothers.http;
 
+import com.messoft.gzmy.nineninebrothers.bean.AssetInfoById;
+import com.messoft.gzmy.nineninebrothers.bean.AssetInfoFile;
+import com.messoft.gzmy.nineninebrothers.bean.AssetKuList;
 import com.messoft.gzmy.nineninebrothers.bean.BaseBean;
+import com.messoft.gzmy.nineninebrothers.bean.HomeBanner;
+import com.messoft.gzmy.nineninebrothers.bean.JzInfo;
+import com.messoft.gzmy.nineninebrothers.bean.JzKuList;
 import com.messoft.gzmy.nineninebrothers.bean.Login;
 import com.messoft.gzmy.nineninebrothers.bean.LoginPersonInfo;
 import com.messoft.gzmy.nineninebrothers.bean.NewsList;
-import com.messoft.gzmy.nineninebrothers.bean.HomeBanner;
+import com.messoft.gzmy.nineninebrothers.bean.QueryDebtOrderTradeList;
 import com.messoft.gzmy.nineninebrothers.bean.Street;
+import com.messoft.gzmy.nineninebrothers.bean.ZsDataInfoById;
+import com.messoft.gzmy.nineninebrothers.bean.ZsDataInfoFileById;
+import com.messoft.gzmy.nineninebrothers.bean.ZsPersonFileInfo;
+import com.messoft.gzmy.nineninebrothers.bean.ZsPersonInfo;
 
 import java.util.List;
 
@@ -80,7 +90,7 @@ public interface HttpClient {
     Observable<BaseBean<Object>> getCode(@Url String url);
 
     /**
-     * 验证验证码
+     * 校验验证码
      */
     @POST
     Observable<BaseBean<Object>> checkCode(@Url String url);
@@ -96,4 +106,70 @@ public interface HttpClient {
      */
     @POST
     Observable<BaseBean<List<Street>>> searchStreetById(@Url String url);
+
+    /**
+     * 解债库，解债师才能看
+     */
+    @POST
+    Observable<BaseBean<List<JzKuList>>> getJzKuList(@Url String url);
+
+    /**
+     * 2.2.6  查询债事详细资料
+     */
+    @POST
+    Observable<BaseBean<JzInfo>> getJzInfo(@Url String url);
+
+    /**
+     * 2.1.4  查询债事人详情
+     */
+    @POST
+    Observable<BaseBean<ZsPersonInfo>> getZsPersonInfo(@Url String url);
+
+    /**
+     * 2.1.5  查询债事人文件列表
+     */
+    @POST
+    Observable<BaseBean<List<ZsPersonFileInfo>>> getZsPersonFileInfo(@Url String url);
+
+    /**
+     * 2.2.5  根据id查询债事信息
+     */
+    @POST
+    Observable<BaseBean<ZsDataInfoById>> getZsInfoById(@Url String url);
+
+    /**
+     * 2.2.7  查询债事文件列表
+     */
+    @POST
+    Observable<BaseBean<List<ZsDataInfoFileById>>> getZsInfoFileById(@Url String url);
+
+    /**
+     * 2.3.3  查询资产详情
+     */
+    @POST
+    Observable<BaseBean<AssetInfoById>> getAssetById(@Url String url);
+
+    /**
+     * 2.3.5  查询资产文件列表
+     */
+    @POST
+    Observable<BaseBean<List<AssetInfoFile>>> getAssetInfo(@Url String url);
+
+    /**
+     * 2.4.3  查询债事单交易列表
+     */
+    @POST
+    Observable<BaseBean<List<QueryDebtOrderTradeList>>> queryDebtOrderTradeList(@Url String url);
+
+    /**
+     * 2.4.1  债事接单申请
+     */
+    @POST
+    Observable<BaseBean<Object>> applyDebtMatterOrder(@Url String url);
+
+    /**
+     * 2.4.1  债事接单申请
+     */
+    @POST
+    Observable<BaseBean<List<AssetKuList>>> getAssetList(@Url String url);
 }

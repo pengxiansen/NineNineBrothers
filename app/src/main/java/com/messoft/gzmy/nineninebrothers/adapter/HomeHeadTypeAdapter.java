@@ -12,11 +12,11 @@ import com.messoft.gzmy.nineninebrothers.bean.HomeHeadType;
 import com.messoft.gzmy.nineninebrothers.databinding.ItemHomeHeaderTypeBinding;
 import com.messoft.gzmy.nineninebrothers.listener.PerfectClickListener;
 import com.messoft.gzmy.nineninebrothers.ui.jiezai.JzActivity;
+import com.messoft.gzmy.nineninebrothers.ui.jiezai.jzHome.AssetDisposeActivity;
 import com.messoft.gzmy.nineninebrothers.ui.jiezai.jzHome.JzServeActivity;
 import com.messoft.gzmy.nineninebrothers.ui.webview.WebCommonActivity;
 import com.messoft.gzmy.nineninebrothers.utils.ImgLoadUtil;
 import com.messoft.gzmy.nineninebrothers.utils.SPUtils;
-import com.messoft.gzmy.nineninebrothers.utils.StringUtils;
 import com.messoft.gzmy.nineninebrothers.utils.SysUtils;
 import com.messoft.gzmy.nineninebrothers.utils.ToastUtil;
 import com.othershe.nicedialog.BaseNiceDialog;
@@ -73,18 +73,20 @@ public class HomeHeadTypeAdapter extends BaseRecyclerViewAdapter<HomeHeadType> {
                                 } else if (type == 1) {
                                     //已经在解债界面中
                                     //信息不完善
-                                    if (!StringUtils.isNoEmpty(SPUtils.getString("loginPersonInfoCode","")) &&
-                                            "2".equals(SPUtils.getString("loginPersonInfoCode",""))) {
+                                    if ("2".equals(SPUtils.getString("loginPersonInfoCode", ""))) {
                                         //需要完善资料
                                         showTip();
-                                    }else {
+                                    } else {
                                         SysUtils.startActivity(activity, JzServeActivity.class);
 
                                     }
+                                    // TODO: 2017/11/1 0001
+//                                    SysUtils.startActivity(activity, JzServeActivity.class);
                                 }
                                 break;
                             case 1:
                                 //资产处理
+                                SysUtils.startActivity(activity, AssetDisposeActivity.class);
                                 break;
                             case 2:
                                 //会员商城

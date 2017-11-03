@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/x20">
+
+            <!--头部-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/title_h2"
+                    android:text="资产详情："/>
+
+                <!--个人-->
+                <LinearLayout
+                    android:id="@+id/ll_person"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/x20"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/tv_q1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="证明：债务人偿还欠款及利息的证据、"
+                        android:textIsSelectable="true"
+                        android:visibility="gone"/>
+
+                    <TextView
+                        android:id="@+id/tv_q2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/x10"
+                        android:text="担保或抵押的证明材料、"
+                        android:textIsSelectable="true"
+                        android:visibility="gone"/>
+
+                    <TextView
+                        android:id="@+id/tv_q3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/x10"
+                        android:text="债务转让证明材料、"
+                        android:textIsSelectable="true"
+                        android:visibility="gone"/>
+
+                    <TextView
+                        android:id="@+id/tv_q4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/x10"
+                        android:text="曾涉及诉讼，公证等法律文书"
+                        android:textIsSelectable="true"
+                        android:visibility="gone"/>
+
+                    <TextView
+                        android:id="@+id/tv_q5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/x20"
+                        android:text="身份证明："
+                        android:textIsSelectable="true"/>
+
+                    <TextView
+                        android:id="@+id/tv_q6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/x20"
+                        android:text="票据证明："
+                        android:textIsSelectable="true"/>
+
+                    <TextView
+                        android:id="@+id/tv_q7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/x20"
+                        android:text="电子证明："
+                        android:textIsSelectable="true"/>
+                </LinearLayout>
+
+                <TextView
+                    style="@style/title_h2"
+                    android:layout_marginTop="@dimen/x20"
+                    android:text="资质照片："/>
+            </LinearLayout>
+
+            <!--图片-->
+            <com.jcodecraeer.xrecyclerview.XRecyclerView
+                android:id="@+id/xrc_img"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/x20"/>
+        </LinearLayout>
+    </ScrollView>
+</layout>

@@ -31,4 +31,9 @@
     <string name="debt_for_the_record">Debt for the record</string>
     <string name="jie_zhai_ku">解债库</string>
     <string name="debt_relief_library">Debt relief library</string>
+    <string name="serial_number">编号：</string>
+    <string name="asset_type">资产类型：</string>
+    <string name="asset_address">资产地址：</string>
+    <string name="expect_price">期望价格：</string>
+    <string name="assess_price">评估价格：</string>
 </resources>

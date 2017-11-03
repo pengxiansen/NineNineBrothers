@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:zhy="http://schemas.android.com/tools">
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srlEnableLoadmore="true"
+        app:srlEnablePureScrollMode="true">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/x32"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="是否有债务人偿还欠款及利息的证据:"
+                    android:textColor="@color/colorContent"
+                    android:textSize="16sp"/>
+                <!--单选1-->
+                <LinearLayout
+                    android:layout_marginTop="@dimen/x16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="是"/>
+                    <CheckBox
+                        android:layout_marginLeft="@dimen/x160"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="否"/>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_marginTop="@dimen/x32"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="是否有担保或者抵押的证明材料"
+                    android:textColor="@color/colorContent"
+                    android:textSize="16sp"/>
+                <!--单选2-->
+                <LinearLayout
+                    android:layout_marginTop="@dimen/x16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="是"/>
+                    <CheckBox
+                        android:layout_marginLeft="@dimen/x160"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="否"/>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_marginTop="@dimen/x32"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="是否有债务转让证明资料:"
+                    android:textColor="@color/colorContent"
+                    android:textSize="16sp"/>
+                <!--单选3-->
+                <LinearLayout
+                    android:layout_marginTop="@dimen/x16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="是"/>
+                    <CheckBox
+                        android:layout_marginLeft="@dimen/x160"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="否"/>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_marginTop="@dimen/x32"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="是否曾涉及诉讼、公证等法律文书:"
+                    android:textColor="@color/colorContent"
+                    android:textSize="16sp"/>
+                <!--单选4-->
+                <LinearLayout
+                    android:layout_marginTop="@dimen/x16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="是"/>
+                    <CheckBox
+                        android:layout_marginLeft="@dimen/x160"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="否"/>
+                </LinearLayout>
+
+                <!--身份证明-->
+                <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="@dimen/x32"
+                   android:orientation="horizontal">
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="身份证明"
+                       android:textColor="@color/colorContent"
+                       android:textSize="16sp"/>
+
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text=" (多选)"/>
+               </LinearLayout>
+                <com.zhy.view.flowlayout.TagFlowLayout
+                    android:id="@+id/flow_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    zhy:max_select="-1"
+                    android:layout_marginTop="@dimen/x16"/>
+
+                <!--票据证明-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/x32"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="票据证明"
+                        android:textColor="@color/colorContent"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" (多选)"/>
+                </LinearLayout>
+                <com.zhy.view.flowlayout.TagFlowLayout
+                    android:id="@+id/flow_bill"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    zhy:max_select="-1"
+                    android:layout_marginTop="@dimen/x16"/>
+
+                <!--电子数据证明-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/x32"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="电子数据证明"
+                        android:textColor="@color/colorContent"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" (多选)"/>
+                </LinearLayout>
+                <com.zhy.view.flowlayout.TagFlowLayout
+                    android:id="@+id/flow_data"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    zhy:max_select="-1"
+                    android:layout_marginTop="@dimen/x16"/>
+
+                <!--下一步-->
+                <TextView
+                    android:id="@+id/tv_next"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/x90"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/shape_login"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:text="@string/next_step"
+                    android:textSize="@dimen/text_16sp"/>
+            </LinearLayout>
+        </ScrollView>
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+</layout>

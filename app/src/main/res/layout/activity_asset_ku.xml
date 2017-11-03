@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <!--左边-->
+        <com.jcodecraeer.xrecyclerview.XRecyclerView
+            android:id="@+id/xrc_left"
+            android:layout_width="@dimen/x200"
+            android:layout_height="match_parent"
+            android:background="@color/white"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPageBg"
+            android:padding="@dimen/x20">
+
+            <com.jcodecraeer.xrecyclerview.XRecyclerView
+                android:id="@+id/xrc_right"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </FrameLayout>
+    </LinearLayout>
+</layout>

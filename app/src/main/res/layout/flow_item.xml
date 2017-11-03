@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="卧槽"
+          android:paddingTop="@dimen/x12"
+          android:paddingBottom="@dimen/x12"
+          android:paddingLeft="@dimen/x16"
+          android:paddingRight="@dimen/x16"
+          android:layout_margin="@dimen/x10"
+          android:textColor="@color/selector_flow_text_color"
+    android:background="@drawable/selector_flow_text">
+
+</TextView>

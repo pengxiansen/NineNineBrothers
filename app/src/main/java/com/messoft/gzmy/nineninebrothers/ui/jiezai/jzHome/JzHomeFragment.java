@@ -25,6 +25,7 @@ import com.messoft.gzmy.nineninebrothers.bean.HomeHeadType;
 import com.messoft.gzmy.nineninebrothers.bean.NewsList;
 import com.messoft.gzmy.nineninebrothers.databinding.FragmentJiezhaiHomeBinding;
 import com.messoft.gzmy.nineninebrothers.databinding.HomeHeadBinding;
+import com.messoft.gzmy.nineninebrothers.http.HttpUtils;
 import com.messoft.gzmy.nineninebrothers.http.RequestImpl;
 import com.messoft.gzmy.nineninebrothers.listener.PerfectClickListener;
 import com.messoft.gzmy.nineninebrothers.model.NewsModel;
@@ -81,7 +82,7 @@ public class JzHomeFragment extends BaseFragment<FragmentJiezhaiHomeBinding> {
 //        showContentView();
         mNewsModel = new NewsModel();
         mHomeNewsAdapter = new HomeNewsAdapter(getActivity());
-        mHomeHeadTypeAdapter = new HomeHeadTypeAdapter(activity,1);
+        mHomeHeadTypeAdapter = new HomeHeadTypeAdapter(activity, 1);
 
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -270,7 +271,7 @@ public class JzHomeFragment extends BaseFragment<FragmentJiezhaiHomeBinding> {
      * 加载列表
      */
     private void loadNewsListData() {
-        mNewsModel.getNewsList(getActivity(), 0, 10, new RequestImpl() {
+        mNewsModel.getNewsList(getActivity(), mPage, HttpUtils.per_page, new RequestImpl() {
             @Override
             public void loadSuccess(Object object) {
                 showContentView();
@@ -302,7 +303,7 @@ public class JzHomeFragment extends BaseFragment<FragmentJiezhaiHomeBinding> {
         });
     }
 
-    private void refreshComplete(){
+    private void refreshComplete() {
         if (bindingView.xrcHome != null) {
             bindingView.xrcHome.refreshComplete();
         }

@@ -10,30 +10,32 @@ import java.io.Serializable;
 
 public class NewsList extends BaseObservable implements Serializable{
 
+
     /**
-     * content : 矢口抵赖荆防颗粒时代峻峰恐龙当家三六九等冯老师<img src="http://www.jq.com/js/kindeditor-4.1.10/plugins/emoticons/images/10.gif" border="0" alt="" /><img src="http://api.map.baidu.com/staticimage?center=121.325376,31.245213&zoom=10&width=558&height=360&markers=121.325376,31.245213&markerStyles=l,A" alt="" />
-     * id : 3
-     * createTime : 2017-09-19 17:30:09
-     * title : 新闻3
-     * newsTypeId : 1
+     * content : 哈哈哈哈测试是的环境哦<span>哈哈哈哈测试是的环境哦</span><span>哈哈哈哈测试是的环境哦</span><span>哈哈哈哈测试是的环境哦</span>
+     * id : 32
+     * imgUrl : news/20171102/20171102094024_231.jpg
+     * typeName : 通知
+     * createTime : 2017-11-02 09:40:24
+     * isDel : 0
+     * title : 测试缩略图
+     * projectType : project_type_info
+     * createBy : 999999
+     * createName : 系统管理员
+     * typeId : 1
      */
 
     private String content;
     private String id;
+    private String imgUrl;
+    private String typeName;
     private String createTime;
+    private String isDel;
     private String title;
-    private String newsTypeId;
-
-    @Override
-    public String toString() {
-        return "NewsList{" +
-                "content='" + content + '\'' +
-                ", id='" + id + '\'' +
-                ", createTime='" + createTime + '\'' +
-                ", title='" + title + '\'' +
-                ", newsTypeId='" + newsTypeId + '\'' +
-                '}';
-    }
+    private String projectType;
+    private String createBy;
+    private String createName;
+    private String typeId;
 
     public String getContent() {
         return content;
@@ -51,12 +53,36 @@ public class NewsList extends BaseObservable implements Serializable{
         this.id = id;
     }
 
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
+    public String getTypeName() {
+        return typeName;
+    }
+
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
+    }
+
     public String getCreateTime() {
         return createTime;
     }
 
     public void setCreateTime(String createTime) {
         this.createTime = createTime;
+    }
+
+    public String getIsDel() {
+        return isDel;
+    }
+
+    public void setIsDel(String isDel) {
+        this.isDel = isDel;
     }
 
     public String getTitle() {
@@ -67,11 +93,35 @@ public class NewsList extends BaseObservable implements Serializable{
         this.title = title;
     }
 
-    public String getNewsTypeId() {
-        return newsTypeId;
+    public String getProjectType() {
+        return projectType;
     }
 
-    public void setNewsTypeId(String newsTypeId) {
-        this.newsTypeId = newsTypeId;
+    public void setProjectType(String projectType) {
+        this.projectType = projectType;
+    }
+
+    public String getCreateBy() {
+        return createBy;
+    }
+
+    public void setCreateBy(String createBy) {
+        this.createBy = createBy;
+    }
+
+    public String getCreateName() {
+        return createName;
+    }
+
+    public void setCreateName(String createName) {
+        this.createName = createName;
+    }
+
+    public String getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(String typeId) {
+        this.typeId = typeId;
     }
 }

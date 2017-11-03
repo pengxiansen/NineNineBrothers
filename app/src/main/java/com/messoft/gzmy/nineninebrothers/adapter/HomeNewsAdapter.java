@@ -9,6 +9,7 @@ import com.messoft.gzmy.nineninebrothers.base.baseadapter.BaseRecyclerViewAdapte
 import com.messoft.gzmy.nineninebrothers.base.baseadapter.BaseRecyclerViewHolder;
 import com.messoft.gzmy.nineninebrothers.bean.NewsList;
 import com.messoft.gzmy.nineninebrothers.databinding.ItemNewListBinding;
+import com.messoft.gzmy.nineninebrothers.utils.ImgLoadUtil;
 import com.nineoldandroids.view.ViewHelper;
 import com.nineoldandroids.view.ViewPropertyAnimator;
 
@@ -43,8 +44,8 @@ public class HomeNewsAdapter extends BaseRecyclerViewAdapter<NewsList> {
                 /**
                  * 当数据改变时，binding会在下一帧去改变数据，如果我们需要立即改变，就去调用executePendingBindings方法。
                  */
-//                binding.executePendingBindings();
-
+                binding.executePendingBindings();
+                ImgLoadUtil.displayEspImage(object.getImgUrl(),binding.ivHead,0);
                 ViewHelper.setScaleX(itemView,0.8f);
                 ViewHelper.setScaleY(itemView,0.8f);
                 ViewPropertyAnimator.animate(itemView).scaleX(1).setDuration(350).setInterpolator(new OvershootInterpolator()).start();

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="com.messoft.gzmy.nineninebrothers.utils.BusinessUtils"/>
+
+        <variable
+            name="dataBean"
+            type="com.messoft.gzmy.nineninebrothers.bean.JzKuList"/>
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/rl_item"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:background="@drawable/ripple_one_item_bg">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/x20"
+            android:padding="@dimen/x20">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='@{@string/serial_number+dataBean.debtNumber}'
+                android:textColor="@color/title1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text='@{@string/asset_type+BusinessUtils.assetType(dataBean.assetType)}'
+                android:textColor="@color/title1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x120"
+                android:text='@{@string/asset_address+dataBean.provinceText+dataBean.cityText}'
+                android:textColor="@color/title1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:text='@{@string/expect_price+dataBean.expectedPrice}'
+                android:textColor="@color/title1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/x120"
+                android:text='@{@string/assess_price+dataBean.evaluatedPrice}'
+                android:textColor="@color/title1"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/arrow"/>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x20"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorPageBg"
+            android:visibility="visible"/>
+    </RelativeLayout>
+</layout>

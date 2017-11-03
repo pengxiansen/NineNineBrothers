@@ -15,6 +15,21 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!--h1标题文字-->
+    <style name="title_h1">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorContent</item>
+        <item name="android:textSize">@dimen/text_16sp</item>
+    </style>
+
+    <!--h2标题文字-->
+    <style name="title_h2">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/title1</item>
+    </style>
+
     <!-- 适用于开启滑动返回功能的 Activity 防止返回的时候抖动 -->
     <style name="AppTheme.Transparent">
         <item name="android:windowBackground">@android:color/transparent</item>

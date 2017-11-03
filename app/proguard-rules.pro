@@ -29,10 +29,15 @@
 #这句非常重要，主要是滤掉 com.demo.demo.bean包下的所有.class文件不进行混淆编译,com.demo.demo是你的包名
 -keep class com.messoft.gzmy.nineninebrothers.bean.** {*;}
 -keep class com.messoft.gzmy.nineninebrothers.utils.** {*;}
+-keep class com.messoft.gzmy.nineninebrothers.view.** {*;}
 
 #-------------------------------------------------------------------------
 
 #---------------------------------2.第三方包-------------------------------
+#BASE64
+#-libraryjars libs/sun.misc.BASE64.jar
+
+
 #databinding
 -dontwarn android.databinding.tool.util.**
 
@@ -96,6 +101,14 @@
  -keep public enum com.bumptech.glide.load.resource.bitmap.ImageHeaderParser$** {
    **[] $VALUES;
    public *;
+ }
+
+#AndPermission
+ -keepclassmembers class ** {
+     @com.yanzhenjie.permission.PermissionYes <methods>;
+ }
+ -keepclassmembers class ** {
+     @com.yanzhenjie.permission.PermissionNo <methods>;
  }
 
 #-------------------------------------------------------------------------

@@ -14,6 +14,7 @@ import com.messoft.gzmy.nineninebrothers.http.RequestImpl;
 import com.messoft.gzmy.nineninebrothers.http.rx.RxBus;
 import com.messoft.gzmy.nineninebrothers.listener.PerfectClickListener;
 import com.messoft.gzmy.nineninebrothers.model.LoginModel;
+import com.messoft.gzmy.nineninebrothers.utils.DebugUtil;
 import com.messoft.gzmy.nineninebrothers.utils.SPUtils;
 import com.messoft.gzmy.nineninebrothers.utils.StatusBarUtil;
 import com.messoft.gzmy.nineninebrothers.utils.SysUtils;
@@ -109,6 +110,7 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> {
      * @param login
      */
     private void saveUserData(String account, String password, Login login) {
+        DebugUtil.debug("okhttp","okhttp:保存的登录人信息"+login.toString());
         SPUtils.putObject("loginObject", login);
         //将是否登录置为true
         SPUtils.putBoolean("isLogin", true);
@@ -116,6 +118,8 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> {
 //        PasswordHelp.savePassword(LoginActivity.this,account,password,true);
         SPUtils.putString("account",account);
         SPUtils.putString("password",password);
+        SPUtils.putString("accessToken",login.getAccessToken());
+        SPUtils.putString("secret",login.getSecret());
     }
 
     @Override

@@ -72,12 +72,13 @@ android {
 
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':library:xrecyclerview')
     compile project(':library:swipeBackLayout')
     compile project(':library:http')
     compile project(':library:nicedialog')
     compile project(':library:byeBurger')
+    compile project(':library:searchbox')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
@@ -106,4 +107,11 @@ dependencies {
     compile 'de.hdodenhof:circleimageview:2.2.0'
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+    //6.0+运行时权限
+    compile 'com.yanzhenjie:permission:1.1.2'
+    //BGAPhotoPicker-Android
+    compile 'cn.bingoogolapple:bga-photopicker:1.2.3@aar'
+    compile 'cn.bingoogolapple:bga-adapter:1.1.8@aar'
+    //flowlayout
+    compile 'com.hyman:flowlayout-lib:1.1.2'
 }

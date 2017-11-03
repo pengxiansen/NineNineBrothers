@@ -13,7 +13,11 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import com.messoft.gzmy.nineninebrothers.app.ConstantsUrl;
+import com.messoft.gzmy.nineninebrothers.utils.BusinessUtils;
 import com.messoft.gzmy.nineninebrothers.utils.DebugUtil;
+import com.messoft.gzmy.nineninebrothers.utils.InterfaceAuthenUtils;
+import com.messoft.gzmy.nineninebrothers.utils.StringUtils;
+import com.messoft.gzmy.nineninebrothers.utils.TimeUtils;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -29,6 +33,7 @@ import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
+import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -172,10 +177,36 @@ public class HttpUtils {
     class HttpHeadInterceptor implements Interceptor {
         @Override
         public Response intercept(Chain chain) throws IOException {
-            Request request = chain.request();
+            Request originalRequest = chain.request();
+            Request request;
             Request.Builder builder;
-            DebugUtil.debug("LoginModel", "url-----" + request.url().toString());
-            builder = request.newBuilder();
+
+            //拿到url做处理
+            String action = originalRequest.url().queryParameterValue(0);
+            String data = originalRequest.url().queryParameterValue(1);
+            if (!StringUtils.isNoEmpty(BusinessUtils.getToken())) {
+                //不签名
+                builder = originalRequest.newBuilder();
+            } else {
+                //要签名
+                String sign = InterfaceAuthenUtils.signTopRequestNew(
+                        action,
+                        data,
+                        TimeUtils.getCurrentTime(),
+                        BusinessUtils.getToken(),
+                        BusinessUtils.getSecret());
+                HttpUrl modifiedUrl = originalRequest.url().newBuilder()
+                        // Provide your custom parameter here
+                        //appKey预留个空
+                        .addQueryParameter("appKey", "")
+                        .addQueryParameter("timestamp", TimeUtils.getCurrentTime())
+                        .addQueryParameter("sign", sign)
+                        .addQueryParameter("token", BusinessUtils.getToken())
+                        .build();
+                request = originalRequest.newBuilder().url(modifiedUrl).build();
+                builder = request.newBuilder();
+            }
+            DebugUtil.debug("HttpHeadInterceptor","请求地址："+originalRequest.url().toString());
             builder.addHeader("Accept", "application/json;versions=1");
             if (CheckNetwork.isNetworkConnected(context)) {
                 int maxAge = 60;
@@ -184,16 +215,9 @@ public class HttpUtils {
                 int maxStale = 60 * 60 * 24 * 28;
                 builder.addHeader("Cache-Control", "public, only-if-cached, max-stale=" + maxStale);
             }
-            // 可添加token
-//            if (listener != null) {
-//                builder.addHeader("token", listener.getToken());
-//            }
-            // 如有需要，添加请求头
-//            builder.addHeader("a", HttpHead.getHeader(request.method()));
-
             return chain.proceed(builder.build());
-//            return chain.proceed(request);
         }
+
     }
 
     private HttpLoggingInterceptor getInterceptor() {

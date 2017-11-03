@@ -25,6 +25,7 @@ import com.messoft.gzmy.nineninebrothers.bean.HomeHeadType;
 import com.messoft.gzmy.nineninebrothers.bean.NewsList;
 import com.messoft.gzmy.nineninebrothers.databinding.FragmentHomeBinding;
 import com.messoft.gzmy.nineninebrothers.databinding.HomeHeadBinding;
+import com.messoft.gzmy.nineninebrothers.http.HttpUtils;
 import com.messoft.gzmy.nineninebrothers.http.RequestImpl;
 import com.messoft.gzmy.nineninebrothers.listener.PerfectClickListener;
 import com.messoft.gzmy.nineninebrothers.model.NewsModel;
@@ -273,7 +274,7 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> {
      * 加载列表
      */
     private void loadNewsListData() {
-        mNewsModel.getNewsList(getActivity(), 0, 10, new RequestImpl() {
+        mNewsModel.getNewsList(getActivity(), mPage, HttpUtils.per_page, new RequestImpl() {
             @Override
             public void loadSuccess(Object object) {
                 showContentView();

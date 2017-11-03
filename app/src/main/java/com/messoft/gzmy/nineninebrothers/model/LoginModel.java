@@ -230,10 +230,11 @@ public class LoginModel {
     /**
      * 查看登录人信息
      */
-    public void checkLoginPersonInfo(Context context, String token, final RequestImpl listener) {
-        Map<String, String> map = new HashMap<String, String>();
-        map.put("token", token);
-        String url = ConstantsUrl.MASTER_URL + ConstantsUrl.CHECK_LOGIN_PERSON_INFO+token;
+    public void checkLoginPersonInfo(Context context, final RequestImpl listener) {
+
+//        String url = ConstantsUrl.MASTER_URL + ConstantsUrl.CHECK_LOGIN_PERSON_INFO;
+        String url = BusinessUtils.getUrlNoPage(ConstantsUrl.MASTER_URL + ConstantsUrl.CHECK_LOGIN_PERSON_INFO,
+                null);
         if (!StringUtils.isNoEmpty(url)) {
             return;
         }

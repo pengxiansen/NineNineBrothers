@@ -76,7 +76,7 @@ public abstract class BaseObserver<T> implements Observer<BaseBean<T>> {
             T t = value.getData();
             onSuccess(t);
         } else {
-            onFailure(errorCode, value.getMessage());
+            onFailure(value.getState(), value.getMessage());
         }
     }
 
@@ -111,7 +111,7 @@ public abstract class BaseObserver<T> implements Observer<BaseBean<T>> {
             errorCode = RESPONSE_FATAL_EOR;
             errorMsg = "运行时错误";
         }
-
+        // REFACTOR: 2017/10/31 0031 待重构 这里如果有数据返回data{},没数据返回data[]，就报错了，错误码就不回调了，返回state就行
         onFailure(errorCode, errorMsg);
     }
 

@@ -148,6 +148,10 @@ public abstract class BaseActivity<SV extends ViewDataBinding> extends RxAppComp
         mBaseBinding.tvTitle.setText(text);
     }
 
+    public TextView getTvTitle(){
+        return mBaseBinding.tvTitle;
+    }
+
     /**
      * 获取右边textView
      */
