@@ -17,6 +17,7 @@ import com.messoft.gzmy.nineninebrothers.Main2Activity;
 import com.messoft.gzmy.nineninebrothers.R;
 import com.messoft.gzmy.nineninebrothers.adapter.HomeHeadTypeAdapter;
 import com.messoft.gzmy.nineninebrothers.adapter.HomeNewsAdapter;
+import com.messoft.gzmy.nineninebrothers.app.ConstantsUrl;
 import com.messoft.gzmy.nineninebrothers.base.BaseActivity;
 import com.messoft.gzmy.nineninebrothers.base.BaseFragment;
 import com.messoft.gzmy.nineninebrothers.base.baseadapter.OnItemClickListener;
@@ -245,7 +246,7 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> {
                         mBannerImages.clear();
                     }
                     for (int i = 0; i < data.size(); i++) {
-                        mBannerImages.add(data.get(i).getImgName());
+                        mBannerImages.add(ConstantsUrl.MASTER_URL_IMG+data.get(i).getImgName());
                     }
                     //设置轮播图
                     mHeadBinding.banner.setImages(mBannerImages).setImageLoader(new GlideImageLoader()).start();

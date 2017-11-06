@@ -16,6 +16,7 @@ import com.messoft.gzmy.nineninebrothers.permission.PermissionRequest;
 import com.messoft.gzmy.nineninebrothers.utils.DebugUtil;
 import com.messoft.gzmy.nineninebrothers.utils.KeybordUtils;
 import com.messoft.gzmy.nineninebrothers.utils.PerfectClickListener;
+import com.messoft.gzmy.nineninebrothers.utils.StringUtils;
 import com.messoft.gzmy.nineninebrothers.utils.SysUtils;
 import com.messoft.gzmy.nineninebrothers.utils.ToastUtil;
 import com.yanzhenjie.permission.AndPermission;
@@ -38,7 +39,8 @@ public class JzBeiAnNextThreeActivity extends BaseActivity<ActivityJzBeiAnNextTh
 
     private ArrayAdapter<String> mSpinnerAdapter;
     private PermissionRequest mRequest;
-    private String mType;
+    private String mType; //0--债事备案 1--资产备案
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,12 +79,17 @@ public class JzBeiAnNextThreeActivity extends BaseActivity<ActivityJzBeiAnNextTh
     }
 
     private void initSetting() {
-        setTitle("解债备案");
         showContentView();
 
         if (getIntent() != null && null != getIntent().getBundleExtra("b")) {
             mType = getIntent().getBundleExtra("b").getString("type");
-            ToastUtil.showToast("解债备案过来的");
+
+            if (StringUtils.isNoEmpty(mType)) {
+                if (mType.equals("1")) {
+                    //资产处置的资产备案过来
+                    setTitle("资产备案");
+                }
+            }
         }
 
         //不动产下拉框
@@ -131,8 +138,10 @@ public class JzBeiAnNextThreeActivity extends BaseActivity<ActivityJzBeiAnNextTh
 
     private void initSpinner() {
         List<String> listSpinner = new ArrayList<>();
-        listSpinner.add("动产");
-        listSpinner.add("不动产");
+        listSpinner.add("房产");
+        listSpinner.add("专利");
+        listSpinner.add("股权");
+        listSpinner.add("货物");
         mSpinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,
                 listSpinner);
         //设置样式

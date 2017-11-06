@@ -45,7 +45,7 @@ public class HomeNewsAdapter extends BaseRecyclerViewAdapter<NewsList> {
                  * 当数据改变时，binding会在下一帧去改变数据，如果我们需要立即改变，就去调用executePendingBindings方法。
                  */
                 binding.executePendingBindings();
-                ImgLoadUtil.displayEspImage(object.getImgUrl(),binding.ivHead,0);
+                ImgLoadUtil.displayEspImageHasHead(object.getImgUrl(),binding.ivHead,0);
                 ViewHelper.setScaleX(itemView,0.8f);
                 ViewHelper.setScaleY(itemView,0.8f);
                 ViewPropertyAnimator.animate(itemView).scaleX(1).setDuration(350).setInterpolator(new OvershootInterpolator()).start();

@@ -17,7 +17,6 @@ import com.messoft.gzmy.nineninebrothers.databinding.ItemAssetKuLeftBinding;
 
 public class AssetKuLeftAdapter extends BaseRecyclerViewAdapter<String> {
 
-    private int indexSelected = -1;
     private Activity activity;
     // 最后是把选中的position赋值给old
     int old = -1;

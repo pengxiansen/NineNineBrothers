@@ -3,6 +3,7 @@ package com.messoft.gzmy.nineninebrothers.ui.jiezai.jzHome;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
+import android.view.View;
 
 import com.messoft.gzmy.nineninebrothers.R;
 import com.messoft.gzmy.nineninebrothers.adapter.ZwAssetInfoImgAdapter;
@@ -14,8 +15,11 @@ import com.messoft.gzmy.nineninebrothers.bean.AssetInfoFile;
 import com.messoft.gzmy.nineninebrothers.bean.BaseBean;
 import com.messoft.gzmy.nineninebrothers.databinding.ActivityZwAssetInfoByIdBinding;
 import com.messoft.gzmy.nineninebrothers.http.HttpClient;
+import com.messoft.gzmy.nineninebrothers.http.RequestImpl;
+import com.messoft.gzmy.nineninebrothers.model.AssetModel;
 import com.messoft.gzmy.nineninebrothers.utils.BusinessUtils;
 import com.messoft.gzmy.nineninebrothers.utils.DebugUtil;
+import com.messoft.gzmy.nineninebrothers.utils.PerfectClickListener;
 import com.messoft.gzmy.nineninebrothers.utils.StringUtils;
 import com.messoft.gzmy.nineninebrothers.utils.ToastUtil;
 import com.messoft.gzmy.nineninebrothers.view.viewbigimage.ViewBigImageActivity;
@@ -45,8 +49,10 @@ public class ZwAssetInfoByIdActivity extends BaseActivity<ActivityZwAssetInfoByI
     private AssetInfoById mData;
     private List<AssetInfoFile> mList;
     private ZwAssetInfoImgAdapter mImgAdapter;
+    private AssetModel mAssetModel;
 
     private ArrayList<String> mImgList;//图片集合
+    private String mType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,16 +66,67 @@ public class ZwAssetInfoByIdActivity extends BaseActivity<ActivityZwAssetInfoByI
     private void initSetting() {
         setTitle("资产详情");
         initDispoable();
+        mAssetModel = new AssetModel();
         mImgList = new ArrayList<>();
         mImgAdapter = new ZwAssetInfoImgAdapter(this);
         if (getIntent() != null && null != getIntent().getBundleExtra("b")) {
             mId = getIntent().getBundleExtra("b").getString("id");
+            mType = getIntent().getBundleExtra("b").getString("type");
             if (StringUtils.isNoEmpty(mId)) {
                 loadInfo(mId);
+            }
+            if (StringUtils.isNoEmpty(mType)) {
+                //请求洽谈按钮
+                bindingView.tvSure.setVisibility(View.VISIBLE);
             }
         }
 
         bindingView.xrcImg.setAdapter(mImgAdapter);
+    }
+
+    private void initListener() {
+        mImgAdapter.setOnItemClickListener(new OnItemClickListener<AssetInfoFile>() {
+            @Override
+            public void onClick(AssetInfoFile zsPersonFileInfo, int position) {
+                if (mList == null || mList.size() <= 0) {
+                    return;
+                }
+                Bundle bundle = new Bundle();
+                bundle.putInt("selet", 2);// 2,大图显示当前页数，1,头像，不显示页数
+                bundle.putInt("code", position);//第几张
+                bundle.putStringArrayList("imageuri", mImgList);
+                Intent intent = new Intent(ZwAssetInfoByIdActivity.this, ViewBigImageActivity.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+
+        //请求洽谈
+        bindingView.tvSure.setOnClickListener(new PerfectClickListener() {
+            @Override
+            protected void onNoDoubleClick(View v) {
+                if (StringUtils.isNoEmpty(mId)) {
+                    assetDiscussApply();
+                }
+            }
+        });
+    }
+
+    /**
+     * 2.5.1  资产洽谈申请
+     */
+    private void assetDiscussApply() {
+        mAssetModel.applyDebtMatterOrder(ZwAssetInfoByIdActivity.this, mId, new RequestImpl() {
+            @Override
+            public void loadSuccess(Object object) {
+                ToastUtil.showToast("请求洽谈成功");
+            }
+
+            @Override
+            public void loadFailed(int errorCode, String errorMessage) {
+                ToastUtil.showToast(errorMessage);
+            }
+        });
     }
 
     private void initDispoable() {
@@ -109,25 +166,6 @@ public class ZwAssetInfoByIdActivity extends BaseActivity<ActivityZwAssetInfoByI
         };
     }
 
-    private void initListener() {
-        mImgAdapter.setOnItemClickListener(new OnItemClickListener<AssetInfoFile>() {
-            @Override
-            public void onClick(AssetInfoFile zsPersonFileInfo, int position) {
-                if (mList == null || mList.size() <= 0) {
-                    return;
-                }
-                Bundle bundle = new Bundle();
-                bundle.putInt("selet", 2);// 2,大图显示当前页数，1,头像，不显示页数
-                bundle.putInt("code", position);//第几张
-                bundle.putStringArrayList("imageuri", mImgList);
-                Intent intent = new Intent(ZwAssetInfoByIdActivity.this, ViewBigImageActivity.class);
-                intent.putExtras(bundle);
-                startActivity(intent);
-            }
-        });
-    }
-
-
     private void loadInfo(String id) {
         //信息
         Map<String, String> map = new HashMap<>();
@@ -161,10 +199,10 @@ public class ZwAssetInfoByIdActivity extends BaseActivity<ActivityZwAssetInfoByI
         if (data == null) {
             return;
         }
-        bindingView.tvAssetType.setText("资产类型："+BusinessUtils.assetType(data.getAssetType()));
-        bindingView.tvAssetAddress.setText("资产地址："+data.getProvinceText()+data.getCityText()+data.getDistrictText());
-        bindingView.tvAssessPrice.setText("评估价格："+data.getEvaluatedPrice());
-        bindingView.tvExpectPrice.setText("评估价格："+data.getExpectedPrice());
+        bindingView.tvAssetType.setText("资产类型：" + BusinessUtils.assetType(data.getAssetType()));
+        bindingView.tvAssetAddress.setText("资产地址：" + data.getProvinceText() + data.getCityText() + data.getDistrictText());
+        bindingView.tvAssessPrice.setText("评估价格：" + data.getEvaluatedPrice());
+        bindingView.tvExpectPrice.setText("评估价格：" + data.getExpectedPrice());
     }
 
     /**

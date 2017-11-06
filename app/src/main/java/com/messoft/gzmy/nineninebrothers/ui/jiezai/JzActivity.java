@@ -17,6 +17,7 @@ import com.messoft.gzmy.nineninebrothers.http.RequestImpl;
 import com.messoft.gzmy.nineninebrothers.model.LoginModel;
 import com.messoft.gzmy.nineninebrothers.ui.jiezai.JzPropertyManage.JzPropertyFragment;
 import com.messoft.gzmy.nineninebrothers.ui.jiezai.jzHome.JzHomeFragment;
+import com.messoft.gzmy.nineninebrothers.ui.jiezai.jzManage.JzKuJzsFragment;
 import com.messoft.gzmy.nineninebrothers.ui.jiezai.jzManage.JzManageFragment;
 import com.messoft.gzmy.nineninebrothers.ui.jiezai.jzMy.JzMyFragment;
 import com.messoft.gzmy.nineninebrothers.utils.SPUtils;
@@ -37,13 +38,13 @@ public class JzActivity extends BaseActivity<ActivityJieZhaiBinding> {
     private MenuItem menuItem;
     private BottomNavigationView bottomNavigationView;
     private LoginModel mLoginModel;
+    private String mRoleId;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jie_zhai);
         setTitle("资产解债");
-        showContentView();
         mLoginModel = new LoginModel();
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
@@ -101,9 +102,6 @@ public class JzActivity extends BaseActivity<ActivityJieZhaiBinding> {
 //                return true;
 //            }
 //        });
-
-        setupViewPager(viewPager);
-
         //查询登录人信息
         checkLoginPersonInfo();
     }
@@ -117,24 +115,18 @@ public class JzActivity extends BaseActivity<ActivityJieZhaiBinding> {
             public void loadSuccess(Object object) {
                 LoginPersonInfo data = (LoginPersonInfo) object;
                 if (data != null) {
+                    mRoleId = data.getRoleId();
                     SPUtils.putObject("loginPersonInfo", data);
+                    SPUtils.putString("roleId", mRoleId);
                 }
+                showContentView();
+                setupViewPager(viewPager);
             }
 
             @Override
             public void loadFailed(int errorCode, String errorMessage) {
                 ToastUtil.showToast(errorMessage);
-                //保存返回码，2--代码需要完善用户信息，解债服务就不能点了，资产处置可以
-                SPUtils.putString("loginPersonInfoCode", errorCode+"");
-//                switch (errorCode) {
-//                    case 2:
-//                        //弹出选择框
-//                        showPopSelectPersonType();
-//                        break;
-//                    default:
-//
-//                        break;
-//                }
+                setupViewPager(viewPager);
             }
         });
     }
@@ -143,7 +135,12 @@ public class JzActivity extends BaseActivity<ActivityJieZhaiBinding> {
     private void setupViewPager(ViewPager viewPager) {
         ArrayList<Fragment> mFragmentList = new ArrayList<>();
         mFragmentList.add(new JzHomeFragment());
-        mFragmentList.add(new JzManageFragment());
+        //0.普通会员 1.高级合伙人 2.解债师
+        if (mRoleId.equals("0") || mRoleId.equals("1")) {
+            mFragmentList.add(new JzManageFragment());
+        }else if(mRoleId.equals("2")) {
+            mFragmentList.add(JzKuJzsFragment.newInstance("0",""));
+        }
         mFragmentList.add(new JzPropertyFragment());
         mFragmentList.add(new JzMyFragment());
         MyFragmentPagerAdapter adapter = new MyFragmentPagerAdapter(getSupportFragmentManager(), mFragmentList);

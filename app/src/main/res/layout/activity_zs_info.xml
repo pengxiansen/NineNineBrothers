@@ -28,10 +28,10 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/ripple_one_item_bg"
                         android:orientation="vertical"
+                        android:paddingBottom="@dimen/x32"
                         android:paddingLeft="@dimen/x20"
                         android:paddingRight="@dimen/x20"
-                        android:paddingTop="@dimen/x32"
-                        android:paddingBottom="@dimen/x32">
+                        android:paddingTop="@dimen/x32">
                         <!--编号-->
                         <TextView
                             android:id="@+id/tv_bianhao"
@@ -62,7 +62,6 @@
                                 android:text="个人"/>
 
                             <TextView
-                                android:visibility="gone"
                                 android:id="@+id/tv_zq_info"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -71,7 +70,8 @@
                                 android:background="@drawable/ripple_one_item_bg"
                                 android:padding="6dp"
                                 android:text="详情"
-                                android:textColor="@color/blue"/>
+                                android:textColor="@color/blue"
+                                android:visibility="gone"/>
                         </RelativeLayout>
                         <!--债务人-->
                         <RelativeLayout
@@ -93,7 +93,6 @@
                                 android:text="企业"/>
 
                             <TextView
-                                android:visibility="gone"
                                 android:id="@+id/tv_zw_info"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -102,7 +101,8 @@
                                 android:background="@drawable/ripple_one_item_bg"
                                 android:padding="6dp"
                                 android:text="详情"
-                                android:textColor="@color/blue"/>
+                                android:textColor="@color/blue"
+                                android:visibility="gone"/>
                         </RelativeLayout>
                     </LinearLayout>
 
@@ -124,10 +124,10 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/ripple_one_item_bg"
                         android:orientation="vertical"
+                        android:paddingBottom="@dimen/x32"
                         android:paddingLeft="@dimen/x20"
                         android:paddingRight="@dimen/x20"
-                        android:paddingTop="@dimen/x32"
-                        android:paddingBottom="@dimen/x32">
+                        android:paddingTop="@dimen/x32">
                         <!--发生时间-->
                         <TextView
                             android:id="@+id/tv_time"
@@ -213,10 +213,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/ripple_one_item_bg"
+                        android:paddingBottom="@dimen/x32"
                         android:paddingLeft="@dimen/x20"
                         android:paddingRight="@dimen/x20"
-                        android:paddingTop="@dimen/x32"
-                        android:paddingBottom="@dimen/x32">
+                        android:paddingTop="@dimen/x32">
 
                         <!--债务人资产-->
                         <LinearLayout
@@ -242,9 +242,9 @@
                                 android:layout_width="0dp"
                                 android:layout_centerInParent="true"
                                 android:layout_weight="3"
-                                android:maxLines="2"
-                                android:maxEms="9"
                                 android:ellipsize="end"
+                                android:maxEms="9"
+                                android:maxLines="2"
                                 android:text="资产地址："/>
 
 
@@ -307,7 +307,6 @@
                         android:text=""/>
 
                     <TextView
-                        android:visibility="gone"
                         android:id="@+id/tv_next"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/x90"
@@ -318,7 +317,8 @@
                         android:gravity="center"
                         android:text="接单"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/text_16sp"/>
+                        android:textSize="@dimen/text_16sp"
+                        android:visibility="gone"/>
                 </LinearLayout>
             </ScrollView>
         </com.scwang.smartrefresh.layout.SmartRefreshLayout>

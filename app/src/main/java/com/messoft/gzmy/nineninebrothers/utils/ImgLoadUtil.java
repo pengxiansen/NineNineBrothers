@@ -5,6 +5,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.messoft.gzmy.nineninebrothers.R;
+import com.messoft.gzmy.nineninebrothers.app.ConstantsUrl;
 
 /**
  * Created by Administrator on 2017/10/23 0023.
@@ -57,6 +58,18 @@ public class ImgLoadUtil {
     public static void displayEspImage(String url, ImageView imageView, int type) {
         Glide.with(imageView.getContext())
                 .load(url)
+                .crossFade(500)
+                .placeholder(getDefaultPic(type))
+                .error(getDefaultPic(type))
+                .into(imageView);
+    }
+    /**
+     * 书籍、妹子图、电影列表图
+     * 默认图区别
+     */
+    public static void displayEspImageHasHead(String url, ImageView imageView, int type) {
+        Glide.with(imageView.getContext())
+                .load(ConstantsUrl.MASTER_URL_IMG+url)
                 .crossFade(500)
                 .placeholder(getDefaultPic(type))
                 .error(getDefaultPic(type))

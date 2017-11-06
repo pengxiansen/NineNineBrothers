@@ -47,7 +47,9 @@ public class AssetDisposeActivity extends BaseActivity<ActivityAssetDisposeBindi
         bindingView.rlAssesBeian.setOnClickListener(new PerfectClickListener() {
             @Override
             protected void onNoDoubleClick(View v) {
-
+                Bundle bundle = new Bundle();
+                bundle.putString("type","1");
+                SysUtils.startActivity(AssetDisposeActivity.this,JzBeiAnNextThreeActivity.class,bundle);
             }
         });
         //资产库

@@ -1,4 +1,4 @@
-package com.messoft.gzmy.nineninebrothers.ui.jiezai.jzHome;
+package com.messoft.gzmy.nineninebrothers.ui.jiezai.jzManage;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -22,10 +22,10 @@ import java.util.List;
 
 /**
  * Created by Administrator on 2017/10/31 0031.
- * 解债库
+ * 解债师---解债管理的页面
  */
 
-public class JzKuFragment extends BaseFragment<FragmentJzKuBinding> {
+public class JzKuJzsFragment extends BaseFragment<FragmentJzKuBinding> {
 
     // 初始化完成后加载数据
     private boolean mIsPrepared = false;
@@ -43,8 +43,8 @@ public class JzKuFragment extends BaseFragment<FragmentJzKuBinding> {
         return R.layout.fragment_jz_ku;
     }
 
-    public static JzKuFragment newInstance(String type,String debtState) {
-        JzKuFragment fragment = new JzKuFragment();
+    public static JzKuJzsFragment newInstance(String type, String debtState) {
+        JzKuJzsFragment fragment = new JzKuJzsFragment();
         Bundle args = new Bundle();
         args.putString("type", type);
         args.putString("debtState", debtState);
@@ -110,7 +110,7 @@ public class JzKuFragment extends BaseFragment<FragmentJzKuBinding> {
                 Bundle bundle = new Bundle();
                 bundle.putString("type",mType);
                 bundle.putString("id",jzKuList.getId());//债事id
-                SysUtils.startActivity(getActivity(),ZsInfoActivity.class,bundle);
+                SysUtils.startActivity(getActivity(),JzManageSelectTypeActivity.class,bundle);
             }
         });
     }

@@ -3,10 +3,13 @@ package com.messoft.gzmy.nineninebrothers.http;
 import com.messoft.gzmy.nineninebrothers.bean.AssetInfoById;
 import com.messoft.gzmy.nineninebrothers.bean.AssetInfoFile;
 import com.messoft.gzmy.nineninebrothers.bean.AssetKuList;
+import com.messoft.gzmy.nineninebrothers.bean.AssetProgress;
 import com.messoft.gzmy.nineninebrothers.bean.BaseBean;
+import com.messoft.gzmy.nineninebrothers.bean.GetDebtMatterProgressFileList;
 import com.messoft.gzmy.nineninebrothers.bean.HomeBanner;
 import com.messoft.gzmy.nineninebrothers.bean.JzInfo;
 import com.messoft.gzmy.nineninebrothers.bean.JzKuList;
+import com.messoft.gzmy.nineninebrothers.bean.JzProgress;
 import com.messoft.gzmy.nineninebrothers.bean.Login;
 import com.messoft.gzmy.nineninebrothers.bean.LoginPersonInfo;
 import com.messoft.gzmy.nineninebrothers.bean.NewsList;
@@ -165,11 +168,35 @@ public interface HttpClient {
      * 2.4.1  债事接单申请
      */
     @POST
-    Observable<BaseBean<Object>> applyDebtMatterOrder(@Url String url);
+    Observable<BaseBean> applyDebtMatterOrder(@Url String url);
 
     /**
-     * 2.4.1  债事接单申请
+     * 2.3.4  查询资产库列表
      */
     @POST
     Observable<BaseBean<List<AssetKuList>>> getAssetList(@Url String url);
+
+    /**
+     * 2.5.1  资产洽谈申请
+     */
+    @POST
+    Observable<BaseBean> assetDiscussApply(@Url String url);
+
+    /**
+     * 2.6.1  查询资产交易进度列表
+     */
+    @POST
+    Observable<BaseBean<List<AssetProgress>>> queryAssetProgressListByAssetId(@Url String url);
+
+    /**
+     * 2.7.1  查询债事交易进度列表
+     */
+    @POST
+    Observable<BaseBean<List<JzProgress>>> queryDebtMatterProgressInfoList(@Url String url);
+
+    /**
+     * 2.7.2  查询债事交易进度文件列表
+     */
+    @POST
+    Observable<BaseBean<List<GetDebtMatterProgressFileList>>> getDebtMatterProgressFileList(@Url String url);
 }

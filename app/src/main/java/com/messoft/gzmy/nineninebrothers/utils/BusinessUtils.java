@@ -23,7 +23,6 @@ public class BusinessUtils {
     }
 
     public static String getSecret() {
-
         return SPUtils.getString("secret", "");
     }
 
@@ -164,6 +163,27 @@ public class BusinessUtils {
             return "非诉讼";
         } else if (debtorType.equals("1")) {
             return "已诉讼";
+        }
+        return "";
+    }
+
+    /**
+     * debtStage：解债阶段(0:等待处理,1:方案设计,2:沟通洽谈,3:方案修改,4:解债完成)
+     */
+    public static String progressStage(String str){
+        if (!StringUtils.isNoEmpty(str)) {
+            return "";
+        }
+        if (str.equals("0")) {
+            return "阶段：等待处理";
+        } else if (str.equals("1")) {
+            return "阶段：方案设计";
+        }else if (str.equals("2")) {
+            return "阶段：沟通洽谈";
+        }else if (str.equals("3")) {
+            return "阶段：方案修改";
+        }else if (str.equals("4")) {
+            return "阶段：解债完成";
         }
         return "";
     }

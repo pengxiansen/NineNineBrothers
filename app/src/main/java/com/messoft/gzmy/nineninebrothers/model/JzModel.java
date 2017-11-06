@@ -5,8 +5,10 @@ import android.content.Context;
 import com.messoft.gzmy.nineninebrothers.app.ConstantsUrl;
 import com.messoft.gzmy.nineninebrothers.bean.AssetKuList;
 import com.messoft.gzmy.nineninebrothers.bean.BaseBean;
+import com.messoft.gzmy.nineninebrothers.bean.GetDebtMatterProgressFileList;
 import com.messoft.gzmy.nineninebrothers.bean.JzInfo;
 import com.messoft.gzmy.nineninebrothers.bean.JzKuList;
+import com.messoft.gzmy.nineninebrothers.bean.JzProgress;
 import com.messoft.gzmy.nineninebrothers.bean.QueryDebtOrderTradeList;
 import com.messoft.gzmy.nineninebrothers.bean.ZsPersonInfo;
 import com.messoft.gzmy.nineninebrothers.http.BaseObserver;
@@ -161,8 +163,8 @@ public class JzModel {
             return;
         }
         HttpClient.Builder.getNineServer().applyDebtMatterOrder(url)
-                .compose(RxSchedulers.<BaseBean<Object>>compose())
-                .subscribe(new BaseObserver<Object>(context, false) {
+                .compose(RxSchedulers.<BaseBean>compose())
+                .subscribe(new BaseObserver(context, false) {
                     @Override
                     protected void onSuccess(Object getNewsLists) {
                         listener.loadSuccess(getNewsLists);
@@ -176,13 +178,85 @@ public class JzModel {
     }
 
     /**
+     * 2.7.1  查询债事交易进度列表
+     */
+    public void queryDebtMatterProgressInfoList(Context context, String id, final RequestImpl listener) {
+        Map<String, String> map = new HashMap<>();
+        map.put("debtMatterId", id);
+        String url = BusinessUtils.getUrlNoPage(ConstantsUrl.MASTER_URL + ConstantsUrl.QUERY_DEBT_MATTER_PROGRESS_INFO_LIST,
+                map);
+        if (!StringUtils.isNoEmpty(url)) {
+            return;
+        }
+        HttpClient.Builder.getNineServer().queryDebtMatterProgressInfoList(url)
+                .compose(RxSchedulers.<BaseBean<List<JzProgress>>>compose())
+                .subscribe(new BaseObserver<List<JzProgress>>(context, false) {
+                    @Override
+                    protected void onSuccess(List<JzProgress> jzProgresses) {
+                        if (jzProgresses!=null) {
+                            listener.loadSuccess(jzProgresses);
+                        }
+                    }
+
+                    @Override
+                    protected void onFailure(int errorCode, String msg) {
+                        listener.loadFailed(errorCode, msg);
+                    }
+                });
+    }
+
+    /**
+     * 2.7.2  查询债事交易进度文件列表
+     */
+    public void getDebtMatterProgressFileList(Context context, String id, final RequestImpl listener) {
+        Map<String, String> map = new HashMap<>();
+        map.put("debtMatterProgressId", id);
+        String url = BusinessUtils.getUrlNoPage(ConstantsUrl.MASTER_URL + ConstantsUrl.GET_DEBT_MATTER_PROGRESS_FILE_LIST,
+                map);
+        if (!StringUtils.isNoEmpty(url)) {
+            return;
+        }
+        HttpClient.Builder.getNineServer().getDebtMatterProgressFileList(url)
+                .compose(RxSchedulers.<BaseBean<List<GetDebtMatterProgressFileList>>>compose())
+                .subscribe(new BaseObserver<List<GetDebtMatterProgressFileList>>(context, false) {
+                    @Override
+                    protected void onSuccess(List<GetDebtMatterProgressFileList> jzProgresses) {
+                        if (jzProgresses!=null) {
+                            listener.loadSuccess(jzProgresses);
+                        }
+                    }
+
+                    @Override
+                    protected void onFailure(int errorCode, String msg) {
+                        listener.loadFailed(errorCode, msg);
+                    }
+                });
+    }
+
+    /**
      * 2.3.4  查询资产库列表
      */
-    public void getAssetList(Context context, final RequestImpl listener) {
+    public void getAssetList(Context context, String assetType, String remarks,
+                             String province, String city, String district, final RequestImpl listener) {
         Map<String, String> map = new HashMap<>();
         map.put("dealState", "0");
         map.put("verifyState", "1");
         map.put("putawayState", "0");
+        if (StringUtils.isNoEmpty(assetType)) {
+            map.put("assetType", assetType);
+        }
+        if (StringUtils.isNoEmpty(remarks)) {
+            map.put("remarks", remarks);
+        }
+        if (StringUtils.isNoEmpty(province)) {
+            map.put("province", province);
+        }
+        if (StringUtils.isNoEmpty(city)) {
+            map.put("city", city);
+        }
+        if (StringUtils.isNoEmpty(district)) {
+            map.put("district", district);
+        }
         String url = BusinessUtils.getUrlNoPage(ConstantsUrl.MASTER_URL + ConstantsUrl.GET＿ASSET＿LIST,
                 map);
         if (!StringUtils.isNoEmpty(url)) {
@@ -190,7 +264,7 @@ public class JzModel {
         }
         HttpClient.Builder.getNineServer().getAssetList(url)
                 .compose(RxSchedulers.<BaseBean<List<AssetKuList>>>compose())
-                .subscribe(new BaseObserver<List<AssetKuList>>(context, false) {
+                .subscribe(new BaseObserver<List<AssetKuList>>(context, true) {
                     @Override
                     protected void onSuccess(List<AssetKuList> getNewsLists) {
                         if (getNewsLists != null) {

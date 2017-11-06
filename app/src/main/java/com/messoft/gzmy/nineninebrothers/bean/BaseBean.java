@@ -6,6 +6,7 @@ package com.messoft.gzmy.nineninebrothers.bean;
  */
 
 public class BaseBean<T> {
+    private String id; //这个id用在少数几个接口上
     private int state;
     private String message;
     private T data;    //泛型T来表示object，可能是数组，也可能是对象
@@ -34,6 +35,14 @@ public class BaseBean<T> {
         this.message = error;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public T getData() {
         return data;
     }
@@ -44,8 +53,9 @@ public class BaseBean<T> {
 
     @Override
     public String toString() {
-        return "httpResponse{" +
+        return "BaseBean{" +
                 "state=" + state +
+                ", id='" + id + '\'' +
                 ", message='" + message + '\'' +
                 ", data=" + data +
                 '}';

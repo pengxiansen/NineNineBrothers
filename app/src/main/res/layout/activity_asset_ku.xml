@@ -9,7 +9,7 @@
         <!--左边-->
         <com.jcodecraeer.xrecyclerview.XRecyclerView
             android:id="@+id/xrc_left"
-            android:layout_width="@dimen/x200"
+            android:layout_width="@dimen/x180"
             android:layout_height="match_parent"
             android:background="@color/white"/>
 
@@ -21,8 +21,41 @@
 
             <com.jcodecraeer.xrecyclerview.XRecyclerView
                 android:id="@+id/xrc_right"
+                android:background="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
+
+            <RelativeLayout
+                android:visibility="gone"
+                android:id="@+id/rl_no_data"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <!--加载失败-->
+                <LinearLayout
+                    android:id="@+id/ll_error_refresh"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/img_err"
+                        android:src="@drawable/load_err"/>
+
+                    <TextView
+                        android:id="@+id/tv_error"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:text="暂无数据，换个关键词试试"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+            </RelativeLayout>
         </FrameLayout>
     </LinearLayout>
 </layout>

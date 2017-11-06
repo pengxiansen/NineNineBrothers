@@ -76,5 +76,17 @@ public class ConstantsUrl {
     public static final String GET_ASSET_FILE_BY_ID = "/assetFile/assetFile.do?action=getAssetFileList&data=";
 
     //2.3.4  查询资产库列表
-    public static final String GET＿ASSET＿LIST = "/asset/asset.do?action=getAssetList&data={";
+    public static final String GET＿ASSET＿LIST = "/asset/asset.do?action=getAssetList&data=";
+
+    //2.5.1  资产洽谈申请
+    public static final String ASSET_DISCUSS_APPLY = "/assetDiscussApply/assetDiscussApply.do?action=applyAssetDiscuss&data=";
+
+    //2.6.1  查询资产交易进度列表
+    public static final String QUERY_ASSET_PROGRESS_LIST_BY_ASSETID = "/assetProgress/assetProgress.do?action=queryAssetProgressListByAssetId&data=";
+
+    //2.7.1  查询债事交易进度列表
+    public static final String QUERY_DEBT_MATTER_PROGRESS_INFO_LIST = "/debtMatterProgress/debtMatterProgress.do?action=queryDebtMatterProgressInfoList&data=";
+
+    //22.7.1  查询债事交易进度列表
+    public static final String GET_DEBT_MATTER_PROGRESS_FILE_LIST = "/debtMatterProgressFile/debtMatterProgressFile.do?action=getDebtMatterProgressFileList&data=";
 }

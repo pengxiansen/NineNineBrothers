@@ -11,7 +11,7 @@ import com.messoft.gzmy.nineninebrothers.databinding.ItemSelectStreetBinding;
 
 /**
  * Created by Administrator on 2017/7/26 0026.
- * 首页头部分类
+ *
  */
 
 public class SelectStreetAdapter extends BaseRecyclerViewAdapter<Street> {

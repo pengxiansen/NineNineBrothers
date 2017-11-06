@@ -1,6 +1,8 @@
 package com.messoft.gzmy.nineninebrothers.adapter;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -11,12 +13,14 @@ import com.messoft.gzmy.nineninebrothers.base.baseadapter.BaseRecyclerViewHolder
 import com.messoft.gzmy.nineninebrothers.bean.HomeHeadType;
 import com.messoft.gzmy.nineninebrothers.databinding.ItemHomeHeaderTypeBinding;
 import com.messoft.gzmy.nineninebrothers.listener.PerfectClickListener;
+import com.messoft.gzmy.nineninebrothers.ui.home.ApplyPartnerActivity;
 import com.messoft.gzmy.nineninebrothers.ui.jiezai.JzActivity;
 import com.messoft.gzmy.nineninebrothers.ui.jiezai.jzHome.AssetDisposeActivity;
 import com.messoft.gzmy.nineninebrothers.ui.jiezai.jzHome.JzServeActivity;
 import com.messoft.gzmy.nineninebrothers.ui.webview.WebCommonActivity;
 import com.messoft.gzmy.nineninebrothers.utils.ImgLoadUtil;
 import com.messoft.gzmy.nineninebrothers.utils.SPUtils;
+import com.messoft.gzmy.nineninebrothers.utils.StringUtils;
 import com.messoft.gzmy.nineninebrothers.utils.SysUtils;
 import com.messoft.gzmy.nineninebrothers.utils.ToastUtil;
 import com.othershe.nicedialog.BaseNiceDialog;
@@ -72,21 +76,27 @@ public class HomeHeadTypeAdapter extends BaseRecyclerViewAdapter<HomeHeadType> {
                                     SysUtils.startActivity(activity, JzActivity.class);
                                 } else if (type == 1) {
                                     //已经在解债界面中
-                                    //信息不完善
-                                    if ("2".equals(SPUtils.getString("loginPersonInfoCode", ""))) {
-                                        //需要完善资料
-                                        showTip();
-                                    } else {
-                                        SysUtils.startActivity(activity, JzServeActivity.class);
-
+                                    //会员不能查看解债服务模块--提示跳转申请合伙人界面
+                                    String roleId = SPUtils.getString("roleId","");
+                                    if (StringUtils.isNoEmpty(roleId)) {
+                                        //0.普通会员 1.高级合伙人 2.解债师
+                                        if (roleId.equals("0")) {
+                                            showGotoApply();
+                                        }else if(roleId.equals("1")){
+                                            SysUtils.startActivity(activity, JzServeActivity.class);
+                                        }else if(roleId.equals("2")){
+                                            SysUtils.startActivity(activity, JzServeActivity.class);
+                                        }
                                     }
-                                    // TODO: 2017/11/1 0001
-//                                    SysUtils.startActivity(activity, JzServeActivity.class);
                                 }
                                 break;
                             case 1:
                                 //资产处理
-                                SysUtils.startActivity(activity, AssetDisposeActivity.class);
+                                if (type == 0) {
+                                    //首页点进来
+                                }else if(type==1){
+                                    SysUtils.startActivity(activity, AssetDisposeActivity.class);
+                                }
                                 break;
                             case 2:
                                 //会员商城
@@ -100,6 +110,29 @@ public class HomeHeadTypeAdapter extends BaseRecyclerViewAdapter<HomeHeadType> {
                 });
             }
         }
+    }
+
+    /**
+     * 调到申请合伙人提示
+     */
+    private void showGotoApply() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        builder.setTitle("温馨提示");
+        builder.setMessage("普通会员不能查看解债模块，需要申请成为合伙人才能查看");
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            SysUtils.startActivity(activity, ApplyPartnerActivity.class);
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     /**

@@ -55,7 +55,7 @@
                         android:background="@drawable/input_gray_bg"/>
                 </LinearLayout>
 
-                <!--资产地址-->
+                <!--所属地址-->
                 <LinearLayout
                     android:padding="@dimen/x20"
                     android:layout_width="match_parent"
@@ -75,17 +75,53 @@
                             android:id="@+id/tv_address_title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="资产地址: "
+                            android:text="所属地区: "
                             android:gravity="right"
                             android:layout_marginRight="@dimen/x10"
                             android:layout_alignParentRight="true"
                             android:layout_marginLeft="@dimen/x10"/>
                     </RelativeLayout>
-                    <com.messoft.gzmy.nineninebrothers.view.XEditText
+                    <TextView
                         android:gravity="center_vertical"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/x76"
                         android:paddingLeft="@dimen/x12"
+                        android:hint="请选择省市区"
+                        android:background="@drawable/input_gray_bg"/>
+                </LinearLayout>
+
+                <!--街道-->
+                <LinearLayout
+                    android:padding="@dimen/x20"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+                    <RelativeLayout
+                        android:layout_width="@dimen/x180"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="*"
+                            android:layout_toLeftOf="@+id/tv_street_title"
+                            android:textColor="@color/red"/>
+                        <TextView
+                            android:id="@+id/tv_street_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="所属街道: "
+                            android:gravity="right"
+                            android:layout_marginRight="@dimen/x10"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginLeft="@dimen/x10"/>
+                    </RelativeLayout>
+                    <TextView
+                        android:gravity="center_vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/x76"
+                        android:paddingLeft="@dimen/x12"
+                        android:hint="请选择街道"
                         android:background="@drawable/input_gray_bg"/>
                 </LinearLayout>
 
@@ -162,7 +198,6 @@
                     android:padding="@dimen/x20"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
                     android:orientation="horizontal">
                     <RelativeLayout
                         android:layout_width="@dimen/x180"

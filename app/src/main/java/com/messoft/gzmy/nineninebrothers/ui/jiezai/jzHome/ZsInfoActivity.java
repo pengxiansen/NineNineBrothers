@@ -46,10 +46,10 @@ public class ZsInfoActivity extends BaseActivity<ActivityZsInfoBinding> {
 
             if (mType != null && mType.equals("0")) {
                 //解债师不能查看详情
+
+            } else if(mType != null && mType.equals("1")) {
                 bindingView.tvZqInfo.setVisibility(View.VISIBLE);
                 bindingView.tvZwInfo.setVisibility(View.VISIBLE);
-                bindingView.tvNext.setVisibility(View.VISIBLE);
-            } else if(mType != null && mType.equals("1")) {
                 bindingView.tvNext.setVisibility(View.GONE);
             }
 
