@@ -167,7 +167,7 @@ public class RegisterActivity extends BaseActivity<ActivityRegisterBinding> {
             @Override
             public void onClick(Street street, int position) {
                 if (street != null) {
-                    mStreetId = street.getId();
+                    mStreetId = street.getId()+"";
                     mStreetName = street.getTitle();
                     bindingView.tvStreet.setText(mStreetName);
                     if (mStreetDialog != null) {

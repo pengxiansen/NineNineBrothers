@@ -17,7 +17,7 @@ public class Street {
      * sort : 1
      */
 
-    private String id;
+    private int id;
     private String createTime;
     private String parentId;
     private String isDel;
@@ -25,11 +25,11 @@ public class Street {
     private String level;
     private String sort;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

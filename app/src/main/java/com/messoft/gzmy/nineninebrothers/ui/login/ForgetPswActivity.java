@@ -44,6 +44,9 @@ public class ForgetPswActivity extends BaseActivity<ActivityForgetPswBinding> {
             mType = getIntent().getBundleExtra("b").getString("type");
             if (mType.equals("login")) {
                 setTitle("忘记密码");
+            }else if(mType.equals("PersonInfoActivity")){
+                setTitle("修改手机号");
+                bindingView.tvNext.setText("修改");
             }
         }
 
@@ -83,10 +86,48 @@ public class ForgetPswActivity extends BaseActivity<ActivityForgetPswBinding> {
         bindingView.tvNext.setOnClickListener(new PerfectClickListener() {
             @Override
             protected void onNoDoubleClick(View v) {
-                checkCode();
+                if (mType.equals("login")) {
+                    checkCode();
+                }else if(mType.equals("PersonInfoActivity")){
+                    //修改手机号
+                    clickChangePhone();
+                }
             }
         });
 
+    }
+
+    /**
+     * 修改手机号
+     */
+    private void clickChangePhone() {
+        final String etPhone = bindingView.etPhone.getText().toString().trim();
+        final String etCode = bindingView.etCode.getText().toString().trim();
+        if (!StringUtils.isNoEmpty(etPhone)) {
+            ToastUtil.showToast("手机号码不能为空");
+            return;
+        }
+        if (!RegexUtil.checkMobile(etPhone)) {
+            ToastUtil.showToast("手机号码格式不正确");
+            return;
+        }
+        if (!StringUtils.isNoEmpty(etCode)) {
+            ToastUtil.showToast("验证码不能为空");
+            return;
+        }
+        mLoginModel.modifyMobile(ForgetPswActivity.this, etPhone, etCode, new RequestImpl() {
+            @Override
+            public void loadSuccess(Object object) {
+                ToastUtil.showToast("修改成功");
+                finish();
+                //TODO 通知个人中心页面刷新
+            }
+
+            @Override
+            public void loadFailed(int errorCode, String errorMessage) {
+                ToastUtil.showToast(errorMessage);
+            }
+        });
     }
 
     private void checkCode() {

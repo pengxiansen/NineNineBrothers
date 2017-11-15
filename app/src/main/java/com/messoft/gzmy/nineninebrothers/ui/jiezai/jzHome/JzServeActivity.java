@@ -35,11 +35,14 @@ public class JzServeActivity extends BaseActivity<ActivityJieZhaiServeBinding> {
 
         if (BusinessUtils.getLoginPersonInfo() != null) {
             mRoleId = BusinessUtils.getLoginPersonInfo().getRoleId();
-            if (mRoleId.equals("0") || mRoleId.equals("1")) {
-                //普通会员 跳转跟高级合伙人一样
+            if (mRoleId.equals("0")) {
+                //普通会员
+                bindingView.rlZhaishiBeian.setVisibility(View.VISIBLE);
+            } else if (mRoleId.equals("1")) {
+                //高级合伙人
                 bindingView.rlZhaishiBeian.setVisibility(View.VISIBLE);
                 bindingView.rlJiezhaiBeian.setVisibility(View.VISIBLE);
-            } else if (mRoleId.equals("2")) {
+            }else if (mRoleId.equals("2")) {
                 //解债师
                 bindingView.rlJiezhaiKu.setVisibility(View.VISIBLE);
             }

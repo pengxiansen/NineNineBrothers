@@ -4,7 +4,6 @@ import android.text.TextUtils;
 import android.util.Base64;
 
 import java.io.IOException;
-import java.net.URLEncoder;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -184,10 +183,11 @@ public class InterfaceAuthenUtils {
         params.put("action", action);
         params.put("timestamp", timestamp);
         if (!TextUtils.isEmpty(data)) {
-            data = URLEncoder.encode(data, "UTF-8");
+//            data = URLEncoder.encode(data, "UTF-8");
             params.put("data", data);
         }
         params.put("token", token);
+        DebugUtil.debug("signTopRequestNew","params:"+params);
         String[] keys = params.keySet().toArray(new String[0]);
         Arrays.sort(keys);
         StringBuilder query = new StringBuilder();

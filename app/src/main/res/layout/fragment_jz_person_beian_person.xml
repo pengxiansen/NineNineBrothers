@@ -47,6 +47,7 @@
                             android:layout_marginLeft="@dimen/x10"/>
                     </RelativeLayout>
                     <com.messoft.gzmy.nineninebrothers.view.XEditText
+                        android:id="@+id/xet_id_card"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/x76"
                         android:paddingLeft="@dimen/x12"
@@ -80,6 +81,7 @@
                             android:layout_marginLeft="@dimen/x10"/>
                     </RelativeLayout>
                     <com.messoft.gzmy.nineninebrothers.view.XEditText
+                        android:id="@+id/xet_name"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/x76"
                         android:paddingLeft="@dimen/x12"
@@ -112,7 +114,44 @@
                             android:layout_alignParentRight="true"
                             android:layout_marginLeft="@dimen/x10"/>
                     </RelativeLayout>
-                    <com.messoft.gzmy.nineninebrothers.view.XEditText
+                    <TextView
+                        android:id="@+id/xet_address"
+                        android:gravity="center_vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/x76"
+                        android:paddingLeft="@dimen/x12"
+                        android:background="@drawable/input_gray_bg"/>
+                </LinearLayout>
+
+                <!--所属街道-->
+                <LinearLayout
+                    android:layout_marginTop="@dimen/x20"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+                    <RelativeLayout
+                        android:layout_width="@dimen/x180"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="*"
+                            android:layout_toLeftOf="@+id/tv_street_title"
+                            android:textColor="@color/red"/>
+                        <TextView
+                            android:id="@+id/tv_street_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="所属街道: "
+                            android:gravity="right"
+                            android:layout_marginRight="@dimen/x20"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginLeft="@dimen/x10"/>
+                    </RelativeLayout>
+                    <TextView
+                        android:gravity="center_vertical"
+                        android:id="@+id/xet_street"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/x76"
                         android:paddingLeft="@dimen/x12"
@@ -146,6 +185,7 @@
                             android:layout_marginLeft="@dimen/x10"/>
                     </RelativeLayout>
                     <com.messoft.gzmy.nineninebrothers.view.XEditText
+                        android:id="@+id/xet_phone"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/x76"
                         android:paddingLeft="@dimen/x12"
@@ -179,6 +219,7 @@
                             android:layout_marginLeft="@dimen/x10"/>
                     </RelativeLayout>
                     <com.messoft.gzmy.nineninebrothers.view.XEditText
+                        android:id="@+id/xet_email"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/x76"
                         android:paddingLeft="@dimen/x12"
@@ -213,6 +254,7 @@
                             android:layout_marginLeft="@dimen/x10"/>
                     </RelativeLayout>
                     <com.messoft.gzmy.nineninebrothers.view.XEditText
+                        android:id="@+id/xet_wx"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/x76"
                         android:paddingLeft="@dimen/x12"
@@ -247,6 +289,7 @@
                             android:layout_marginLeft="@dimen/x10"/>
                     </RelativeLayout>
                     <com.messoft.gzmy.nineninebrothers.view.XEditText
+                        android:id="@+id/xet_qq"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/x76"
                         android:paddingLeft="@dimen/x12"

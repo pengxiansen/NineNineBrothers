@@ -29,6 +29,12 @@ public class TimeUtils {
         return currentTime;
     }
 
+    public static String getDateToString(long time) {
+        SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
+        Date d = new Date(time);
+        return sf.format(d);
+    }
+
     /**
      * 将字符串转位日期类型
      *

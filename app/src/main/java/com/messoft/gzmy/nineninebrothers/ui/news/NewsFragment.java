@@ -14,6 +14,9 @@ import com.messoft.gzmy.nineninebrothers.databinding.FragmentNewsBinding;
 
 public class NewsFragment extends BaseFragment<FragmentNewsBinding> {
 
+    private Handler mHandler;
+    private Runnable mRunnable;
+
     @Override
     protected int setContent() {
         return R.layout.fragment_news;
@@ -22,11 +25,13 @@ public class NewsFragment extends BaseFragment<FragmentNewsBinding> {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                showContentView();
-            }
-        }, 3000);
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                showContentView();
+//            }
+//        }, 3000);
+        showContentView();
     }
+
 }

@@ -17,6 +17,7 @@ import com.messoft.gzmy.nineninebrothers.model.LoginModel;
 import com.messoft.gzmy.nineninebrothers.utils.DebugUtil;
 import com.messoft.gzmy.nineninebrothers.utils.SPUtils;
 import com.messoft.gzmy.nineninebrothers.utils.StatusBarUtil;
+import com.messoft.gzmy.nineninebrothers.utils.StringUtils;
 import com.messoft.gzmy.nineninebrothers.utils.SysUtils;
 import com.messoft.gzmy.nineninebrothers.utils.ToastUtil;
 
@@ -75,14 +76,14 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> {
     }
 
     private void clickLogin(final String account, final String password) {
-//        if (!StringUtils.isNoEmpty(account)) {
-//            ToastUtil.showToast("请输入账号");
-//            return;
-//        }
-//        if (!StringUtils.isNoEmpty(password)) {
-//            ToastUtil.showToast("请输入密码");
-//            return;
-//        }
+        if (!StringUtils.isNoEmpty(account)) {
+            ToastUtil.showToast("请输入账号");
+            return;
+        }
+        if (!StringUtils.isNoEmpty(password)) {
+            ToastUtil.showToast("请输入密码");
+            return;
+        }
         mLoginModel.login(LoginActivity.this, account, password, new RequestImpl() {
             @Override
             public void loadSuccess(Object object) {

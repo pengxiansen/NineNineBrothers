@@ -5,6 +5,8 @@ package com.messoft.gzmy.nineninebrothers.http.rx;
  */
 
 public class RxCodeConstants {
-    // 补卡完更新列表
-    public static final int REFRESH_CARD_LIST = 0;
+    //债事录制完刷新上个页面列表
+    public static final int REFRESH_JZ_PROGRESS_LIST = 0;
+    //资产录制完刷新上个页面列表
+    public static final int REFRESH_ASSET_PROGRESS_LIST = 1;
 }

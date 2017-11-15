@@ -19,7 +19,6 @@ import java.util.ArrayList;
 
 public class JzManageFragment extends BaseFragment<FragmentJzManageBinding> {
 
-
     private ArrayList<String> mTitleList = new ArrayList<>(3);
     private ArrayList<Fragment> mFragments = new ArrayList<>(3);
 
@@ -56,8 +55,8 @@ public class JzManageFragment extends BaseFragment<FragmentJzManageBinding> {
         //债事状态(0:待审核,1:待接单,2:交易中,3:已完成)
         //type  0:解债师 1:高级合伙人
         //这里type传1 后面的详情页可以查看债市人详情
-        mFragments.add(JzKuJzsFragment.newInstance("1","1"));
-        mFragments.add(JzKuJzsFragment.newInstance("1","2"));
-        mFragments.add(JzKuJzsFragment.newInstance("1","3"));
+        mFragments.add(JzKuJzsFragment.newInstance("1","","","1"));
+        mFragments.add(JzKuJzsFragment.newInstance("1","","","2"));
+        mFragments.add(JzKuJzsFragment.newInstance("1","","","3"));
     }
 }

@@ -2,6 +2,7 @@ package com.messoft.gzmy.nineninebrothers.utils;
 
 import android.text.TextUtils;
 
+import com.messoft.gzmy.nineninebrothers.bean.Login;
 import com.messoft.gzmy.nineninebrothers.bean.LoginPersonInfo;
 
 import org.json.JSONException;
@@ -9,7 +10,9 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by Administrator on 2017/7/26 0026.
@@ -24,6 +27,17 @@ public class BusinessUtils {
 
     public static String getSecret() {
         return SPUtils.getString("secret", "");
+    }
+
+    public static Login getLoginInfo() {
+        Object object = SPUtils.getObject("loginObject");
+        if (object != null && object instanceof Login) {
+            Login login = (Login) object;
+            if (login != null) {
+                return login;
+            }
+        }
+        return null;
     }
 
     public static LoginPersonInfo getLoginPersonInfo() {
@@ -170,20 +184,41 @@ public class BusinessUtils {
     /**
      * debtStage：解债阶段(0:等待处理,1:方案设计,2:沟通洽谈,3:方案修改,4:解债完成)
      */
-    public static String progressStage(String str){
+    public static String progressStage(String str) {
         if (!StringUtils.isNoEmpty(str)) {
             return "";
         }
         if (str.equals("0")) {
-            return "阶段：等待处理";
+            return "解债阶段：等待处理";
         } else if (str.equals("1")) {
-            return "阶段：方案设计";
-        }else if (str.equals("2")) {
-            return "阶段：沟通洽谈";
-        }else if (str.equals("3")) {
-            return "阶段：方案修改";
-        }else if (str.equals("4")) {
-            return "阶段：解债完成";
+            return "解债阶段：方案设计";
+        } else if (str.equals("2")) {
+            return "解债阶段：沟通洽谈";
+        } else if (str.equals("3")) {
+            return "解债阶段：方案修改";
+        } else if (str.equals("4")) {
+            return "解债阶段：解债完成";
+        }
+        return "";
+    }
+
+    /**
+     * 资产：交易进度(0:等待处理,1:方案设计,2:沟通洽谈,3:方案修改,4:解债完成)
+     */
+    public static String assetProgressStage(String str) {
+        if (!StringUtils.isNoEmpty(str)) {
+            return "";
+        }
+        if (str.equals("0")) {
+            return "等待处理";
+        } else if (str.equals("1")) {
+            return "需求洽谈";
+        } else if (str.equals("2")) {
+            return "合同签订";
+        } else if (str.equals("3")) {
+            return "资金到位";
+        } else if (str.equals("4")) {
+            return "交易完成";
         }
         return "";
     }
@@ -230,5 +265,26 @@ public class BusinessUtils {
             return "";
         }
         return time.substring(11, 16);
+    }
+
+    /**
+     * 拼接问题 1$:$营业执照副本复印件$|$2$:$组织机构代码证复印件
+     * 拼接问题 1$:$营业执照副本复印件$|$3$:$法人身份证复印件
+     */
+    public static String spliceQuestion(Set<Integer> set, List<String> list) {
+        if (set == null || list == null || set.size() <= 0 || list.size() <= 0) {
+            return "";
+        }
+        int size = set.size();
+        StringBuilder sb = new StringBuilder();
+        for (Integer integer : set) {
+            int i = integer.intValue();
+            sb.append(i + 1 + "$:$");
+            sb.append(list.get(i));
+            if (size - 1 > i) {
+                sb.append("$|$");
+            }
+        }
+        return sb.toString();
     }
 }

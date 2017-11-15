@@ -1,5 +1,6 @@
 package com.messoft.gzmy.nineninebrothers;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -23,7 +24,6 @@ import com.messoft.gzmy.nineninebrothers.ui.news.NewsFragment;
 import com.messoft.gzmy.nineninebrothers.utils.SPUtils;
 import com.messoft.gzmy.nineninebrothers.utils.StatusBarUtil;
 import com.messoft.gzmy.nineninebrothers.utils.StringUtils;
-import com.messoft.gzmy.nineninebrothers.utils.SysUtils;
 import com.messoft.gzmy.nineninebrothers.utils.ToastUtil;
 import com.messoft.gzmy.nineninebrothers.view.BottomNavigationViewHelper;
 import com.wingsofts.byeburgernavigationview.ByeBurgerBehavior;
@@ -164,7 +164,9 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
 //        PasswordHelp.savePassword(MainActivity.this, "", "", true);
         SPUtils.putString("account","");
         SPUtils.putString("password","");
-        SysUtils.startActivity(MainActivity.this, LoginActivity.class);
+        Intent in = new Intent(MainActivity.this, LoginActivity.class);
+        in.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(in);
         finish();
     }
 

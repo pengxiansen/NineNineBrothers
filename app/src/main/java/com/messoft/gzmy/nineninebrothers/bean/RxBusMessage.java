@@ -7,9 +7,10 @@ import java.io.Serializable;
  * RxBus ben
  */
 
-public class RxBusMessage<T> implements Serializable{
+public class RxBusMessage<T> implements Serializable {
 
     private int type;
+    private int i;
     private T data;
 
     public RxBusMessage(T data) {
@@ -19,6 +20,19 @@ public class RxBusMessage<T> implements Serializable{
     public RxBusMessage(int type, T data) {
         this.type = type;
         this.data = data;
+    }
+
+    public RxBusMessage(int type, int i) {
+        this.type = type;
+        this.i = i;
+    }
+
+    public int getI() {
+        return i;
+    }
+
+    public void setI(int i) {
+        this.i = i;
     }
 
     public int getType() {

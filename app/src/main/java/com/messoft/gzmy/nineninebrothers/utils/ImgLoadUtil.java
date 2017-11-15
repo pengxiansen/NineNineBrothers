@@ -5,7 +5,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.messoft.gzmy.nineninebrothers.R;
-import com.messoft.gzmy.nineninebrothers.app.ConstantsUrl;
+import com.messoft.gzmy.nineninebrothers.app.Constants;
 
 /**
  * Created by Administrator on 2017/10/23 0023.
@@ -69,7 +69,7 @@ public class ImgLoadUtil {
      */
     public static void displayEspImageHasHead(String url, ImageView imageView, int type) {
         Glide.with(imageView.getContext())
-                .load(ConstantsUrl.MASTER_URL_IMG+url)
+                .load(Constants.MASTER_URL_IMG+url)
                 .crossFade(500)
                 .placeholder(getDefaultPic(type))
                 .error(getDefaultPic(type))
@@ -80,6 +80,8 @@ public class ImgLoadUtil {
         switch (type) {
             case 0:// 资讯
                 return R.drawable.img_load_error;
+            case 1:// 默认头像
+                return R.drawable.default_header;
         }
         return R.drawable.img_load_error;
     }

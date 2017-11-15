@@ -51,6 +51,33 @@ public class LoginPersonInfo implements Serializable {
     private String cityText;
     private String mobile;
     private String roleId;
+    private String imgName;
+    private String nickName;
+    private String referralCode;
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public String getReferralCode() {
+        return referralCode;
+    }
+
+    public void setReferralCode(String referralCode) {
+        this.referralCode = referralCode;
+    }
+
+    public String getImgName() {
+        return imgName;
+    }
+
+    public void setImgName(String imgName) {
+        this.imgName = imgName;
+    }
 
     public String getCreateTime() {
         return createTime;

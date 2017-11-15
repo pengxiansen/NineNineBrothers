@@ -12,7 +12,7 @@ import com.google.gson.FieldNamingStrategy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import com.messoft.gzmy.nineninebrothers.app.ConstantsUrl;
+import com.messoft.gzmy.nineninebrothers.app.Constants;
 import com.messoft.gzmy.nineninebrothers.utils.BusinessUtils;
 import com.messoft.gzmy.nineninebrothers.utils.DebugUtil;
 import com.messoft.gzmy.nineninebrothers.utils.InterfaceAuthenUtils;
@@ -51,6 +51,8 @@ public class HttpUtils {
     private Gson gson;
     private Context context;
     private Object ohHttps;
+    private Object ohHttpsQz;
+    private Object ohHttpsMember;
     private IpmlTokenGetListener listener;
     private boolean debug; //正式包关闭
     /**
@@ -77,15 +79,37 @@ public class HttpUtils {
     }
 
 
-    public <T> T getNineServer(Class<T> a) {
+    public <T> T getNineServerCommon(Class<T> a) {
         if (ohHttps == null) {
             synchronized (HttpUtils.class) {
                 if (ohHttps == null) {
-                    ohHttps = getBuilder(ConstantsUrl.MASTER_URL).build().create(a);
+                    ohHttps = getBuilder(Constants.MASTER_URL_COMMON).build().create(a);
                 }
             }
         }
         return (T) ohHttps;
+    }
+
+    public <T> T getNineServerQz(Class<T> a) {
+        if (ohHttpsQz == null) {
+            synchronized (HttpUtils.class) {
+                if (ohHttpsQz == null) {
+                    ohHttpsQz = getBuilder(Constants.MASTER_URL).build().create(a);
+                }
+            }
+        }
+        return (T) ohHttpsQz;
+    }
+
+    public <T> T getNineServerMember(Class<T> a) {
+        if (ohHttpsMember == null) {
+            synchronized (HttpUtils.class) {
+                if (ohHttpsMember == null) {
+                    ohHttpsMember = getBuilder(Constants.MASTER_URL_MEMBER).build().create(a);
+                }
+            }
+        }
+        return (T) ohHttpsMember;
     }
 
 
@@ -145,7 +169,9 @@ public class HttpUtils {
             okBuilder.readTimeout(20, TimeUnit.SECONDS);
             okBuilder.connectTimeout(10, TimeUnit.SECONDS);
             okBuilder.writeTimeout(20, TimeUnit.SECONDS);
-            okBuilder.addInterceptor(new HttpHeadInterceptor());
+//            okBuilder.addInterceptor(new HttpHeadInterceptor());
+//            okBuilder.addInterceptor(new MyHttpHeadInterceptor(context));
+            okBuilder.addInterceptor(new MyHttpInterceptor(context));
             okBuilder.addInterceptor(getInterceptor());
             okBuilder.sslSocketFactory(sslSocketFactory);
             okBuilder.hostnameVerifier(new HostnameVerifier() {

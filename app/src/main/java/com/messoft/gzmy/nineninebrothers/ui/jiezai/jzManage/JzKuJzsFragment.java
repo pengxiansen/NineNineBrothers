@@ -35,7 +35,9 @@ public class JzKuJzsFragment extends BaseFragment<FragmentJzKuBinding> {
 
     private JzModel mJzModel;
     private JzKuAdapter mAdapter;
-    private String mDebtState;
+    private String mState; //订单处理状态(0:待审核,1:解债中,2:已完成,3:失败)
+    private String mDebtState; //债事状态(0:待审核,1:待接单,2:交易中,3:已完成)
+    private String mVerifyState; //订单审核状态(0:待审核,1:审核通过,2:审核驳回)
     private String mType; //type  0:解债师 1:高级合伙人
 
     @Override
@@ -43,11 +45,13 @@ public class JzKuJzsFragment extends BaseFragment<FragmentJzKuBinding> {
         return R.layout.fragment_jz_ku;
     }
 
-    public static JzKuJzsFragment newInstance(String type, String debtState) {
+    public static JzKuJzsFragment newInstance(String type,String state,String verifyState,String debtState) {
         JzKuJzsFragment fragment = new JzKuJzsFragment();
         Bundle args = new Bundle();
         args.putString("type", type);
+        args.putString("state", state);
         args.putString("debtState", debtState);
+        args.putString("verifyState", verifyState);
         fragment.setArguments(args);
         return fragment;
     }
@@ -56,8 +60,10 @@ public class JzKuJzsFragment extends BaseFragment<FragmentJzKuBinding> {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mDebtState = getArguments().getString("debtState");
             mType = getArguments().getString("type");
+            mState = getArguments().getString("state");
+            mDebtState = getArguments().getString("debtState");
+            mVerifyState = getArguments().getString("verifyState");
         }
     }
 
@@ -127,7 +133,7 @@ public class JzKuJzsFragment extends BaseFragment<FragmentJzKuBinding> {
      * 加载列表
      */
     private void loadJzKuList() {
-        mJzModel.getJzKuList(getActivity(), "", mDebtState, "1", mPage, HttpUtils.per_page, new RequestImpl() {
+        mJzModel.queryRoleDebtOrderList(getActivity(), mState, mVerifyState, mDebtState,mPage, HttpUtils.per_page, new RequestImpl() {
             @Override
             public void loadSuccess(Object object) {
                 showContentView();

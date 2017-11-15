@@ -46,10 +46,8 @@
                             android:layout_marginLeft="@dimen/x10"/>
                     </RelativeLayout>
                     <com.messoft.gzmy.nineninebrothers.view.XEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/x76"
-                        android:paddingLeft="@dimen/x12"
-                        android:background="@drawable/input_gray_bg"/>
+                        android:id="@+id/xet_code"
+                        style="@style/default_input"/>
                 </LinearLayout>
 
                 <!--企业债事名称-->
@@ -79,10 +77,8 @@
                             android:layout_marginLeft="@dimen/x10"/>
                     </RelativeLayout>
                     <com.messoft.gzmy.nineninebrothers.view.XEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/x76"
-                        android:paddingLeft="@dimen/x12"
-                        android:background="@drawable/input_gray_bg"/>
+                        android:id="@+id/xet_zs_name"
+                        style="@style/default_input"/>
                 </LinearLayout>
 
                 <!--企业法人姓名-->
@@ -112,10 +108,8 @@
                             android:layout_marginLeft="@dimen/x10"/>
                     </RelativeLayout>
                     <com.messoft.gzmy.nineninebrothers.view.XEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/x76"
-                        android:paddingLeft="@dimen/x12"
-                        android:background="@drawable/input_gray_bg"/>
+                        android:id="@+id/xet_legal_name"
+                        style="@style/default_input"/>
                 </LinearLayout>
 
                 <!--法人身份证号-->
@@ -145,10 +139,8 @@
                             android:layout_marginLeft="@dimen/x10"/>
                     </RelativeLayout>
                     <com.messoft.gzmy.nineninebrothers.view.XEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/x76"
-                        android:paddingLeft="@dimen/x12"
-                        android:background="@drawable/input_gray_bg"/>
+                        android:id="@+id/xet_id_card"
+                        style="@style/default_input"/>
                 </LinearLayout>
 
                 <!--所属地区-->
@@ -177,11 +169,42 @@
                             android:layout_alignParentRight="true"
                             android:layout_marginLeft="@dimen/x10"/>
                     </RelativeLayout>
-                    <com.messoft.gzmy.nineninebrothers.view.XEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/x76"
-                        android:paddingLeft="@dimen/x12"
-                        android:background="@drawable/input_gray_bg"/>
+                    <TextView
+                        android:gravity="center_vertical"
+                        android:id="@+id/xet_address"
+                        style="@style/default_input"/>
+                </LinearLayout>
+
+                <!--所属街道-->
+                <LinearLayout
+                    android:layout_marginTop="@dimen/x20"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+                    <RelativeLayout
+                        android:layout_width="@dimen/x220"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="*"
+                            android:layout_toLeftOf="@+id/tv_street"
+                            android:textColor="@color/red"/>
+                        <TextView
+                            android:id="@+id/tv_street"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="所属街道: "
+                            android:gravity="right"
+                            android:layout_marginRight="@dimen/x20"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginLeft="@dimen/x10"/>
+                    </RelativeLayout>
+                    <TextView
+                        android:gravity="center_vertical"
+                        android:id="@+id/xet_street"
+                        style="@style/default_input"/>
                 </LinearLayout>
 
                 <!--所属行业-->
@@ -211,10 +234,8 @@
                             android:layout_marginLeft="@dimen/x10"/>
                     </RelativeLayout>
                     <com.messoft.gzmy.nineninebrothers.view.XEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/x76"
-                        android:paddingLeft="@dimen/x12"
-                        android:background="@drawable/input_gray_bg"/>
+                        android:id="@+id/xet_industry"
+                        style="@style/default_input"/>
                 </LinearLayout>
 
                 <!--联系电话-->
@@ -244,10 +265,9 @@
                             android:layout_marginLeft="@dimen/x10"/>
                     </RelativeLayout>
                     <com.messoft.gzmy.nineninebrothers.view.XEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/x76"
-                        android:paddingLeft="@dimen/x12"
-                        android:background="@drawable/input_gray_bg"/>
+                        android:inputType="number"
+                        android:id="@+id/xet_phone"
+                        style="@style/default_input"/>
                 </LinearLayout>
 
                 <!--注册资本-->
@@ -277,10 +297,9 @@
                             android:layout_marginLeft="@dimen/x10"/>
                     </RelativeLayout>
                     <com.messoft.gzmy.nineninebrothers.view.XEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/x76"
-                        android:paddingLeft="@dimen/x12"
-                        android:background="@drawable/input_gray_bg"/>
+                        android:inputType="number"
+                        android:id="@+id/xet_register_capital"
+                        style="@style/default_input"/>
                 </LinearLayout>
 
                 <!--联系邮箱-->
@@ -310,10 +329,8 @@
                             android:layout_marginLeft="@dimen/x10"/>
                     </RelativeLayout>
                     <com.messoft.gzmy.nineninebrothers.view.XEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/x76"
-                        android:paddingLeft="@dimen/x12"
-                        android:background="@drawable/input_gray_bg"/>
+                        android:id="@+id/xet_email"
+                        style="@style/default_input"/>
                 </LinearLayout>
 
                 <!--微信号码-->
@@ -344,10 +361,8 @@
                             android:layout_marginLeft="@dimen/x10"/>
                     </RelativeLayout>
                     <com.messoft.gzmy.nineninebrothers.view.XEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/x76"
-                        android:paddingLeft="@dimen/x12"
-                        android:background="@drawable/input_gray_bg"/>
+                        android:id="@+id/xet_wx"
+                        style="@style/default_input"/>
                 </LinearLayout>
 
                 <!--QQ号码-->
@@ -378,10 +393,9 @@
                             android:layout_marginLeft="@dimen/x10"/>
                     </RelativeLayout>
                     <com.messoft.gzmy.nineninebrothers.view.XEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/x76"
-                        android:paddingLeft="@dimen/x12"
-                        android:background="@drawable/input_gray_bg"/>
+                        android:inputType="number"
+                        android:id="@+id/xet_qq"
+                        style="@style/default_input"/>
                 </LinearLayout>
 
                 <!--下一步-->

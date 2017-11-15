@@ -30,7 +30,7 @@ public class AssetProgress extends BaseObservable implements Serializable {
     private String disposeState;
     private String remarks;
     private String memberId;
-    private String progressStage;
+    private int progressStage;
 
     public String getId() {
         return id;
@@ -88,11 +88,11 @@ public class AssetProgress extends BaseObservable implements Serializable {
         this.memberId = memberId;
     }
 
-    public String getProgressStage() {
+    public int getProgressStage() {
         return progressStage;
     }
 
-    public void setProgressStage(String progressStage) {
+    public void setProgressStage(int progressStage) {
         this.progressStage = progressStage;
     }
 }

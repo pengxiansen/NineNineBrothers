@@ -28,7 +28,7 @@ public class JzProgress implements Serializable{
     private String debtOrderNumber;
     private String remarks;
     private String debtMatterId;
-    private String debtStage;
+    private int debtStage;
 
     public String getDebtMatterOrderId() {
         return debtMatterOrderId;
@@ -86,11 +86,11 @@ public class JzProgress implements Serializable{
         this.debtMatterId = debtMatterId;
     }
 
-    public String getDebtStage() {
+    public int getDebtStage() {
         return debtStage;
     }
 
-    public void setDebtStage(String debtStage) {
+    public void setDebtStage(int debtStage) {
         this.debtStage = debtStage;
     }
 }

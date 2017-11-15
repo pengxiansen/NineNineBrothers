@@ -5,7 +5,9 @@ import android.text.InputType;
 import android.text.Spanned;
 import android.widget.EditText;
 
+import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
+import java.net.URLEncoder;
 import java.util.Random;
 
 /**
@@ -26,6 +28,22 @@ public class StringUtils {
             return false;
         }
         return true;
+    }
+
+    /**
+     * 请求参数喊中文时，设置UTF-8格式
+     *
+     * @param s
+     * @return
+     */
+    public static String toURLEncoderUTF8(String s) {
+        String result = "";
+        try {
+            result = URLEncoder.encode(s, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
     /**

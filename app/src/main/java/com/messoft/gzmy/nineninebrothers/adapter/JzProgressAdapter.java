@@ -31,14 +31,10 @@ import java.util.List;
 public class JzProgressAdapter extends BaseRecyclerViewAdapter<JzProgress> {
     private Activity activity;
     private JzModel mJzModel;
-    private ArrayList<String> mImgList;//图片集合
-    private JzProgressItemImgImgAdapter mImagAdapter;
 
     public JzProgressAdapter(Activity activity) {
         this.activity = activity;
         mJzModel = new JzModel();
-        mImgList = new ArrayList<>();
-        mImagAdapter = new JzProgressItemImgImgAdapter(activity);
     }
 
     @Override
@@ -56,20 +52,20 @@ public class JzProgressAdapter extends BaseRecyclerViewAdapter<JzProgress> {
         @Override
         public void onBindViewHolder(final JzProgress object, int position) {
             if (object != null) {
-                /**
-                 * 当数据改变时，binding会在下一帧去改变数据，如果我们需要立即改变，就去调用executePendingBindings方法。
-                 */
-                binding.executePendingBindings();
-                binding.tvTitle.setText(BusinessUtils.progressStage(object.getDebtStage()));
+                binding.tvTitle.setText(BusinessUtils.progressStage(object.getDebtStage()+""));
                 binding.tvTime.setText(object.getCreateTime());
                 binding.tvDesc.setText(object.getRemarks());
                 //图片
                 setImgs(object.getId(), binding.xrcImg);
+                binding.executePendingBindings();
             }
         }
     }
 
     private void setImgs(String id, final RecyclerView xrcImg) {
+        final ArrayList<String> mImgList  = new ArrayList<>();
+        final JzProgressItemImgImgAdapter mImagAdapter = new JzProgressItemImgImgAdapter(activity);
+        xrcImg.setAdapter(mImagAdapter);
         mJzModel.getDebtMatterProgressFileList(activity, id, new RequestImpl() {
             @Override
             public void loadSuccess(Object object) {
@@ -80,7 +76,7 @@ public class JzProgressAdapter extends BaseRecyclerViewAdapter<JzProgress> {
                 xrcImg.setNestedScrollingEnabled(false);
                 xrcImg.setHasFixedSize(false);
 
-                if (mImgList != null && mImgList.size() > 0) {
+                if (mImgList != null && list.size() > 0) {
                     mImgList.clear();
                     for (int i = 0; i < list.size(); i++) {
                         mImgList.add(list.get(i).getUrl());

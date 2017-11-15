@@ -1,6 +1,7 @@
 package com.messoft.gzmy.nineninebrothers.ui.jiezai;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
@@ -15,7 +16,8 @@ import com.messoft.gzmy.nineninebrothers.bean.LoginPersonInfo;
 import com.messoft.gzmy.nineninebrothers.databinding.ActivityJieZhaiBinding;
 import com.messoft.gzmy.nineninebrothers.http.RequestImpl;
 import com.messoft.gzmy.nineninebrothers.model.LoginModel;
-import com.messoft.gzmy.nineninebrothers.ui.jiezai.JzPropertyManage.JzPropertyFragment;
+import com.messoft.gzmy.nineninebrothers.ui.jiezai.JzPropertyManage.JzPropertyJzsFragment;
+import com.messoft.gzmy.nineninebrothers.ui.jiezai.JzPropertyManage.JzPropertyMemberFragment;
 import com.messoft.gzmy.nineninebrothers.ui.jiezai.jzHome.JzHomeFragment;
 import com.messoft.gzmy.nineninebrothers.ui.jiezai.jzManage.JzKuJzsFragment;
 import com.messoft.gzmy.nineninebrothers.ui.jiezai.jzManage.JzManageFragment;
@@ -38,13 +40,22 @@ public class JzActivity extends BaseActivity<ActivityJieZhaiBinding> {
     private MenuItem menuItem;
     private BottomNavigationView bottomNavigationView;
     private LoginModel mLoginModel;
-    private String mRoleId;
+    private String mRoleId="";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jie_zhai);
         setTitle("资产解债");
+
+        // REFACTOR: 2017/11/15 0015 待重构 这里有内存泄露的问题
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                showContentView();
+            }
+        },1000);
+
         mLoginModel = new LoginModel();
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
@@ -104,6 +115,7 @@ public class JzActivity extends BaseActivity<ActivityJieZhaiBinding> {
 //        });
         //查询登录人信息
         checkLoginPersonInfo();
+
     }
 
     /**
@@ -119,7 +131,7 @@ public class JzActivity extends BaseActivity<ActivityJieZhaiBinding> {
                     SPUtils.putObject("loginPersonInfo", data);
                     SPUtils.putString("roleId", mRoleId);
                 }
-                showContentView();
+//                showContentView();
                 setupViewPager(viewPager);
             }
 
@@ -135,13 +147,15 @@ public class JzActivity extends BaseActivity<ActivityJieZhaiBinding> {
     private void setupViewPager(ViewPager viewPager) {
         ArrayList<Fragment> mFragmentList = new ArrayList<>();
         mFragmentList.add(new JzHomeFragment());
-        //0.普通会员 1.高级合伙人 2.解债师
+        //0.普通会员和高级合伙人 1.解债师
         if (mRoleId.equals("0") || mRoleId.equals("1")) {
             mFragmentList.add(new JzManageFragment());
+            mFragmentList.add(new JzPropertyMemberFragment());
         }else if(mRoleId.equals("2")) {
-            mFragmentList.add(JzKuJzsFragment.newInstance("0",""));
+            //type  0:解债师 1:高级合伙人
+            mFragmentList.add(JzKuJzsFragment.newInstance("0","1","1",""));
+            mFragmentList.add(JzPropertyJzsFragment.newInstance("0","1"));
         }
-        mFragmentList.add(new JzPropertyFragment());
         mFragmentList.add(new JzMyFragment());
         MyFragmentPagerAdapter adapter = new MyFragmentPagerAdapter(getSupportFragmentManager(), mFragmentList);
         viewPager.setAdapter(adapter);

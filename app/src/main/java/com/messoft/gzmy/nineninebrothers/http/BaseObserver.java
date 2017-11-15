@@ -44,7 +44,7 @@ public abstract class BaseObserver<T> implements Observer<BaseBean<T>> {
      * @param mCtx
      */
     public BaseObserver(Context mCtx) {
-        this.mContext = mCtx;
+        this.mContext = mCtx.getApplicationContext();
         HttpUiTips.showDialog(mContext, true, "加载中...");
     }
 
@@ -53,9 +53,20 @@ public abstract class BaseObserver<T> implements Observer<BaseBean<T>> {
      * @param context
      */
     public BaseObserver(Context context, boolean showProgress) {
-        this.mContext = context;
+        this.mContext = context.getApplicationContext();
         if (showProgress) {
-            HttpUiTips.showDialog(mContext, true, null);
+            HttpUiTips.showDialog(mContext, false, null);
+        }
+    }
+
+    /**
+     * @param showProgress 默认需要显示进程，不要的话请传 false
+     * @param context
+     */
+    public BaseObserver(Context context, boolean showProgress,String tip) {
+        this.mContext = context.getApplicationContext();
+        if (showProgress) {
+            HttpUiTips.showDialog(mContext, false, tip);
         }
     }
 

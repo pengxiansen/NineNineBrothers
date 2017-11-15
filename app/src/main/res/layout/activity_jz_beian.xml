@@ -7,301 +7,343 @@
         android:layout_height="match_parent"
         app:srlEnableLoadmore="true"
         app:srlEnablePureScrollMode="true">
+
         <ScrollView
             android:id="@+id/scrollView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/colorPageBg"
             app:srlEnableLoadmore="true"
             app:srlEnablePureScrollMode="true">
 
             <LinearLayout
-                android:focusable="true"
-                android:focusableInTouchMode="true"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:orientation="vertical"
                 android:padding="@dimen/x20">
 
                 <!--债事人类型-->
                 <LinearLayout
-                    android:layout_marginTop="@dimen/x20"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/x20"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
+
                     <RelativeLayout
                         android:layout_width="@dimen/x220"
                         android:layout_height="wrap_content">
+
                         <TextView
-                            android:visibility="invisible"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="*"
                             android:layout_toLeftOf="@+id/tv_zai_quan"
-                            android:textColor="@color/red"/>
+                            android:text="*"
+                            android:textColor="@color/red"
+                            android:visibility="invisible"/>
+
                         <TextView
                             android:id="@+id/tv_zai_quan"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="债事人类型: "
-                            android:gravity="right"
-                            android:layout_marginRight="@dimen/x10"
                             android:layout_alignParentRight="true"
-                            android:layout_marginLeft="@dimen/x10"/>
+                            android:layout_marginLeft="@dimen/x10"
+                            android:layout_marginRight="@dimen/x10"
+                            android:gravity="right"
+                            android:text="债事人类型: "/>
                     </RelativeLayout>
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/x76"
-                        android:paddingLeft="@dimen/x12"
                         android:gravity="center_vertical"
+                        android:paddingLeft="@dimen/x12"
+                        android:text="债权人"
                         android:textColor="@color/colorContent"
-                        android:textSize="@dimen/text_16sp"
-                        android:text="债权人"/>
+                        android:textSize="@dimen/text_16sp"/>
                 </LinearLayout>
 
                 <!--债事人证件号-->
                 <LinearLayout
-                    android:layout_marginTop="@dimen/x20"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/x20"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
+
                     <RelativeLayout
                         android:layout_width="@dimen/x220"
                         android:layout_height="wrap_content">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="*"
-                            android:visibility="invisible"
                             android:layout_toLeftOf="@+id/tv_id_card"
-                            android:textColor="@color/red"/>
+                            android:text="*"
+                            android:textColor="@color/red"
+                            android:visibility="invisible"/>
+
                         <TextView
                             android:id="@+id/tv_id_card"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="债事人证件号: "
-                            android:gravity="right"
-                            android:layout_marginRight="@dimen/x10"
                             android:layout_alignParentRight="true"
-                            android:layout_marginLeft="@dimen/x10"/>
+                            android:layout_marginLeft="@dimen/x10"
+                            android:layout_marginRight="@dimen/x10"
+                            android:gravity="right"
+                            android:inputType="number"
+                            android:text="债事人证件号: "/>
                     </RelativeLayout>
+
                     <com.messoft.gzmy.nineninebrothers.view.XEditText
+                        android:id="@+id/xet_zq_id_card"
                         android:layout_width="@dimen/x340"
                         android:layout_height="@dimen/x76"
+                        android:background="@drawable/input_gray_bg"
+                        android:hint="输入身份证号码"
+                        android:inputType="number"
                         android:paddingLeft="@dimen/x12"
-                        android:hint="输入证件号码"
-                        android:textSize="@dimen/text_14sp"
-                        android:background="@drawable/input_gray_bg"/>
+                        android:textSize="@dimen/text_14sp"/>
 
                     <TextView
+                        android:id="@+id/tv_query_zq"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/x76"
-                        android:text="查询"
-                        android:gravity="center"
-                        android:textColor="@color/blue"
                         android:layout_marginLeft="@dimen/x10"
-                        android:background="@drawable/shape_query"/>
+                        android:background="@drawable/shape_query"
+                        android:gravity="center"
+                        android:text="查询"
+                        android:textColor="@color/blue"/>
                 </LinearLayout>
 
                 <!--债事人名称-->
                 <LinearLayout
-                    android:layout_marginTop="@dimen/x20"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/x20"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
+
                     <RelativeLayout
                         android:layout_width="@dimen/x220"
                         android:layout_height="wrap_content">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="*"
-                            android:visibility="invisible"
                             android:layout_toLeftOf="@+id/tv_name"
-                            android:textColor="@color/red"/>
+                            android:text="*"
+                            android:textColor="@color/red"
+                            android:visibility="invisible"/>
+
                         <TextView
                             android:id="@+id/tv_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="债事人名称: "
-                            android:gravity="right"
-                            android:layout_marginRight="@dimen/x10"
                             android:layout_alignParentRight="true"
-                            android:layout_marginLeft="@dimen/x10"/>
+                            android:layout_marginLeft="@dimen/x10"
+                            android:layout_marginRight="@dimen/x10"
+                            android:gravity="right"
+                            android:text="债事人名称: "/>
                     </RelativeLayout>
+
                     <TextView
+                        android:id="@+id/tv_zq_name"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/x76"
-                        android:paddingLeft="@dimen/x12"
+                        android:background="@drawable/text_grey"
                         android:gravity="center_vertical"
                         android:hint="点击查询，获取名称"
-                        android:background="@drawable/text_grey"/>
+                        android:paddingLeft="@dimen/x12"/>
 
                 </LinearLayout>
 
                 <!--债务人类型-->
                 <LinearLayout
-                    android:layout_marginTop="@dimen/x20"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/x20"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
+
                     <RelativeLayout
                         android:layout_width="@dimen/x220"
                         android:layout_height="wrap_content">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="*"
-                            android:visibility="invisible"
                             android:layout_toLeftOf="@+id/tv_zai_wu"
-                            android:textColor="@color/red"/>
+                            android:text="*"
+                            android:textColor="@color/red"
+                            android:visibility="invisible"/>
+
                         <TextView
                             android:id="@+id/tv_zai_wu"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="债务人类型: "
-                            android:gravity="right"
-                            android:layout_marginRight="@dimen/x10"
                             android:layout_alignParentRight="true"
-                            android:layout_marginLeft="@dimen/x10"/>
+                            android:layout_marginLeft="@dimen/x10"
+                            android:layout_marginRight="@dimen/x10"
+                            android:gravity="right"
+                            android:text="债务人类型: "/>
                     </RelativeLayout>
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/x76"
-                        android:paddingLeft="@dimen/x12"
                         android:gravity="center_vertical"
+                        android:paddingLeft="@dimen/x12"
+                        android:text="债务人"
                         android:textColor="@color/colorContent"
-                        android:textSize="@dimen/text_16sp"
-                        android:text="债务人"/>
+                        android:textSize="@dimen/text_16sp"/>
                 </LinearLayout>
 
                 <!--债事人证件号-->
                 <LinearLayout
-                    android:layout_marginTop="@dimen/x20"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/x20"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
+
                     <RelativeLayout
                         android:layout_width="@dimen/x220"
                         android:layout_height="wrap_content">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="*"
-                            android:visibility="invisible"
                             android:layout_toLeftOf="@+id/tv_id_card1"
-                            android:textColor="@color/red"/>
+                            android:text="*"
+                            android:textColor="@color/red"
+                            android:visibility="invisible"/>
+
                         <TextView
                             android:id="@+id/tv_id_card1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="债事人证件号: "
-                            android:gravity="right"
-                            android:layout_marginRight="@dimen/x10"
                             android:layout_alignParentRight="true"
-                            android:layout_marginLeft="@dimen/x10"/>
+                            android:layout_marginLeft="@dimen/x10"
+                            android:layout_marginRight="@dimen/x10"
+                            android:gravity="right"
+                            android:text="债事人证件号: "/>
                     </RelativeLayout>
+
                     <com.messoft.gzmy.nineninebrothers.view.XEditText
+                        android:id="@+id/xet_zw_id_card"
                         android:layout_width="@dimen/x340"
                         android:layout_height="@dimen/x76"
+                        android:background="@drawable/input_gray_bg"
+                        android:hint="输入身份证号码"
+                        android:inputType="number"
                         android:paddingLeft="@dimen/x12"
-                        android:hint="输入证件号码"
-                        android:textSize="@dimen/text_14sp"
-                        android:background="@drawable/input_gray_bg"/>
+                        android:textSize="@dimen/text_14sp"/>
 
                     <TextView
+                        android:id="@+id/tv_query_zw"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/x76"
-                        android:text="查询"
-                        android:gravity="center"
-                        android:textColor="@color/blue"
                         android:layout_marginLeft="@dimen/x10"
-                        android:background="@drawable/shape_query"/>
+                        android:background="@drawable/shape_query"
+                        android:gravity="center"
+                        android:text="查询"
+                        android:textColor="@color/blue"/>
                 </LinearLayout>
 
                 <!--债事人名称-->
                 <LinearLayout
-                    android:layout_marginTop="@dimen/x20"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/x20"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
+
                     <RelativeLayout
                         android:layout_width="@dimen/x220"
                         android:layout_height="wrap_content">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="*"
-                            android:visibility="invisible"
                             android:layout_toLeftOf="@+id/tv_name1"
-                            android:textColor="@color/red"/>
+                            android:text="*"
+                            android:textColor="@color/red"
+                            android:visibility="invisible"/>
+
                         <TextView
                             android:id="@+id/tv_name1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="债事人名称: "
-                            android:gravity="right"
-                            android:layout_marginRight="@dimen/x10"
                             android:layout_alignParentRight="true"
-                            android:layout_marginLeft="@dimen/x10"/>
+                            android:layout_marginLeft="@dimen/x10"
+                            android:layout_marginRight="@dimen/x10"
+                            android:gravity="right"
+                            android:text="债事人名称: "/>
                     </RelativeLayout>
+
                     <TextView
+                        android:id="@+id/tv_zw_name"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/x76"
-                        android:paddingLeft="@dimen/x12"
+                        android:background="@drawable/text_grey"
                         android:gravity="center_vertical"
                         android:hint="点击查询，获取名称"
-                        android:background="@drawable/text_grey"/>
+                        android:paddingLeft="@dimen/x12"/>
 
                 </LinearLayout>
 
                 <!--债事类型-->
                 <LinearLayout
-                    android:layout_marginTop="@dimen/x20"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/x20"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
+
                     <RelativeLayout
                         android:layout_width="@dimen/x220"
                         android:layout_height="wrap_content">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="*"
-                            android:visibility="invisible"
                             android:layout_toLeftOf="@+id/tv_zs_type"
-                            android:textColor="@color/red"/>
+                            android:text="*"
+                            android:textColor="@color/red"
+                            android:visibility="invisible"/>
+
                         <TextView
                             android:id="@+id/tv_zs_type"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="摘事类型: "
-                            android:gravity="right"
-                            android:layout_marginRight="@dimen/x10"
                             android:layout_alignParentRight="true"
-                            android:layout_marginLeft="@dimen/x10"/>
+                            android:layout_marginLeft="@dimen/x10"
+                            android:layout_marginRight="@dimen/x10"
+                            android:gravity="right"
+                            android:text="摘事类型: "/>
                     </RelativeLayout>
+
                     <RadioGroup
-                        android:gravity="center_vertical"
+                        android:id="@+id/rg_type"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/x76"
+                        android:gravity="center_vertical"
                         android:orientation="horizontal">
 
                         <RadioButton
+                            android:id="@+id/rb_currency"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="货币"/>
 
                         <RadioButton
-                            android:layout_marginLeft="@dimen/x60"
+                            android:id="@+id/rb_no_currency"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/x60"
                             android:text="非货币"/>
                     </RadioGroup>
 
@@ -309,46 +351,53 @@
 
                 <!--债事性质-->
                 <LinearLayout
-                    android:layout_marginTop="@dimen/x20"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/x20"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
+
                     <RelativeLayout
                         android:layout_width="@dimen/x220"
                         android:layout_height="wrap_content">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="*"
-                            android:visibility="invisible"
                             android:layout_toLeftOf="@+id/tv_zs_property"
-                            android:textColor="@color/red"/>
+                            android:text="*"
+                            android:textColor="@color/red"
+                            android:visibility="invisible"/>
+
                         <TextView
                             android:id="@+id/tv_zs_property"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="债事性质: "
-                            android:gravity="right"
-                            android:layout_marginRight="@dimen/x10"
                             android:layout_alignParentRight="true"
-                            android:layout_marginLeft="@dimen/x10"/>
+                            android:layout_marginLeft="@dimen/x10"
+                            android:layout_marginRight="@dimen/x10"
+                            android:gravity="right"
+                            android:text="债事性质: "/>
                     </RelativeLayout>
+
                     <RadioGroup
-                        android:gravity="center_vertical"
+                        android:id="@+id/rg_property"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/x76"
+                        android:gravity="center_vertical"
                         android:orientation="horizontal">
 
                         <RadioButton
+                            android:id="@+id/rb_personal"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="个人"/>
 
                         <RadioButton
-                            android:layout_marginLeft="@dimen/x60"
+                            android:id="@+id/rb_company"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/x60"
                             android:text="企业"/>
                     </RadioGroup>
 
@@ -356,46 +405,53 @@
 
                 <!--诉讼情况-->
                 <LinearLayout
-                    android:layout_marginTop="@dimen/x20"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/x20"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
+
                     <RelativeLayout
                         android:layout_width="@dimen/x220"
                         android:layout_height="wrap_content">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="*"
-                            android:visibility="invisible"
                             android:layout_toLeftOf="@+id/tv_lawsuit"
-                            android:textColor="@color/red"/>
+                            android:text="*"
+                            android:textColor="@color/red"
+                            android:visibility="invisible"/>
+
                         <TextView
                             android:id="@+id/tv_lawsuit"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="诉讼情况: "
-                            android:gravity="right"
-                            android:layout_marginRight="@dimen/x10"
                             android:layout_alignParentRight="true"
-                            android:layout_marginLeft="@dimen/x10"/>
+                            android:layout_marginLeft="@dimen/x10"
+                            android:layout_marginRight="@dimen/x10"
+                            android:gravity="right"
+                            android:text="诉讼情况: "/>
                     </RelativeLayout>
+
                     <RadioGroup
-                        android:gravity="center_vertical"
+                        android:id="@+id/rg_lawsuit"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/x76"
+                        android:gravity="center_vertical"
                         android:orientation="horizontal">
 
                         <RadioButton
+                            android:id="@+id/rb_lawsuit"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="非诉讼"/>
 
                         <RadioButton
-                            android:layout_marginLeft="@dimen/x60"
+                            android:id="@+id/rb_no_lawsuit"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/x60"
                             android:text="已诉讼"/>
                     </RadioGroup>
 
@@ -403,98 +459,111 @@
 
                 <!--债事金额-->
                 <LinearLayout
-                    android:layout_marginTop="@dimen/x20"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/x20"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
+
                     <RelativeLayout
                         android:layout_width="@dimen/x220"
                         android:layout_height="wrap_content">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="*"
-                            android:visibility="invisible"
                             android:layout_toLeftOf="@+id/tv_money"
-                            android:textColor="@color/red"/>
+                            android:text="*"
+                            android:textColor="@color/red"
+                            android:visibility="invisible"/>
+
                         <TextView
                             android:id="@+id/tv_money"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="债事金额: "
-                            android:gravity="right"
-                            android:layout_marginRight="@dimen/x10"
                             android:layout_alignParentRight="true"
-                            android:layout_marginLeft="@dimen/x10"/>
+                            android:layout_marginLeft="@dimen/x10"
+                            android:layout_marginRight="@dimen/x10"
+                            android:gravity="right"
+                            android:text="债事金额: "/>
                     </RelativeLayout>
+
                     <com.messoft.gzmy.nineninebrothers.view.XEditText
+                        android:id="@+id/xet_money"
                         android:layout_width="@dimen/x340"
                         android:layout_height="@dimen/x76"
-                        android:paddingLeft="@dimen/x12"
+                        android:background="@drawable/input_gray_bg"
                         android:hint="输入债事金额"
-                        android:textSize="@dimen/text_14sp"
-                        android:background="@drawable/input_gray_bg"/>
+                        android:inputType="number"
+                        android:paddingLeft="@dimen/x12"
+                        android:textSize="@dimen/text_14sp"/>
 
-                    <TextView
+                    <Spinner
+                        android:id="@+id/spinner"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/x76"
-                        android:text="含息"
-                        android:gravity="center"
-                        android:textColor="@color/blue"
                         android:layout_marginLeft="@dimen/x10"
-                        android:background="@drawable/shape_query"/>
+                        android:background="@drawable/shape_query"
+                        android:text=""
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/text_14sp"/>
                 </LinearLayout>
 
                 <!--债事发生时间-->
                 <LinearLayout
-                    android:layout_marginTop="@dimen/x20"
+                    android:id="@+id/ll_time"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/x20"
+                    android:background="@drawable/ripple_one_item_gray_bg"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
+
                     <RelativeLayout
                         android:layout_width="@dimen/x220"
                         android:layout_height="wrap_content">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_toLeftOf="@+id/tv_time_title"
                             android:text="*"
-                            android:visibility="invisible"
-                            android:layout_toLeftOf="@+id/tv_time"
-                            android:textColor="@color/red"/>
+                            android:textColor="@color/red"
+                            android:visibility="invisible"/>
+
                         <TextView
-                            android:id="@+id/tv_time"
+                            android:id="@+id/tv_time_title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="债事发生时间: "
-                            android:gravity="right"
-                            android:layout_marginRight="@dimen/x10"
                             android:layout_alignParentRight="true"
-                            android:layout_marginLeft="@dimen/x10"/>
+                            android:layout_marginLeft="@dimen/x10"
+                            android:layout_marginRight="@dimen/x10"
+                            android:gravity="right"
+                            android:text="债事发生时间: "/>
                     </RelativeLayout>
 
 
                     <TextView
+                        android:id="@+id/tv_time"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/x60"
-                        android:textColor="@color/blue"
                         android:layout_marginLeft="@dimen/x10"
-                        android:drawableRight="@drawable/arrow"/>
+                        android:drawableRight="@drawable/arrow"
+                        android:gravity="center_vertical"/>
                 </LinearLayout>
 
                 <!--下一步-->
                 <TextView
                     android:id="@+id/tv_next"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/x90"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/shape_login"
                     android:gravity="center"
-                    android:textColor="@color/white"
                     android:text="@string/next_step"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/text_16sp"/>
 
             </LinearLayout>

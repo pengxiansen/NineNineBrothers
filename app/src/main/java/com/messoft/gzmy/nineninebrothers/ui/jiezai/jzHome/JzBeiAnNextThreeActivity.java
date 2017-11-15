@@ -12,12 +12,11 @@ import com.messoft.gzmy.nineninebrothers.app.Constants;
 import com.messoft.gzmy.nineninebrothers.base.BaseActivity;
 import com.messoft.gzmy.nineninebrothers.databinding.ActivityJzBeiAnNextThreeBinding;
 import com.messoft.gzmy.nineninebrothers.interfae.PermissionCallback;
+import com.messoft.gzmy.nineninebrothers.model.AssetModel;
 import com.messoft.gzmy.nineninebrothers.permission.PermissionRequest;
-import com.messoft.gzmy.nineninebrothers.utils.DebugUtil;
 import com.messoft.gzmy.nineninebrothers.utils.KeybordUtils;
 import com.messoft.gzmy.nineninebrothers.utils.PerfectClickListener;
 import com.messoft.gzmy.nineninebrothers.utils.StringUtils;
-import com.messoft.gzmy.nineninebrothers.utils.SysUtils;
 import com.messoft.gzmy.nineninebrothers.utils.ToastUtil;
 import com.yanzhenjie.permission.AndPermission;
 
@@ -39,7 +38,9 @@ public class JzBeiAnNextThreeActivity extends BaseActivity<ActivityJzBeiAnNextTh
 
     private ArrayAdapter<String> mSpinnerAdapter;
     private PermissionRequest mRequest;
-    private String mType; //0--债事备案 1--资产备案
+    private AssetModel mAssetModel;
+    private String mType; //0--债事备案 1--资产备案 2--解债备案
+    private String mDebtorId;//（债事备案录入的资产传递债务人的memberId）
 
 
     @Override
@@ -63,24 +64,14 @@ public class JzBeiAnNextThreeActivity extends BaseActivity<ActivityJzBeiAnNextTh
         bindingView.tvNext.setOnClickListener(new PerfectClickListener() {
             @Override
             protected void onNoDoubleClick(View v) {
-                bindingView.tvNext.setOnClickListener(new PerfectClickListener() {
-                    @Override
-                    protected void onNoDoubleClick(View v) {
-                        ArrayList<String> data = bindingView.bagPhoto.getData();
-                        if (data != null && data.size() > 0) {
-                            DebugUtil.debug("JzBeiAnNextThreeActivity" + data.toString());
-
-                            SysUtils.startActivity(JzBeiAnNextThreeActivity.this, JzBeiAnNextFourActivity.class);
-                        }
-                    }
-                });
+               goNext();
             }
         });
     }
 
     private void initSetting() {
         showContentView();
-
+        mAssetModel = new AssetModel();
         if (getIntent() != null && null != getIntent().getBundleExtra("b")) {
             mType = getIntent().getBundleExtra("b").getString("type");
 
@@ -88,6 +79,9 @@ public class JzBeiAnNextThreeActivity extends BaseActivity<ActivityJzBeiAnNextTh
                 if (mType.equals("1")) {
                     //资产处置的资产备案过来
                     setTitle("资产备案");
+                }else if(mType.equals("2")){
+                    setTitle("解债备案");
+                    mDebtorId = getIntent().getBundleExtra("b").getString("debtorId");
                 }
             }
         }
@@ -96,6 +90,16 @@ public class JzBeiAnNextThreeActivity extends BaseActivity<ActivityJzBeiAnNextTh
         initSpinner();
         //图片选择
         initPickView();
+    }
+
+    private void goNext() {
+        if (mType.equals("2")) {
+            //TODO 解债备案 + 文件上传 然后去更新  2.2.3  债事更新
+//            mAssetModel.assetRecord(JzBeiAnNextThreeActivity.this,
+//                    mDebtorId,
+//                    "0",
+//                    );
+        }
     }
 
     private void initPickView() {

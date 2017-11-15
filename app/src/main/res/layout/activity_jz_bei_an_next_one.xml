@@ -26,21 +26,27 @@
                     android:textColor="@color/colorContent"
                     android:textSize="16sp"/>
                 <!--单选1-->
-                <LinearLayout
-                    android:layout_marginTop="@dimen/x16"
+                <RadioGroup
+                    android:layout_marginTop="@dimen/x12"
+                    android:id="@+id/rg_1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/x76"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal">
-                    <CheckBox
+
+                    <RadioButton
+                        android:id="@+id/rb_11"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="是"/>
-                    <CheckBox
-                        android:layout_marginLeft="@dimen/x160"
+
+                    <RadioButton
+                        android:id="@+id/rb_12"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/x100"
                         android:text="否"/>
-                </LinearLayout>
+                </RadioGroup>
 
                 <TextView
                     android:layout_marginTop="@dimen/x32"
@@ -50,21 +56,27 @@
                     android:textColor="@color/colorContent"
                     android:textSize="16sp"/>
                 <!--单选2-->
-                <LinearLayout
-                    android:layout_marginTop="@dimen/x16"
+                <RadioGroup
+                    android:layout_marginTop="@dimen/x12"
+                    android:id="@+id/rg_2"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/x76"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal">
-                    <CheckBox
+
+                    <RadioButton
+                        android:id="@+id/rb_21"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="是"/>
-                    <CheckBox
-                        android:layout_marginLeft="@dimen/x160"
+
+                    <RadioButton
+                        android:id="@+id/rb_22"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/x100"
                         android:text="否"/>
-                </LinearLayout>
+                </RadioGroup>
 
                 <TextView
                     android:layout_marginTop="@dimen/x32"
@@ -74,21 +86,27 @@
                     android:textColor="@color/colorContent"
                     android:textSize="16sp"/>
                 <!--单选3-->
-                <LinearLayout
-                    android:layout_marginTop="@dimen/x16"
+                <RadioGroup
+                    android:layout_marginTop="@dimen/x12"
+                    android:id="@+id/rg_3"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/x76"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal">
-                    <CheckBox
+
+                    <RadioButton
+                        android:id="@+id/rb_31"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="是"/>
-                    <CheckBox
-                        android:layout_marginLeft="@dimen/x160"
+
+                    <RadioButton
+                        android:id="@+id/rb_32"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/x100"
                         android:text="否"/>
-                </LinearLayout>
+                </RadioGroup>
 
                 <TextView
                     android:layout_marginTop="@dimen/x32"
@@ -98,21 +116,27 @@
                     android:textColor="@color/colorContent"
                     android:textSize="16sp"/>
                 <!--单选4-->
-                <LinearLayout
-                    android:layout_marginTop="@dimen/x16"
+                <RadioGroup
+                    android:layout_marginTop="@dimen/x12"
+                    android:id="@+id/rg_4"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/x76"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal">
-                    <CheckBox
+
+                    <RadioButton
+                        android:id="@+id/rb_41"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="是"/>
-                    <CheckBox
-                        android:layout_marginLeft="@dimen/x160"
+
+                    <RadioButton
+                        android:id="@+id/rb_42"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/x100"
                         android:text="否"/>
-                </LinearLayout>
+                </RadioGroup>
 
                 <!--身份证明-->
                 <LinearLayout

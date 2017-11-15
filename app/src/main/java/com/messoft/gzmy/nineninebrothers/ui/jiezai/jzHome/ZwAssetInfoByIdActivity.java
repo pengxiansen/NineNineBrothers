@@ -7,7 +7,6 @@ import android.view.View;
 
 import com.messoft.gzmy.nineninebrothers.R;
 import com.messoft.gzmy.nineninebrothers.adapter.ZwAssetInfoImgAdapter;
-import com.messoft.gzmy.nineninebrothers.app.ConstantsUrl;
 import com.messoft.gzmy.nineninebrothers.base.BaseActivity;
 import com.messoft.gzmy.nineninebrothers.base.baseadapter.OnItemClickListener;
 import com.messoft.gzmy.nineninebrothers.bean.AssetInfoById;
@@ -24,10 +23,11 @@ import com.messoft.gzmy.nineninebrothers.utils.StringUtils;
 import com.messoft.gzmy.nineninebrothers.utils.ToastUtil;
 import com.messoft.gzmy.nineninebrothers.view.viewbigimage.ViewBigImageActivity;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -168,20 +168,23 @@ public class ZwAssetInfoByIdActivity extends BaseActivity<ActivityZwAssetInfoByI
 
     private void loadInfo(String id) {
         //信息
-        Map<String, String> map = new HashMap<>();
-        map.put("id", id);
-        String urlDataInfo = BusinessUtils.getUrlNoPage(ConstantsUrl.MASTER_URL + ConstantsUrl.GET_ASSET_BY_ID,
-                map);
-        //文件
-        Map<String, String> map1 = new HashMap<>();
-        map1.put("assetId", id);
-        String urlImgs = BusinessUtils.getUrlNoPage(ConstantsUrl.MASTER_URL + ConstantsUrl.GET_ASSET_FILE_BY_ID,
-                map1);
-        if (!StringUtils.isNoEmpty(urlDataInfo) && !StringUtils.isNoEmpty(urlImgs)) {
-            return;
+        JSONObject map = new JSONObject();
+        try {
+            map.put("id", id);
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
-        Observable<BaseBean<AssetInfoById>> newsList = HttpClient.Builder.getNineServer().getAssetById(urlDataInfo);
-        Observable<BaseBean<List<AssetInfoFile>>> homeBanner = HttpClient.Builder.getNineServer().getAssetInfo(urlImgs);
+
+        //文件
+        JSONObject map1 = new JSONObject();
+        try {
+            map1.put("assetId", id);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        Observable<BaseBean<AssetInfoById>> newsList = HttpClient.Builder.getNineServerQz().getAssetById(StringUtils.toURLEncoderUTF8(map.toString()));
+        Observable<BaseBean<List<AssetInfoFile>>> homeBanner = HttpClient.Builder.getNineServerQz().getAssetInfo(StringUtils.toURLEncoderUTF8(map1.toString()));
         Observable.merge(newsList, homeBanner)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

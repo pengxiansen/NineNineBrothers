@@ -42,7 +42,6 @@ import java.util.concurrent.ExecutionException;
  * 用于查看大图
  *
  * @author jingbin
- *
  */
 public class ViewBigImageActivity extends FragmentActivity implements OnPageChangeListener, PhotoViewAttacher.OnPhotoTapListener {
 
@@ -93,7 +92,7 @@ public class ViewBigImageActivity extends FragmentActivity implements OnPageChan
      */
     public static void saveImageToGallery(Context context, Bitmap bmp) {
         // 首先保存图片
-        File appDir = new File(Environment.getExternalStorageDirectory(), "玖玖兄弟相册");
+        File appDir = new File(Environment.getExternalStorageDirectory(), context.getResources().getString(R.string.app_name));
         if (!appDir.exists()) {
             appDir.mkdir();
         }
@@ -175,7 +174,7 @@ public class ViewBigImageActivity extends FragmentActivity implements OnPageChan
                                         Bitmap bitmap = BitmapFactory.decodeFile(imagePath, bmOptions);
                                         if (bitmap != null) {
                                             saveImageToGallery(ViewBigImageActivity.this, bitmap);
-                                            ToastUtil.showToast("已保存至"+Environment.getExternalStorageDirectory().getAbsolutePath()+"/玖玖兄弟相册");
+                                            ToastUtil.showToast("已保存至" + Environment.getExternalStorageDirectory().getAbsolutePath() + getResources().getString(R.string.app_name));
 //                                            Toast.makeText(ViewBigImageActivity.this, "保存成功", Toast.LENGTH_SHORT).show();
                                         }
                                     }
